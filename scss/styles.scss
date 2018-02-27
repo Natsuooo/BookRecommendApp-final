@@ -1,0 +1,128 @@
+.cover{
+	width: 100%;
+  height: 100vh;
+	background-color: #00bfff;
+	display:flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+}
+
+.navbar{
+	position: absolute;
+	left: 3px;
+}
+
+.navbar-dark .navbar-toggler {
+  border-color: rgba(255, 255, 255, 0);
+}
+
+.navbar-dark .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='%23fff' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E"); }
+
+.navbar-dark .navbar-nav .nav-link {
+  color: rgba(255, 255, 255, 1); }
+  .navbar-dark .navbar-nav .nav-link:hover, .navbar-dark .navbar-nav .nav-link:focus {
+    color: rgba(255, 255, 255, 0.75); }
+  .navbar-dark .navbar-nav .nav-link.disabled {
+    color: rgba(255, 255, 255, 1); }
+
+.navbar-expand-sm{
+	padding-left: 0px;
+}
+
+.nav-link.toggle{
+	margin-bottom: -15px;
+	margin-left: 3px;
+}
+
+.nav-item.toggle{
+	font-size: 14px;
+}
+
+.navbar-toggler{
+	padding: 0.25rem;
+}
+
+
+.top-subtitle{
+	font-size: 19px;
+	font-weight: 400;
+}
+
+#slides{
+	margin-left: -16px;
+	margin-right: -16px;
+	margin-bottom: 40px;
+}
+
+.carousel-control-prev-icon {
+	background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23343a40' viewBox='0 0 8 8'%3E%3Cpath d='M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z'/%3E%3C/svg%3E"); }
+
+.carousel-control-next-icon {
+	background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23343a40' viewBox='0 0 8 8'%3E%3Cpath d='M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3E%3C/svg%3E"); }
+
+.carousel-indicators {
+	bottom: -30px; }	
+
+.carousel-indicators li {
+	background-color: rgba(0, 0, 0, 0.3);}
+
+.carousel-indicators .active {
+	background-color: black; }
+
+.carousel-caption{
+	bottom: 0px;
+	left: 0px;
+	right: 0px;
+	background-color: rgba(0, 0, 0, 0.7);
+}
+
+.slide-title{
+	font-size: 14px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+.nav-tabs{
+	margin-left: -10px;
+	margin-right: -10px;
+}
+
+.nav-tabs>li>a{
+	padding-left: 7px;
+	padding-right: 7px;
+	font-size: 13px;
+}
+
+
+
+.post{
+	border-bottom: 1px solid #dcdcdc;
+}
+
+
+.post-img{
+	width: 35vw;
+	margin-left: -10px;
+}
+
+.post-content{
+	margin-left: -3vw;
+}
+
+.post-title{
+	font-size: 13px;
+	margin-bottom: 5px;
+}
+
+.post-tag{
+	font-size: 10px;
+	padding: 4px;
+}
+
+.post-text{
+	font-size: 11px;
+	margin-top: -10px;
+}
+
