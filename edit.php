@@ -55,28 +55,28 @@ $app->run();
 				<h6 class="my-2">Category</h6>
 
 				<div class="custom-control custom-radio">
-					<input type="radio" id="category1" name="category" class="custom-control-input" value="商学" <?= h($editpost->category)==='商学' ? 'checked' : '' ?>>
-					<label class="custom-control-label" for="category1">商学</label>
+					<input type="radio" id="category1" name="category" class="custom-control-input" value="commerce" <?= h($editpost->category)==='commerce' ? 'checked' : '' ?>>
+					<label class="custom-control-label" for="category1">commerce</label>
 				</div>
 				<div class="custom-control custom-radio">
-					<input type="radio" id="category2" name="category" class="custom-control-input" value="経済学" <?= h($editpost->category)==='経済学' ? 'checked' : '' ?>>
-					<label class="custom-control-label" for="category2">経済学</label>
+					<input type="radio" id="category2" name="category" class="custom-control-input" value="economics" <?= h($editpost->category)==='economics' ? 'checked' : '' ?>>
+					<label class="custom-control-label" for="category2">economics</label>
 				</div>
 				<div class="custom-control custom-radio">
-					<input type="radio" id="category3" name="category" class="custom-control-input" value="法学" <?= h($editpost->category)==='法学' ? 'checked' : '' ?>>
-					<label class="custom-control-label" for="category3">法学</label>
+					<input type="radio" id="category3" name="category" class="custom-control-input" value="law" <?= h($editpost->category)==='law' ? 'checked' : '' ?>>
+					<label class="custom-control-label" for="category3">law</label>
 				</div>
 				<div class="custom-control custom-radio">
-					<input type="radio" id="category4" name="category" class="custom-control-input" value="社会学" <?= h($editpost->category)==='社会学' ? 'checked' : '' ?>>
-					<label class="custom-control-label" for="category4">社会学</label>
+					<input type="radio" id="category4" name="category" class="custom-control-input" value="sociology" <?= h($editpost->category)==='sociology' ? 'checked' : '' ?>>
+					<label class="custom-control-label" for="category4">sociology</label>
 				</div>
 				<div class="custom-control custom-radio">
-					<input type="radio" id="category5" name="category" class="custom-control-input" value="理学" <?= h($editpost->category)==='理学' ? 'checked' : '' ?>>
-					<label class="custom-control-label" for="category5">理学</label>
+					<input type="radio" id="category5" name="category" class="custom-control-input" value="science" <?= h($editpost->category)==='science' ? 'checked' : '' ?>>
+					<label class="custom-control-label" for="category5">science</label>
 				</div>
 				<div class="custom-control custom-radio">
-					<input type="radio" id="category6" name="category" class="custom-control-input" value="教養" <?= h($editpost->category)==='教養' ? 'checked' : '' ?>>
-					<label class="custom-control-label" for="category6">教養</label>
+					<input type="radio" id="category6" name="category" class="custom-control-input" value="liberalArts" <?= h($editpost->category)==='liberalArts' ? 'checked' : '' ?>>
+					<label class="custom-control-label" for="category6">liberalArts</label>
 				</div>
 
 

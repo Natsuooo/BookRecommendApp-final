@@ -34,18 +34,25 @@ $app->run();
 		<div class="container">
 			<form action="" method="post">
 			<?php foreach($app->getValues('profile') as $profile){ ?>
-				<div class="form-group">
-					<label for="name">Name</label>
-					<input type="text" class="form-control" id="name" name="name" placeholder="Enter your name" value="<?= !empty($app->getValues('name')) ? h($app->getValues('name')) : h($profile->name); ?>">
+				<div class="form-row">
+					<div class="col-6">
+						<label for="firstName">First name</label>
+						<input type="text" name="firstName" id="firstName" class="form-control" placeholder="First name" value="<?= !empty($app->getValues('firstName')) ? h($app->getValues('firstName')) : h($profile->firstName); ?>" required autofocus>
+					</div>
+					<div class="col-6">
+						<label for="lastName">Last name</label>
+						<input type="text" name="lastName" id="lastName" class="form-control" placeholder="Last name" value="<?= !empty($app->getValues('lastName')) ? h($app->getValues('lastName')) : h($profile->lastName); ?>" required autofocus>
+					</div>
 				</div>
+				
 				
 				<div class="form-group">
 					<label for="professionalCategory">Professional category</label>
      			<select name="professionalCategory" class="custom-select mr-sm-2" id="professionalCategory" required>
-						<option value="商学" <?= h($profile->professionalCategory)==='商学' ? 'selected' : '' ?>>商学</option>
-						<option value="経済学" <?= h($profile->professionalCategory)==='経済学' ? 'selected' : '' ?>>経済学</option>
-						<option value="法学" <?= h($profile->professionalCategory)==='法学' ? 'selected' : '' ?>>法学</option>
-						<option value="社会学" <?= h($profile->professionalCategory)==='社会学' ? 'selected' : '' ?>>社会学</option>
+						<option value="commerce" <?= h($profile->professionalCategory)==='commerce' ? 'selected' : '' ?>>commerce</option>
+						<option value="economics" <?= h($profile->professionalCategory)==='economics' ? 'selected' : '' ?>>economics</option>
+						<option value="law" <?= h($profile->professionalCategory)==='law' ? 'selected' : '' ?>>law</option>
+						<option value="sociology" <?= h($profile->professionalCategory)==='sociology' ? 'selected' : '' ?>>sociology</option>
 					</select>
 				</div>
 				

@@ -36,8 +36,8 @@ $app->run();
 						<li class="nav-item toggle"><a href="index.php" class="nav-link toggle">Home</a></li>
 						<li class="nav-item toggle"><a href="" class="nav-link toggle">Recommend</a></li>
 						<li class="nav-item toggle"><a href="" class="nav-link toggle">New Entry</a></li>
-						<li class="nav-item toggle"><a href="" class="nav-link toggle">Category</a></li>
-						<li class="nav-item toggle"><a href="" class="nav-link toggle">Professor</a></li>
+						<li class="nav-item toggle"><a href="category.php" class="nav-link toggle">Category</a></li>
+						<li class="nav-item toggle"><a href="professors.php" class="nav-link toggle">Professor</a></li>
 						<li class="nav-item toggle"><a href="mypage.php" class="nav-link toggle">My Page</a></li>
 					</ul>
 				</div>
@@ -135,23 +135,51 @@ $app->run();
             
             <div id="category" class="tab-pane">
               <ul>
-              	<li><a href="">商学</a></li>
-              	<li><a href="">経済学</a></li>
-              	<li><a href="">法学</a></li>
-              	<li><a href="">社会学</a></li>
-              	<li><a href="">理学</a></li>
-              	<li><a href="">教養</a></li>
+              	<li><a href="category.php?category=commerce">Commerce</a></li>
+              	<li><a href="category.php?category=economics">Economics</a></li>
+              	<li><a href="category.php?category=law">Law</a></li>
+              	<li><a href="category.php?category=commerce">Sociology</a></li>
+              	<li><a href="category.php?category=science">Science</a></li>
+              	<li><a href="category.php?category=liberal">Liberal Arts</a></li>
               </ul>
             </div>
             
             <div id="professor" class="tab-pane">
-              <ul>
-              	<li><a href="professors.php">All Professors</a></li>
-              	<li><a href="">井伊雅子</a></li>
-              	<li><a href="">井伊雅子</a></li>
-              	<li><a href="">井伊雅子</a></li>
-              	<li><a href="">井伊雅子</a></li>
-              	<li><a href="">井伊雅子</a></li>
+            	<p><a href="professors.php">Hitotsubashi professors</a></p>
+            	<p>commerce</p>
+            	<ul>
+            	<?php
+							foreach($app->getValues('commerceProfessors') as $commerceProfessor){
+							?>
+            		<li><a href="professor.php?id=<?= $commerceProfessor->id ?>"><?= $commerceProfessor->name ?></a></li>
+              <?php } ?>	
+              </ul>
+              
+              <p>economics</p>
+            	<ul>
+            	<?php
+							foreach($app->getValues('economicsProfessors') as $economicsProfessor){
+							?>
+            		<li><a href="professor.php?id=<?= $economicsProfessor->id ?>"><?= $economicsProfessor->name ?></a></li>
+              <?php } ?>	
+              </ul>
+              
+              <p>law</p>
+            	<ul>
+            	<?php
+							foreach($app->getValues('lawProfessors') as $lawProfessor){
+							?>
+            		<li><a href="professor.php?id=<?= $lawProfessor->id ?>"><?= $lawProfessor->name ?></a></li>
+              <?php } ?>	
+              </ul>
+              
+              <p>sociology</p>
+            	<ul>
+            	<?php
+							foreach($app->getValues('sociologyProfessors') as $sociologyProfessor){
+							?>
+            		<li><a href="professor.php?id=<?= $sociologyProfessor->id ?>"><?= $sociologyProfessor->name ?></a></li>
+              <?php } ?>	
               </ul>
             </div>
           </div>

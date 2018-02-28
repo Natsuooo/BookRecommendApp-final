@@ -21,7 +21,7 @@ class Posts extends \lib\Model{
 	}
 	
 	public function findAll(){
-		$stmt=$this->db->query("select * from posts order by postId DESC");
+		$stmt=$this->db->query("select * from posts order by postId DESC limit 5");
 		$stmt->setFetchMode(\PDO::FETCH_CLASS, 'stdClass');
 		return $posts=$stmt->fetchAll();
 	}
@@ -88,6 +88,16 @@ class Posts extends \lib\Model{
 			':difficulty'=>$values['difficulty'],
 			':text'=>$values['text']
 		]);
+	}
+	
+	public function category($values){
+		$stmt=$this->db->prepare("select * from posts where category=:category order by postId DESC");
+		$stmt->execute([
+			':category'=>$values['category']
+		]);
+		$stmt->setFetchMode(\PDO::FETCH_CLASS, 'stdClass');
+		$category=$stmt->fetchAll();
+		return $category;
 	}
 	
 	

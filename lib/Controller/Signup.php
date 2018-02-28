@@ -32,7 +32,8 @@ class Signup extends \lib\Controller{
 				$user=$userModel->create([
 					'email'=>$_POST['email'],
 					'password'=>$_POST['password'],
-					'name'=>$_POST['name'],
+					'firstName'=>$_POST['firstName'],
+					'lastName'=>$_POST['lastName'],
 					'professionalCategory'=>$_POST['professionalCategory']
 				]);
 			}catch(\lib\Exception\DuplicateEmail $e){
@@ -46,7 +47,8 @@ class Signup extends \lib\Controller{
 			$profileModel=new \lib\Model\Profiles();
 			$profileModel->createProfile([
 				'id'=>$_SESSION['me']->id,
-				'name'=>$_SESSION['me']->name,
+				'firstName'=>$_SESSION['me']->firstName,
+				'lastName'=>$_SESSION['me']->lastName,
 				'professionalCategory'=>$_SESSION['me']->professionalCategory
 			]);
 			

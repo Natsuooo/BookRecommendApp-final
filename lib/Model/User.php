@@ -4,9 +4,10 @@ namespace lib\Model;
 class User extends \lib\Model{
 	
 	public function create($values){
-		$stmt=$this->db->prepare("insert into users(name, professionalCategory, email, password, created, modified) values (:name, :professionalCategory, :email, :password, now(), now())");
+		$stmt=$this->db->prepare("insert into users(firstName, lastName, professionalCategory, email, password, created, modified) values (:firstName, :lastName, :professionalCategory, :email, :password, now(), now())");
 		$res=$stmt->execute([
-			':name'=>$values['name'],
+			':firstName'=>$values['firstName'],
+			':lastName'=>$values['lastName'],
 			':professionalCategory'=>$values['professionalCategory'],
 			':email'=>$values['email'],
 			':password'=>password_hash($values['password'], PASSWORD_DEFAULT)

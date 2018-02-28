@@ -6,7 +6,8 @@ use login
 
 create table users(
 	id int not null auto_increment primary key,
-	name varchar(255),
+	firstName varchar(255),
+	lastName varchar(255),
 	professionalCategory varchar(255),
 	email varchar(255),
 	password varchar(255),
@@ -16,7 +17,8 @@ create table users(
 
 create table profiles(
 	id int,
-	name varchar(255),
+	firstName varchar(255),
+	lastName varchar(255),
 	professionalCategory varchar(255),
 	department varchar(255),
 	professional varchar(255),

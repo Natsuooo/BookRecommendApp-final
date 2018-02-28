@@ -33,16 +33,24 @@ $app->run();
 				<form action="" method="post" class="form-signin">
 					<h1 class="h3 mb-3 font-weight-normal">Sign up</h1>
 					
-					<label for="name" class="sr-only">Name</label>
-     			<input type="text" name="name" id="name" class="form-control" placeholder="Name" value="<?= !empty($app->getValues('name')) ? h($app->getValues('name')) : '' ?>" required autofocus>
+					<div class="form-row">
+						<div class="col-6">
+							<label for="firstName" class="sr-only">First name</label>
+							<input type="text" name="firstName" id="firstName" class="form-control" placeholder="First name" value="<?= !empty($app->getValues('firstName')) ? h($app->getValues('firstName')) : '' ?>" required autofocus>
+						</div>
+						<div class="col-6">
+							<label for="lastName" class="sr-only">Last name</label>
+							<input type="text" name="lastName" id="lastName" class="form-control" placeholder="Last name" value="<?= !empty($app->getValues('lastName')) ? h($app->getValues('lastName')) : '' ?>" required autofocus>
+						</div>
+     			</div>
      			
      			<label for="professionalCategory" class="sr-only" >Professional category</label>
      			<select name="professionalCategory" class="custom-select mr-sm-2" id="professionalCategory" required>
-						<option selected>Choose professional category</option>
-						<option value="商学">商学</option>
-						<option value="経済学">経済学</option>
-						<option value="法学">法学</option>
-						<option value="社会学">社会学</option>
+						<option selected>Professional category</option>
+						<option value="commerce">Commerce</option>
+						<option value="economics">Economics</option>
+						<option value="law">Law</option>
+						<option value="sociology">Sociology</option>
 					</select>
 				
 					<label for="email" class="sr-only">Email address</label>

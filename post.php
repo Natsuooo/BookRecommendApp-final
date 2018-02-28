@@ -53,44 +53,44 @@ $img=$_GET['img'];
 			<h6 class="my-2">Category</h6>
 			
 			<div class="custom-control custom-radio">
-				<input type="radio" id="category1" name="category" class="custom-control-input" value="商学" checked>
-				<label class="custom-control-label" for="category1">商学</label>
+				<input type="radio" id="category1" name="category" class="custom-control-input" value="commerce" checked>
+				<label class="custom-control-label" for="category1">Commerce</label>
 			</div>
 			<div class="custom-control custom-radio">
-				<input type="radio" id="category2" name="category" class="custom-control-input" value="経済学">
-				<label class="custom-control-label" for="category2">経済学</label>
+				<input type="radio" id="category2" name="category" class="custom-control-input" value="economics">
+				<label class="custom-control-label" for="category2">Economics</label>
 			</div>
 			<div class="custom-control custom-radio">
-				<input type="radio" id="category3" name="category" class="custom-control-input" value="法学">
-				<label class="custom-control-label" for="category3">法学</label>
+				<input type="radio" id="category3" name="category" class="custom-control-input" value="law">
+				<label class="custom-control-label" for="category3">Law</label>
 			</div>
 			<div class="custom-control custom-radio">
-				<input type="radio" id="category4" name="category" class="custom-control-input" value="社会学">
-				<label class="custom-control-label" for="category4">社会学</label>
+				<input type="radio" id="category4" name="category" class="custom-control-input" value="sociology">
+				<label class="custom-control-label" for="category4">Sociology</label>
 			</div>
 			<div class="custom-control custom-radio">
-				<input type="radio" id="category5" name="category" class="custom-control-input" value="理学">
-				<label class="custom-control-label" for="category5">理学</label>
+				<input type="radio" id="category5" name="category" class="custom-control-input" value="science">
+				<label class="custom-control-label" for="category5">Science</label>
 			</div>
 			<div class="custom-control custom-radio">
-				<input type="radio" id="category6" name="category" class="custom-control-input" value="教養">
-				<label class="custom-control-label" for="category6">教養</label>
+				<input type="radio" id="category6" name="category" class="custom-control-input" value="liberalArts">
+				<label class="custom-control-label" for="category6">Liberal Arts</label>
 			</div>
 			
 			
 			<h6 class="my-2">Difficulty</h6>
 			
 			<div class="custom-control custom-radio">
-				<input type="radio" id="difficulty1" name="difficulty" class="custom-control-input" value="易しめ" checked>
-				<label class="custom-control-label" for="difficulty1">易しめ</label>
+				<input type="radio" id="difficulty1" name="difficulty" class="custom-control-input" value="easy" checked>
+				<label class="custom-control-label" for="difficulty1">easy</label>
 			</div>
 			<div class="custom-control custom-radio">
-				<input type="radio" id="difficulty2" name="difficulty" class="custom-control-input" value="普通">
-				<label class="custom-control-label" for="difficulty2">普通</label>
+				<input type="radio" id="difficulty2" name="difficulty" class="custom-control-input" value="normal">
+				<label class="custom-control-label" for="difficulty2">normal</label>
 			</div>
 			<div class="custom-control custom-radio">
-				<input type="radio" id="difficulty3" name="difficulty" class="custom-control-input" value="難しめ">
-				<label class="custom-control-label" for="difficulty3">難しめ</label>
+				<input type="radio" id="difficulty3" name="difficulty" class="custom-control-input" value="hard">
+				<label class="custom-control-label" for="difficulty3">hard</label>
 			</div>
 			
 			<div class="form-group mt-3">

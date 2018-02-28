@@ -28,7 +28,8 @@ class Profile extends \lib\Controller{
 			$this->setErrors('profile', $e->getMessage());
 		}
 		
-		$this->setValues('name', $_POST['name']);
+		$this->setValues('firstName', $_POST['firstName']);
+		$this->setValues('lastName', $_POST['lastName']);
 		$this->setValues('department', $_POST['department']);
 		$this->setValues('professional', $_POST['professional']);
 		$this->setValues('message', $_POST['message']);
@@ -39,7 +40,8 @@ class Profile extends \lib\Controller{
 			$profileModel=new \lib\Model\Profiles();
 			$profileModel->update([
 				'id'=>$_SESSION['me']->id,
-				'name'=>$_POST['name'],
+				'firstName'=>$_POST['firstName'],
+				'lastName'=>$_POST['lastName'],
 				'professionalCategory'=>$_POST['professionalCategory'],
 				'department'=>$_POST['department'],
 				'professional'=>$_POST['professional'],

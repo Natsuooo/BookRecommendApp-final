@@ -2,7 +2,7 @@
 
 require_once(__DIR__.'/config/config.php');
 
-$app=new lib\Controller\Professors();
+$app=new lib\Controller\Category();
 
 $app->run();
 
@@ -28,7 +28,7 @@ $app->run();
 	<header>
 
 		<div class="container">
-			<h5 class="text-center my-4">Hitotsubashi Professors</h5>
+			<h5 class="text-center my-4"><?= ucfirst($_GET['category']) ?></h5>
 		</div>
 
 		
@@ -36,72 +36,27 @@ $app->run();
 	
 	<main>
 		<section>
-			<div class="container" id="start">
-				<ul class="nav nav-tabs nav-justified my-5">
-					<li class="nav-item"><a href="#commerce" class="nav-link active" data-toggle="tab">Commerce</a></li>
-					<li class="nav-item"><a href="#economics" class="nav-link" data-toggle="tab">Economics</a></li>
-					<li class="nav-item"><a href="#law" class="nav-link" data-toggle="tab">Law</a></li>
-					<li class="nav-item"><a href="#sociology" class="nav-link" data-toggle="tab">Sociology</a></li>
-         </ul>
-          
-          <div class="tab-content">
-            <div id="commerce" class="tab-pane active">
-							<?php
-							foreach($app->getValues('commerceProfessors') as $commerceProfessor){
-							?>
-          		<div class="profile bg-light">
-          			<h5><?= h($commerceProfessor->name) ?></h5>
-          			<p><?= h($commerceProfessor->department) ?>
-          			<br><?= h($commerceProfessor->professional) ?></p>
-          			<p><?= h($commerceProfessor->message) ?></p>
-          			<p><a href="professor.php?id=<?= h($commerceProfessor->id) ?>">to Recommendations</a></p>
-          		</div>
-           		<?php } ?>
-            </div>
-            
-            <div id="economics" class="tab-pane">
-              <?php
-							foreach($app->getValues('economicsProfessors') as $economicsProfessor){
-							?>
-          		<div class="profile bg-light">
-          			<h5><?= h($economicsProfessor->name) ?></h5>
-          			<p><?= h($economicsProfessor->department) ?>
-          			<br><?= h($economicsProfessor->professional) ?></p>
-          			<p><?= h($economicsProfessor->message) ?></p>
-          			<p><a href="professor.php?id=<?= h($economicsProfessor->id) ?>">to Recommendations</a></p>
-          		</div>
-           		<?php } ?>
-            </div>
-            
-            <div id="law" class="tab-pane">
-              <?php
-							foreach($app->getValues('lawProfessors') as $lawProfessor){
-							?>
-          		<div class="profile bg-light">
-          			<h5><?= h($lawProfessor->name) ?></h5>
-          			<p><?= h($lawProfessor->department) ?>
-          			<br><?= h($lawProfessor->professional) ?></p>
-          			<p><?= h($lawProfessor->message) ?></p>
-          			<p><a href="professor.php?id=<?= h($lawProfessor->id) ?>">to Recommendations</a></p>
-          		</div>
-           		<?php } ?>
-            </div>
-            
-            <div id="sociology" class="tab-pane">
-              <?php
-							foreach($app->getValues('sociologyProfessors') as $sociologyProfessor){
-							?>
-          		<div class="profile bg-light">
-          			<h5><?= h($sociologyProfessor->name) ?></h5>
-          			<p><?= h($sociologyProfessor->department) ?>
-          			<br><?= h($sociologyProfessor->professional) ?></p>
-          			<p><?= h($sociologyProfessor->message) ?></p>
-          			<p><a href="professor.php?id=<?= h($sociologyProfessor->id) ?>">to Recommendations</a></p>
-          		</div>
-           		<?php } ?>
-            </div>
-            
-          </div>
+			<div class="container">
+				<?php
+				foreach($app->getValues('categoryPosts') as $categoryPost){
+				?>
+				<div class="post">
+					<div class="row my-3">
+						<div class="col-5">
+							<a href="detail.php?post=<?= h($categoryPost->postId) ?>"><img src="<?= h($categoryPost->img) ?>" alt="<?= h($categoryPost->title) ?>" class="post-img"></a>
+						</div>
+						<div class="col-7 post-content">
+							<h4 class="post-title"><a href="detail.php?post=<?= h($categoryPost->postId) ?>"><?= h($categoryPost->title) ?></a></h4>
+							<p><span class="text-muted post-tag border rounded"><?= h($categoryPost->name) ?></span>
+							<span class="text-muted post-tag border rounded"><?= h($categoryPost->category) ?></span>
+							<span class="text-muted post-tag border rounded"><?= h($categoryPost->difficulty) ?></span></p>
+							<p class="post-text">
+								<?= h(mb_substr($categoryPost->text, 0, 40)) ?>...
+							</p>
+						</div>
+					</div>
+				</div>	
+				<?php } ?>
 			</div>
 		</section>
 		

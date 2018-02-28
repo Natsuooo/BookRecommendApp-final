@@ -19,84 +19,97 @@ $app->run();
     
     <link rel="stylesheet" href="css/styles.css">
     
-	<title>Professor - Name | ELEL（エレル）一橋大教授のオススメ図書</title>
+	<title>Hitotsubashi Professors | ELEL（エレル）一橋大教授のオススメ図書</title>
 	
 
 </head>
 <body>
 
 	<header>
+
 		<div class="container">
-			<nav class="navbar navbar-expand-sm navbar-dark">
-				<button class="navbar-toggler" data-toggle="collapse" data-target="#menu">
-					<span class="navbar-toggler-icon"></span>
-				</button>
-				<div id="menu" class="collapse navbar-collapse">
-					<ul class="navbar-nav">
-						<li class="nav-item toggle"><a href="index.php" class="nav-link toggle">Home</a></li>
-						<li class="nav-item toggle"><a href="" class="nav-link toggle">Recommend</a></li>
-						<li class="nav-item toggle"><a href="" class="nav-link toggle">New Entry</a></li>
-						<li class="nav-item toggle"><a href="" class="nav-link toggle">Category</a></li>
-						<li class="nav-item toggle"><a href="" class="nav-link toggle">Professor</a></li>
-						<li class="nav-item toggle"><a href="mypage.php" class="nav-link toggle">My Page</a></li>
-					</ul>
-				</div>
-			</nav>
-     </div>
-		
-		<div class="cover text-white text-center">
-			<h1 class="display-4 mb-1">ELEL</h1>
-			<h2 class="mb-4 px-3 top-subtitle">Book Recommendations by Hitotsubashi Professors</h2>
-			<a href="#recommend" class="btn btn-primary btn-md px-3 mt-4">Let's find best books</a>
+			<h5 class="text-center my-4">Hitotsubashi Professors</h5>
 		</div>
+
+		
 	</header>
 	
 	<main>
-	
 		<section>
 			<div class="container">
-			<h3 class="text-center" id="recommend">Recommend</h3>
-				<div id="slides" class="carousel slide" data-ride="carousel">
-					<ol class="carousel-indicators indicators-position">
-						<li data-target="#slides" data-slide-to="0" class="active"></li>
-						<li data-target="#slides" data-slide-to="1"></li>
-						<li data-target="#slides" data-slide-to="2"></li>
-						<li data-target="#slides" data-slide-to="3s"></li>
-					</ol>
-					
-  				<div class="carousel-inner">
-  				
-  				<?php
-					foreach($app->getValues('firstSlide') as $firstSlide){
-					?>
-						<div class="carousel-item text-center active">
-							<img class="w-50" src="<?= h($firstSlide->img) ?>" alt="<?= h($firstSlide->title) ?>">
-						<div class="carousel-caption  py-0">
-							<h4 class="slide-title"><?= h($firstSlide->title) ?></h4>
-						</div>
-						</div>
-					<?php } ?>
-  				
-  				<?php
-					foreach($app->getValues('slides') as $slide){
-					?>
-						<div class="carousel-item text-center">
-							<img class="w-50" src="<?= h($slide->img) ?>" alt="<?= h($slide->title) ?>">
-						<div class="carousel-caption py-0">
-							<h4 class="slide-title"><?= h($slide->title) ?></h4>
-						</div>
-						</div>
-					<?php } ?>
-  				</div>
-					<a class="carousel-control-prev" href="#slides" role="button" data-slide="prev">
-						<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-						<span class="sr-only">Previous</span>
-					</a>
-					<a class="carousel-control-next" href="#slides" role="button" data-slide="next">
-						<span class="carousel-control-next-icon" aria-hidden="true"></span>
-						<span class="sr-only">Next</span>
-					</a>
+				<?php
+				foreach($app->getValues('profile') as $profile){
+				?>
+				<div class="profile bg-light">
+					<h5><?= h($profile->name) ?></h5>
+					<p><?= h($profile->department) ?>
+					<br><?= h($profile->professional) ?></p>
+					<p><?= h($profile->message) ?></p>
 				</div>
+				<?php } ?>
+			</div>
+		</section>
+		
+		<section>
+			<div class="container">
+				<?php
+							foreach($app->getValues('myposts') as $mypost){
+							?>
+							<div class="post">
+								<div class="row my-3">
+									<div class="col-5">
+										<a href="detail.php?post=<?= h($mypost->postId) ?>"><img src="<?= h($mypost->img) ?>" alt="<?= h($mypost->title) ?>" class="post-img"></a>
+									</div>
+									<div class="col-7 post-content">
+										<h4 class="post-title"><a href="detail.php?post=<?= h($mypost->postId) ?>"><?= h($mypost->title) ?></a></h4>
+										<p><span class="text-muted post-tag border rounded"><?= h($mypost->name) ?></span>
+										<span class="text-muted post-tag border rounded"><?= h($mypost->category) ?></span>
+										<span class="text-muted post-tag border rounded"><?= h($mypost->difficulty) ?></span></p>
+										<p class="post-text"><?= h(mb_substr($mypost->text, 0, 40)) ?>...</p>
+									</div>
+								</div>
+							</div>	
+							<?php } ?>
+			</div>
+		</section>
+		
+		<section>
+			<div class="container" id="start">
+				<ul class="nav nav-tabs nav-justified my-5">
+					<li class="nav-item"><a href="#commerce" class="nav-link active" data-toggle="tab">commerce</a></li>
+					<li class="nav-item"><a href="#economics" class="nav-link" data-toggle="tab">economics</a></li>
+					<li class="nav-item"><a href="#law" class="nav-link" data-toggle="tab">law</a></li>
+					<li class="nav-item"><a href="#sociology" class="nav-link" data-toggle="tab">sociology</a></li>
+         </ul>
+          
+          <div class="tab-content">
+            <div id="commerce" class="tab-pane active">
+							<?php
+							foreach($app->getValues('commerceProfessors') as $commerceProfessor){
+							?>
+          		<div class="profile bg-light">
+          			<h5><?= h($commerceProfessor->name) ?></h5>
+          			<p><?= h($commerceProfessor->department) ?>
+          			<br><?= h($commerceProfessor->professional) ?></p>
+          			<p><?= h($commerceProfessor->message) ?></p>
+          			<p><a href="professor.php?name=<?= h($commerceProfessor->name) ?>">to Recommendations</a></p>
+          		</div>
+           		<?php } ?>
+            </div>
+            
+            <div id="economics" class="tab-pane">
+              
+            </div>
+            
+            <div id="law" class="tab-pane">
+              
+            </div>
+            
+            <div id="sociology" class="tab-pane">
+              
+            </div>
+            
+          </div>
 			</div>
 		</section>
 		
@@ -104,7 +117,7 @@ $app->run();
 			<div class="container" id="start">
 				<ul class="nav nav-tabs nav-justified my-5">
 					<li class="nav-item"><a href="#newEntry" class="nav-link active" data-toggle="tab">New Entry</a></li>
-					<li class="nav-item"><a href="#category" class="nav-link" data-toggle="tab">Catogory</a></li>
+					<li class="nav-item"><a href="#category" class="nav-link" data-toggle="tab">Category</a></li>
 					<li class="nav-item"><a href="#professor" class="nav-link" data-toggle="tab">Professor</a></li>
          </ul>
           
@@ -121,7 +134,8 @@ $app->run();
 									<div class="col-7 post-content">
 										<h4 class="post-title"><a href="detail.php?post=<?= h($post->postId) ?>"><?= h($post->title) ?></a></h4>
 										<p><span class="text-muted post-tag border rounded"><?= h($post->name) ?></span>
-										<span class="text-muted post-tag border rounded"><?= h($post->category) ?></span></p>
+										<span class="text-muted post-tag border rounded"><?= h($post->category) ?></span>
+										<span class="text-muted post-tag border rounded"><?= h($post->difficulty) ?></span></p>
 										<p class="post-text">
 											<?= h(mb_substr($post->text, 0, 40)) ?>...
 										</p>
@@ -134,18 +148,18 @@ $app->run();
             
             <div id="category" class="tab-pane">
               <ul>
-              	<li><a href="">商学</a></li>
-              	<li><a href="">経済学</a></li>
-              	<li><a href="">法学</a></li>
-              	<li><a href="">社会学</a></li>
-              	<li><a href="">理学</a></li>
-              	<li><a href="">教養</a></li>
+              	<li><a href="">commerce</a></li>
+              	<li><a href="">economics</a></li>
+              	<li><a href="">law</a></li>
+              	<li><a href="">sociology</a></li>
+              	<li><a href="">science</a></li>
+              	<li><a href="">liberalArts</a></li>
               </ul>
             </div>
             
             <div id="professor" class="tab-pane">
               <ul>
-              	<li><a href="">井伊雅子</a></li>
+              	<li><a href="professors.php">Hitotsubashi Professors</a></li>
               	<li><a href="">井伊雅子</a></li>
               	<li><a href="">井伊雅子</a></li>
               	<li><a href="">井伊雅子</a></li>
@@ -171,8 +185,9 @@ $app->run();
 						<div class="col-7 post-content">
 							<h4 class="post-title"><a href="detail.php?post=<?= h($recommend->postId) ?>"><?= h($recommend->title) ?></a></h4>
 							<p><span class="text-muted post-tag border rounded"><?= h($recommend->name) ?></span>
-							<span class="text-muted post-tag border rounded"><?= h($recommend->category) ?></span></p>
-							<p class="post-text"><?= h($recommend->text) ?></p>
+							<span class="text-muted post-tag border rounded"><?= h($recommend->category) ?></span>
+							<span class="text-muted post-tag border rounded"><?= h($recommend->difficulty) ?></span></p>
+							<p class="post-text"><?= h(mb_substr($recommend->text, 0, 40)) ?>...</p>
 						</div>
 					</div>
 				</div>	

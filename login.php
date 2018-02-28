@@ -43,6 +43,7 @@ $app->run();
 					
 					<button class="btn btn-lg btn-primary btn-block my-3" type="submit">log in</button>
 					
+					<p class="fs12 my-1"><a href="signup.php">Sign Up</a></p>
 					<p class="fs12 my-1"><a href="index.php">Home</a></p>
 					<p class="fs12 my-1"><a href="forgetPassword.php">Forget password?</a></p>
 					

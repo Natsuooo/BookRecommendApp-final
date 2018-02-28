@@ -42,7 +42,8 @@ $app->run();
 					
 					<div class="detail-tags mt-3">
 						<p><span class="text-muted detail-tag border rounded"><?= h($detail->name) ?></span>
-					<span class="text-muted detail-tag border rounded"><?= h($detail->category) ?></span></p>
+						<span class="text-muted detail-tag border rounded"><?= h($detail->category) ?></span>
+						<span class="text-muted detail-tag border rounded"><?= h($detail->difficulty) ?></span></p>
 					</div>
 					
 					<div class="detail-info bg-light">

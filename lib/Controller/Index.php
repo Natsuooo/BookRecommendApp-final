@@ -18,5 +18,29 @@ class Index extends \lib\Controller{
 		$recommendModel=new \lib\Model\Posts();
 		$recommends=$recommendModel->recommend();
 		$this->setValues('recommends', $recommends);
+		
+		$professorModel=new \lib\Model\Profiles();
+		$professor=$professorModel->professor([
+			'professionalCategory'=>'commerce'
+		]);
+		$this->setValues('commerceProfessors', $professor);
+		
+		$professorModel=new \lib\Model\Profiles();
+		$professor=$professorModel->professor([
+			'professionalCategory'=>'economics'
+		]);
+		$this->setValues('economicsProfessors', $professor);
+		
+		$professorModel=new \lib\Model\Profiles();
+		$professor=$professorModel->professor([
+			'professionalCategory'=>'law'
+		]);
+		$this->setValues('lawProfessors', $professor);
+		
+		$professorModel=new \lib\Model\Profiles();
+		$professor=$professorModel->professor([
+			'professionalCategory'=>'sociology'
+		]);
+		$this->setValues('sociologyProfessors', $professor);
 	}
 }
