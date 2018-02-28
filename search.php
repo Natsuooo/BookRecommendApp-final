@@ -47,10 +47,10 @@ $app->run();
 				foreach($app->getValues('items') as $item){
 					$item_id = $item->ASIN; //ASIN
 					$item_title = $item->ItemAttributes->Title; // 商品名
-					if(strpos($item_title, '(')===false){
+					if(mb_strpos($item_title, '(')===false){
 						$title=$item_title;
 					}else{
-						$title=substr($item_title, 0, strpos($item_title, '('));
+						$title=mb_substr($item_title, 0, mb_strpos($item_title, '('));
 					}
 					$item_author = $item->ItemAttributes->Author; // 著者
 					$item_publicationdate = $item->ItemAttributes->PublicationDate; // 発売日
@@ -61,18 +61,13 @@ $app->run();
 				<div class="post">
 					<div class="row my-3">
 						<div class="col-5">
-							<a href=""><img src="<?= h($item_image) ?>" alt="<?= h($title) ?>" class="post-img"></a>
+							<a href="post.php?title=<?= $title  ?>&author=<?= $item_author  ?>&date=<?= $item_publicationdate  ?>&publisher=<?= $item_publisher  ?>&img=<?= $item_image  ?>&url=<?= $item_url  ?>"><img src="<?= h($item_image) ?>" alt="<?= h($title) ?>" class="post-img"></a>
 						</div>
 						<div class="col-7 post-content">
-							<h4 class="post-title"><a href=""><?= h($title) ?></a></h4>
+							<h4 class="post-title"><a href="post.php?title=<?= $title  ?>&author=<?= $item_author  ?>&date=<?= $item_publicationdate  ?>&publisher=<?= $item_publisher  ?>&img=<?= $item_image  ?>&url=<?= $item_url  ?>"><?= h($title) ?></a></h4>
 							<p><span class="text-muted post-tag border rounded"><?= h($item_author) ?></span>
 							<span class="text-muted post-tag border rounded"><?= h($item_publicationdate) ?></span>
 							<span class="text-muted post-tag border rounded"><?= h($item_publisher) ?></span></p>
-							<p>
-							<?php
-							echo "<a href='post.php?title=".$title."&author=".$item_author."&date=".$item_publicationdate."&publisher=".$item_publisher."&img=".$item_image."&url=".$item_url."'>Select</a>"
-							?>
-						</p>
 						</div>
 					</div>
 				</div>	
@@ -80,7 +75,17 @@ $app->run();
 			</div>
 		</section>
 	</main>
-	<footer></footer>
+	
+	<footer class="text-center text-dark bg-light py-4 mt-5">
+ 		<div class="container">
+ 			<p>Home</p>
+			<p>About</p>
+			<p>Contact</p>
+ 		</div>
+		<div class="container">
+			<p>Copyright &copy; All Rights Reserved by Natsuo Yamashita</p>
+		</div>
+  </footer>
 	
 </body>
 </html>

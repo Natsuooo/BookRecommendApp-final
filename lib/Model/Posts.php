@@ -4,7 +4,7 @@ namespace lib\Model;
 class Posts extends \lib\Model{
 	
 	public function post($values){
-		$stmt=$this->db->prepare("insert into posts(id, name, title, author, publishDate, publisher, url, img, category, text, created, modified) values (:id, :name, :title, :author, :publishDate, :publisher, :url, :img, :category, :text, now(), now())");
+		$stmt=$this->db->prepare("insert into posts(id, name, title, author, publishDate, publisher, url, img, category, difficulty, text, created, modified) values (:id, :name, :title, :author, :publishDate, :publisher, :url, :img, :category, :difficulty, :text, now(), now())");
 		$stmt->execute([
 			':id'=>$values['id'],
 			':name'=>$values['name'],
@@ -15,12 +15,13 @@ class Posts extends \lib\Model{
 			':url'=>$values['url'],
 			':img'=>$values['img'],
 			':category'=>$values['category'],
+			':difficulty'=>$values['difficulty'],
 			':text'=>$values['text']
 		]);
 	}
 	
 	public function findAll(){
-		$stmt=$this->db->query("select * from posts order by postId");
+		$stmt=$this->db->query("select * from posts order by postId DESC");
 		$stmt->setFetchMode(\PDO::FETCH_CLASS, 'stdClass');
 		return $posts=$stmt->fetchAll();
 	}
@@ -38,13 +39,13 @@ class Posts extends \lib\Model{
 	}
 	
 	public function recommend(){
-		$stmt=$this->db->query("select * from posts order by rand() limit 3");
+		$stmt=$this->db->query("select * from posts order by rand() limit 5");
 		$stmt->setFetchMode(\PDO::FETCH_CLASS, 'stdClass');
 		return $posts=$stmt->fetchAll();
 	}
 	
 	public function related($values){
-		$stmt=$this->db->prepare("select * from posts where category=:category order by rand() limit 3");
+		$stmt=$this->db->prepare("select * from posts where category=:category order by rand() limit 5");
 		$stmt->execute([
 			':category'=>$values['category']
 		]);
@@ -53,7 +54,7 @@ class Posts extends \lib\Model{
 	}
 	
 	public function myposts($values){
-		$stmt=$this->db->prepare("select * from posts where id=:id");
+		$stmt=$this->db->prepare("select * from posts where id=:id order by postId DESC");
 		$stmt->execute([
 			':id'=>$values['id']
 		]);
@@ -80,10 +81,11 @@ class Posts extends \lib\Model{
 	}
 	
 	public function edit($values){
-		$stmt=$this->db->prepare("update posts set title=:title, text=:text, modified=now() where postId=:postId");
+		$stmt=$this->db->prepare("update posts set category=:category, difficulty=:difficulty, text=:text, modified=now() where postId=:postId");
 		$stmt->execute([
 			':postId'=>$values['postId'],
-			':title'=>$values['title'],
+			':category'=>$values['category'],
+			':difficulty'=>$values['difficulty'],
 			':text'=>$values['text']
 		]);
 	}

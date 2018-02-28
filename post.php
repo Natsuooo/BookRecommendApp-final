@@ -31,6 +31,7 @@ $img=$_GET['img'];
 <body>
 	<header></header>
 	<main>
+		<section>
 		<div class="container">
 				
 			<h1 class="detail-title mt-4"><?= h($title) ?></h1>
@@ -48,43 +49,80 @@ $img=$_GET['img'];
 				</div>
 			</div>
 			
-			<div class="detail-text">
-				<p class="my-4">
-				
-				</p>
+			<form action="" method="post">
+			<h6 class="my-2">Category</h6>
+			
+			<div class="custom-control custom-radio">
+				<input type="radio" id="category1" name="category" class="custom-control-input" value="商学" checked>
+				<label class="custom-control-label" for="category1">商学</label>
 			</div>
-
-			<div class="detail-text">
-				<p class="my-4">
-				
-				</p>
+			<div class="custom-control custom-radio">
+				<input type="radio" id="category2" name="category" class="custom-control-input" value="経済学">
+				<label class="custom-control-label" for="category2">経済学</label>
 			</div>
-	
-		</div>
-	</main>
-	<footer></footer>
-	<div id="container">
-	<h1>Post</h1>
-		<form action="" method="post" id="post">
-			<p><a href="<?= $url ?>"><?= $title ?></a></p>
-			<p><?= $author ?></p>
-			<p><?= $publishDate ?></p>
-			<p><?= $publisher ?></p>
-			<p><a href="<?= $url ?>"><img src="<?= $img ?>"></a></p>
-			<p>
-			<input type="radio" name="category" value="商学">商学
-			<input type="radio" name="category" value="経済学">経済学
-			<input type="radio" name="category" value="法学">法学
-			<input type="radio" name="category" value="社会学">社会学
-			<input type="radio" name="category" value="理学">理学
-			<input type="radio" name="category" value="教養">教養
-			</p>
-			<p>
-				<textarea name="text" cols="30" rows="10" placeholder="text"><?= !empty($app->getValues('text')) ? h($app->getValues('text')) : ''; ?></textarea>
-			</p>
-			<p class="err"><?= h($app->getErrors('post')); ?></p>
-			<div class="btn" onclick="document.getElementById('post').submit();">Post</div>
-			<p><span class="fs12"><a href="search.php">Back</a></span></p>
+			<div class="custom-control custom-radio">
+				<input type="radio" id="category3" name="category" class="custom-control-input" value="法学">
+				<label class="custom-control-label" for="category3">法学</label>
+			</div>
+			<div class="custom-control custom-radio">
+				<input type="radio" id="category4" name="category" class="custom-control-input" value="社会学">
+				<label class="custom-control-label" for="category4">社会学</label>
+			</div>
+			<div class="custom-control custom-radio">
+				<input type="radio" id="category5" name="category" class="custom-control-input" value="理学">
+				<label class="custom-control-label" for="category5">理学</label>
+			</div>
+			<div class="custom-control custom-radio">
+				<input type="radio" id="category6" name="category" class="custom-control-input" value="教養">
+				<label class="custom-control-label" for="category6">教養</label>
+			</div>
+			
+			
+			<h6 class="my-2">Difficulty</h6>
+			
+			<div class="custom-control custom-radio">
+				<input type="radio" id="difficulty1" name="difficulty" class="custom-control-input" value="易しめ" checked>
+				<label class="custom-control-label" for="difficulty1">易しめ</label>
+			</div>
+			<div class="custom-control custom-radio">
+				<input type="radio" id="difficulty2" name="difficulty" class="custom-control-input" value="普通">
+				<label class="custom-control-label" for="difficulty2">普通</label>
+			</div>
+			<div class="custom-control custom-radio">
+				<input type="radio" id="difficulty3" name="difficulty" class="custom-control-input" value="難しめ">
+				<label class="custom-control-label" for="difficulty3">難しめ</label>
+			</div>
+			
+			<div class="form-group mt-3">
+				<label for="textarea">Comment</label>
+				<textarea name="text" id="textarea" rows="10" class="form-control" placeholder="Enter your comment for the book" required><?= !empty($app->getValues('text')) ? h($app->getValues('text')) : ''; ?></textarea>
+				<span class="err"><?= h($app->getErrors('post')); ?></span>
+			</div>
+			
+			<div class="form-group text-center">
+				<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#post">Post</button>
+			</div>
+			
+			<div class="modal fade" id="post" tabindex="-1" role="dialog" aria-labelledby="profileModalCenterTitle" aria-hidden="true">
+				<div class="modal-dialog modal-dialog-centered" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="postModalLongTitle">New Post</h5>
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<?= $title ?>を投稿します。
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-secondary" data-dismiss="modal">Back</button>
+							<button type="submit" class="btn btn-primary">OK</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			
 			<input type="hidden" name="title" value="<?= $title ?>">
 			<input type="hidden" name="author" value="<?= $author ?>">
 			<input type="hidden" name="publishDate" value="<?=$publishDate ?>">
@@ -92,8 +130,29 @@ $img=$_GET['img'];
 			<input type="hidden" name="url" value="<?= $url ?>">
 			<input type="hidden" name="img" value="<?= $img ?>">
 		</form>
-		
-	</div>
+	
+		</div>
+		</section>
+	</main>
+	<footer class="text-center text-dark bg-light py-4 mt-5">
+ 		<div class="container">
+ 			<p>Home</p>
+			<p>About</p>
+			<p>Contact</p>
+ 		</div>
+		<div class="container">
+			<p>Copyright &copy; All Rights Reserved by Natsuo Yamashita</p>
+		</div>
+  </footer>
+
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	<script>
+		$('#myModal').on('shown.bs.modal', function () {
+			$('#myInput').trigger('focus')
+		})
+	</script>
 </body>
 </html>
 

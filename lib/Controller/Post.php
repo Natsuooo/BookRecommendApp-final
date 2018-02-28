@@ -35,6 +35,7 @@ class Post extends \lib\Controller{
 				'url'=>$_POST['url'],
 				'img'=>$_POST['img'],
 				'category'=>$_POST['category'],
+				'difficulty'=>$_POST['difficulty'],
 				'text'=>$_POST['text']
 			]);
 			header('Location: '.SITE_URL.'/mypage.php');

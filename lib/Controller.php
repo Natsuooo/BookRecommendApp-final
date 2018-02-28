@@ -42,6 +42,14 @@ class Controller{
 		return isset($_SESSION['me'])&&!empty($_SESSION['me']);
 	}
 	
+	protected function logout(){
+		$_SESSION=[];
+		if(isset($_COOKIE[session_name()])){
+			setcookie(session_name(), '' , time() - 86400, '/');
+		}
+		session_destroy();
+		header('Location: '.SITE_URL.'/login.php');
+	}
 	
 	
 }

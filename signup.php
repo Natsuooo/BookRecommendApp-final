@@ -35,6 +35,15 @@ $app->run();
 					
 					<label for="name" class="sr-only">Name</label>
      			<input type="text" name="name" id="name" class="form-control" placeholder="Name" value="<?= !empty($app->getValues('name')) ? h($app->getValues('name')) : '' ?>" required autofocus>
+     			
+     			<label for="professionalCategory" class="sr-only" >Professional category</label>
+     			<select name="professionalCategory" class="custom-select mr-sm-2" id="professionalCategory" required>
+						<option selected>Choose professional category</option>
+						<option value="商学">商学</option>
+						<option value="経済学">経済学</option>
+						<option value="法学">法学</option>
+						<option value="社会学">社会学</option>
+					</select>
 				
 					<label for="email" class="sr-only">Email address</label>
      			<input type="email" id="email" name="email" class="form-control" placeholder="Email address" value="<?= !empty($app->getValues('email')) ? h($app->getValues('email')) : '' ?>" required>
@@ -48,7 +57,7 @@ $app->run();
 					
 					<p class="fs12 my-1"><a href="/login.php">Log in</a></p>
 					<p class="fs12 my-1"><a href="index.php">Home</a></p>
-					<p class="fs12 my-1"><a href="forgetPassword.php">Forget password?</a></p>
+					
 					
 					<input type="hidden" name="token" value="<?= h($_SESSION['token']); ?>">
 				</form>

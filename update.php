@@ -41,7 +41,27 @@ $app->run();
 					<input type="password" id="password" name="password" class="form-control" placeholder="Password" required>
 					<span class="err"><?= h($app->getErrors('password')); ?></span>
 					
-					<button class="btn btn-lg btn-primary btn-block my-3" type="submit">Update</button>
+					<button class="btn btn-lg btn-primary btn-block my-3" type="button" data-toggle="modal" data-target="#update">Update</button>
+					
+					<div class="modal fade" id="update" tabindex="-1" role="dialog" aria-labelledby="updateModalCenterTitle" aria-hidden="true">
+						<div class="modal-dialog modal-dialog-centered" role="document">
+							<div class="modal-content">
+								<div class="modal-header">
+									<h5 class="modal-title" id="updateModalLongTitle">Update Email/Password</h5>
+									<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+										<span aria-hidden="true">&times;</span>
+									</button>
+								</div>
+								<div class="modal-body text-left">
+									ご登録のメールアドレスとパスワードを変更します。
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-secondary" data-dismiss="modal">Back</button>
+									<button type="submit" class="btn btn-primary">Save changes</button>
+								</div>
+							</div>
+						</div>
+					</div>
 					
 					<p class="fs12"><a href="mypage.php">Back</a></p>
 					
@@ -51,6 +71,13 @@ $app->run();
 		</section>
 	</main>
 	<footer></footer>
-	
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	<script>
+		$('#myModal').on('shown.bs.modal', function () {
+			$('#myInput').trigger('focus')
+		})
+	</script>
 </body>
 </html>

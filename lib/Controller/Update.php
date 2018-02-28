@@ -34,7 +34,8 @@ class Update extends \lib\Controller{
 			
 			session_regenerate_id(true);
 			$_SESSION['me']=$user;
-			return;
+			header('Location: '.SITE_URL.'/mypage.php');
+			exit;
 		}
 	}
 	

@@ -40,6 +40,7 @@ class Profile extends \lib\Controller{
 			$profileModel->update([
 				'id'=>$_SESSION['me']->id,
 				'name'=>$_POST['name'],
+				'professionalCategory'=>$_POST['professionalCategory'],
 				'department'=>$_POST['department'],
 				'professional'=>$_POST['professional'],
 				'message'=>$_POST['message']

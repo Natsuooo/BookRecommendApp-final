@@ -2,7 +2,7 @@
 
 require_once(__DIR__.'/config/config.php');
 
-$app=new lib\Controller\Index();
+$app=new lib\Controller\Professor();
 
 $app->run();
 
@@ -19,7 +19,7 @@ $app->run();
     
     <link rel="stylesheet" href="css/styles.css">
     
-	<title>ELEL（エレル） | 一橋大教授のオススメ図書</title>
+	<title>Professor - Name | ELEL（エレル）一橋大教授のオススメ図書</title>
 	
 
 </head>
@@ -104,7 +104,7 @@ $app->run();
 			<div class="container" id="start">
 				<ul class="nav nav-tabs nav-justified my-5">
 					<li class="nav-item"><a href="#newEntry" class="nav-link active" data-toggle="tab">New Entry</a></li>
-					<li class="nav-item"><a href="#category" class="nav-link" data-toggle="tab">Category</a></li>
+					<li class="nav-item"><a href="#category" class="nav-link" data-toggle="tab">Catogory</a></li>
 					<li class="nav-item"><a href="#professor" class="nav-link" data-toggle="tab">Professor</a></li>
          </ul>
           
@@ -121,8 +121,7 @@ $app->run();
 									<div class="col-7 post-content">
 										<h4 class="post-title"><a href="detail.php?post=<?= h($post->postId) ?>"><?= h($post->title) ?></a></h4>
 										<p><span class="text-muted post-tag border rounded"><?= h($post->name) ?></span>
-										<span class="text-muted post-tag border rounded"><?= h($post->category) ?></span>
-										<span class="text-muted post-tag border rounded"><?= h($post->difficulty) ?></span></p>
+										<span class="text-muted post-tag border rounded"><?= h($post->category) ?></span></p>
 										<p class="post-text">
 											<?= h(mb_substr($post->text, 0, 40)) ?>...
 										</p>
@@ -146,7 +145,7 @@ $app->run();
             
             <div id="professor" class="tab-pane">
               <ul>
-              	<li><a href="professors.php">All Professors</a></li>
+              	<li><a href="">井伊雅子</a></li>
               	<li><a href="">井伊雅子</a></li>
               	<li><a href="">井伊雅子</a></li>
               	<li><a href="">井伊雅子</a></li>
@@ -172,9 +171,8 @@ $app->run();
 						<div class="col-7 post-content">
 							<h4 class="post-title"><a href="detail.php?post=<?= h($recommend->postId) ?>"><?= h($recommend->title) ?></a></h4>
 							<p><span class="text-muted post-tag border rounded"><?= h($recommend->name) ?></span>
-							<span class="text-muted post-tag border rounded"><?= h($recommend->category) ?></span>
-							<span class="text-muted post-tag border rounded"><?= h($recommend->difficulty) ?></span></p>
-							<p class="post-text"><?= h(mb_substr($recommend->text, 0, 40)) ?>...</p>
+							<span class="text-muted post-tag border rounded"><?= h($recommend->category) ?></span></p>
+							<p class="post-text"><?= h($recommend->text) ?></p>
 						</div>
 					</div>
 				</div>	

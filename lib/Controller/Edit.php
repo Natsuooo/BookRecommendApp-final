@@ -7,11 +7,21 @@ class Edit extends \lib\Controller{
 			header('Location: '.SITE_URL.'/login.php');
 			exit;
 		}
-		$postModel=new \lib\Model\Posts();
-		$editpost=$postModel->detail([
-			'postId'=>$_GET['post']
-		]);
-		$this->setValues('editpost', $editpost);
+		
+		
+		if(isset($_GET['post'])){
+			$_SESSION['editPostId']=$_GET['post'];
+		}
+		
+		
+		if(isset($_SESSION['editPostId'])){
+			$postModel=new \lib\Model\Posts();
+			$editpost=$postModel->detail([
+				'postId'=>$_SESSION['editPostId']
+			]);
+			$this->setValues('editpost', $editpost);
+		}
+		
 		
 		if($_SERVER['REQUEST_METHOD']==='POST'){
 			$this->postProcess();
@@ -26,7 +36,8 @@ class Edit extends \lib\Controller{
 			$this->setErrors('post', $e->getMessage());
 		}
 		
-		$this->setValues('title', $_POST['title']);
+		$this->setValues('category', $_POST['category']);
+		$this->setValues('difficulty', $_POST['difficulty']);
 		$this->setValues('text', $_POST['text']);
 		
 		if($this->hasError()){
@@ -34,22 +45,23 @@ class Edit extends \lib\Controller{
 		}else{
 			$postModel=new \lib\Model\Posts();
 			$postModel->edit([
-				'postId'=>$_GET['post'],
-				'title'=>$_POST['title'],
+				'postId'=>$_SESSION['editPostId'],
+				'category'=>$_POST['category'],
+				'difficulty'=>$_POST['difficulty'],
 				'text'=>$_POST['text']
 			]);
-			header('Location: '.SITE_URL);
+			header('Location: '.SITE_URL.'/mypage.php');
 			exit;
 		}
 		
 	}
 	
 	private function validate(){
-		if(!isset($_POST['title'])||!isset($_POST['text'])){
+		if(!isset($_POST['category'])||!isset($_POST['difficulty'])||!isset($_POST['text'])){
 			echo "Invalid Form!";
 			exit;
 		}
-		if($_POST['title']===''||$_POST['text']===''){
+		if($_POST['category']===''||$_POST['difficulty']===''||$_POST['text']===''){
 			throw new \lib\Exception\EmptyPost();
 		}
 	}

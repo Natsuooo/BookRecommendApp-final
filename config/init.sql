@@ -6,8 +6,9 @@ use login
 
 create table users(
 	id int not null auto_increment primary key,
-	email varchar(255),
 	name varchar(255),
+	professionalCategory varchar(255),
+	email varchar(255),
 	password varchar(255),
 	created datetime,
 	modified datetime
@@ -16,6 +17,7 @@ create table users(
 create table profiles(
 	id int,
 	name varchar(255),
+	professionalCategory varchar(255),
 	department varchar(255),
 	professional varchar(255),
 	message text,
@@ -35,6 +37,7 @@ create table posts(
 	img text,
 	text text,
 	category varchar(255),
+	difficulty varchar(255),
 	created datetime,
 	modified datetime
 );

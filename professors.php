@@ -2,7 +2,7 @@
 
 require_once(__DIR__.'/config/config.php');
 
-$app=new lib\Controller\Index();
+$app=new lib\Controller\Professors();
 
 $app->run();
 
@@ -19,84 +19,55 @@ $app->run();
     
     <link rel="stylesheet" href="css/styles.css">
     
-	<title>ELEL（エレル） | 一橋大教授のオススメ図書</title>
+	<title>Hitotsubashi Professors | ELEL（エレル）一橋大教授のオススメ図書</title>
 	
 
 </head>
 <body>
 
 	<header>
+
 		<div class="container">
-			<nav class="navbar navbar-expand-sm navbar-dark">
-				<button class="navbar-toggler" data-toggle="collapse" data-target="#menu">
-					<span class="navbar-toggler-icon"></span>
-				</button>
-				<div id="menu" class="collapse navbar-collapse">
-					<ul class="navbar-nav">
-						<li class="nav-item toggle"><a href="index.php" class="nav-link toggle">Home</a></li>
-						<li class="nav-item toggle"><a href="" class="nav-link toggle">Recommend</a></li>
-						<li class="nav-item toggle"><a href="" class="nav-link toggle">New Entry</a></li>
-						<li class="nav-item toggle"><a href="" class="nav-link toggle">Category</a></li>
-						<li class="nav-item toggle"><a href="" class="nav-link toggle">Professor</a></li>
-						<li class="nav-item toggle"><a href="mypage.php" class="nav-link toggle">My Page</a></li>
-					</ul>
-				</div>
-			</nav>
-     </div>
-		
-		<div class="cover text-white text-center">
-			<h1 class="display-4 mb-1">ELEL</h1>
-			<h2 class="mb-4 px-3 top-subtitle">Book Recommendations by Hitotsubashi Professors</h2>
-			<a href="#recommend" class="btn btn-primary btn-md px-3 mt-4">Let's find best books</a>
+			<h5 class="text-center my-4">Hitotsubashi Professors</h5>
 		</div>
+
+		
 	</header>
 	
 	<main>
-	
 		<section>
-			<div class="container">
-			<h3 class="text-center" id="recommend">Recommend</h3>
-				<div id="slides" class="carousel slide" data-ride="carousel">
-					<ol class="carousel-indicators indicators-position">
-						<li data-target="#slides" data-slide-to="0" class="active"></li>
-						<li data-target="#slides" data-slide-to="1"></li>
-						<li data-target="#slides" data-slide-to="2"></li>
-						<li data-target="#slides" data-slide-to="3s"></li>
-					</ol>
-					
-  				<div class="carousel-inner">
-  				
-  				<?php
-					foreach($app->getValues('firstSlide') as $firstSlide){
-					?>
-						<div class="carousel-item text-center active">
-							<img class="w-50" src="<?= h($firstSlide->img) ?>" alt="<?= h($firstSlide->title) ?>">
-						<div class="carousel-caption  py-0">
-							<h4 class="slide-title"><?= h($firstSlide->title) ?></h4>
-						</div>
-						</div>
-					<?php } ?>
-  				
-  				<?php
-					foreach($app->getValues('slides') as $slide){
-					?>
-						<div class="carousel-item text-center">
-							<img class="w-50" src="<?= h($slide->img) ?>" alt="<?= h($slide->title) ?>">
-						<div class="carousel-caption py-0">
-							<h4 class="slide-title"><?= h($slide->title) ?></h4>
-						</div>
-						</div>
-					<?php } ?>
-  				</div>
-					<a class="carousel-control-prev" href="#slides" role="button" data-slide="prev">
-						<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-						<span class="sr-only">Previous</span>
-					</a>
-					<a class="carousel-control-next" href="#slides" role="button" data-slide="next">
-						<span class="carousel-control-next-icon" aria-hidden="true"></span>
-						<span class="sr-only">Next</span>
-					</a>
-				</div>
+			<div class="container" id="start">
+				<ul class="nav nav-tabs nav-justified my-5">
+					<li class="nav-item"><a href="#commerce" class="nav-link active" data-toggle="tab">商学</a></li>
+					<li class="nav-item"><a href="#economics" class="nav-link" data-toggle="tab">経済学</a></li>
+					<li class="nav-item"><a href="#law" class="nav-link" data-toggle="tab">法学</a></li>
+					<li class="nav-item"><a href="#sociology" class="nav-link" data-toggle="tab">社会学</a></li>
+         </ul>
+          
+          <div class="tab-content">
+            <div id="commerce" class="tab-pane active">
+							<?php
+							foreach($app->getValues('profile') as $profile){
+							?>
+          		<div class="profile bg-secondary">
+          			<h6><?= h($profile->name) ?></h6>
+          		</div>
+           		<?php } ?>
+            </div>
+            
+            <div id="economics" class="tab-pane">
+              
+            </div>
+            
+            <div id="law" class="tab-pane">
+              
+            </div>
+            
+            <div id="sociology" class="tab-pane">
+              
+            </div>
+            
+          </div>
 			</div>
 		</section>
 		
@@ -146,7 +117,7 @@ $app->run();
             
             <div id="professor" class="tab-pane">
               <ul>
-              	<li><a href="professors.php">All Professors</a></li>
+              	<li><a href="professors.php">Hitotsubashi Professors</a></li>
               	<li><a href="">井伊雅子</a></li>
               	<li><a href="">井伊雅子</a></li>
               	<li><a href="">井伊雅子</a></li>

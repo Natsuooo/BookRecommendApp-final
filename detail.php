@@ -113,8 +113,9 @@ $app->run();
 						<div class="col-7 post-content">
 							<h4 class="post-title"><a href="detail.php?post=<?= h($recommend->postId) ?>"><?= h($recommend->title) ?></a></h4>
 							<p><span class="text-muted post-tag border rounded"><?= h($recommend->name) ?></span>
-							<span class="text-muted post-tag border rounded"><?= h($recommend->category) ?></span></p>
-							<p class="post-text"><?= h($recommend->text) ?></p>
+							<span class="text-muted post-tag border rounded"><?= h($recommend->category) ?></span>
+							<span class="text-muted post-tag border rounded"><?= h($recommend->difficulty) ?></span></p>
+							<p class="post-text"><?= h(mb_substr($recommend->text, 0, 40)) ?>...</p>
 						</div>
 					</div>
 				</div>	
@@ -136,8 +137,9 @@ $app->run();
 						<div class="col-7 post-content">
 							<h4 class="post-title"><a href="detail.php?post=<?= h($related->postId) ?>"><?= h($related->title) ?></a></h4>
 							<p><span class="text-muted post-tag border rounded"><?= h($related->name) ?></span>
-							<span class="text-muted post-tag border rounded"><?= h($related->category) ?></span></p>
-							<p class="post-text"><?= h($related->text) ?></p>
+							<span class="text-muted post-tag border rounded"><?= h($related->category) ?></span>
+							<span class="text-muted post-tag border rounded"><?= h($related->difficulty) ?></span></p>
+							<p class="post-text"><?= h(mb_substr($related->text, 0, 40)) ?>...</p>
 						</div>
 					</div>
 				</div>	
@@ -147,8 +149,15 @@ $app->run();
 		
 	</main>
 
-	<footer class="text-center text-muted py-4">
-  	Copyright &copy; All Rights Reserved by Natsuo Yamashita
+	<footer class="text-center text-dark bg-light py-4 mt-5">
+ 		<div class="container">
+ 			<p>Home</p>
+			<p>About</p>
+			<p>Contact</p>
+ 		</div>
+		<div class="container">
+			<p>Copyright &copy; All Rights Reserved by Natsuo Yamashita</p>
+		</div>
   </footer>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
