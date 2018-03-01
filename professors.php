@@ -50,11 +50,10 @@ $app->run();
 							foreach($app->getValues('commerceProfessors') as $commerceProfessor){
 							?>
           		<div class="profile bg-light">
-          			<h5><?= h($commerceProfessor->name) ?></h5>
+          			<h5><a href="professor.php?id=<?= $commerceProfessor->id ?>"><?= h(ucfirst($commerceProfessor->firstName)) ?>&nbsp;<?= h(ucfirst($commerceProfessor->lastName)) ?></a></h5>
           			<p><?= h($commerceProfessor->department) ?>
           			<br><?= h($commerceProfessor->professional) ?></p>
           			<p><?= h($commerceProfessor->message) ?></p>
-          			<p><a href="professor.php?id=<?= h($commerceProfessor->id) ?>">to Recommendations</a></p>
           		</div>
            		<?php } ?>
             </div>
@@ -64,11 +63,10 @@ $app->run();
 							foreach($app->getValues('economicsProfessors') as $economicsProfessor){
 							?>
           		<div class="profile bg-light">
-          			<h5><?= h($economicsProfessor->name) ?></h5>
+          			<h5><a href="professor.php?id=<?= $economicsProfessor->id ?>"><?= h(ucfirst($economicsProfessor->firstName)) ?>&nbsp;<?= h(ucfirst($economicsProfessor->lastName)) ?></a></h5>
           			<p><?= h($economicsProfessor->department) ?>
           			<br><?= h($economicsProfessor->professional) ?></p>
           			<p><?= h($economicsProfessor->message) ?></p>
-          			<p><a href="professor.php?id=<?= h($economicsProfessor->id) ?>">to Recommendations</a></p>
           		</div>
            		<?php } ?>
             </div>
@@ -78,11 +76,10 @@ $app->run();
 							foreach($app->getValues('lawProfessors') as $lawProfessor){
 							?>
           		<div class="profile bg-light">
-          			<h5><?= h($lawProfessor->name) ?></h5>
+          			<h5><a href="professor.php?id=<?= $lawProfessor->id ?>"><?= h(ucfirst($lawProfessor->firstName)) ?>&nbsp;<?= h(ucfirst($lawProfessor->lastName)) ?></a></h5>
           			<p><?= h($lawProfessor->department) ?>
           			<br><?= h($lawProfessor->professional) ?></p>
           			<p><?= h($lawProfessor->message) ?></p>
-          			<p><a href="professor.php?id=<?= h($lawProfessor->id) ?>">to Recommendations</a></p>
           		</div>
            		<?php } ?>
             </div>
@@ -92,11 +89,10 @@ $app->run();
 							foreach($app->getValues('sociologyProfessors') as $sociologyProfessor){
 							?>
           		<div class="profile bg-light">
-          			<h5><?= h($sociologyProfessor->name) ?></h5>
+          			<h5><a href="professor.php?id=<?= $sociologyProfessor->id ?>"><?= h(ucfirst($sociologyProfessor->firstName)) ?>&nbsp;<?= h(ucfirst($sociologyProfessor->lastName)) ?></a></h5>
           			<p><?= h($sociologyProfessor->department) ?>
           			<br><?= h($sociologyProfessor->professional) ?></p>
           			<p><?= h($sociologyProfessor->message) ?></p>
-          			<p><a href="professor.php?id=<?= h($sociologyProfessor->id) ?>">to Recommendations</a></p>
           		</div>
            		<?php } ?>
             </div>
@@ -125,9 +121,9 @@ $app->run();
 									</div>
 									<div class="col-7 post-content">
 										<h4 class="post-title"><a href="detail.php?post=<?= h($post->postId) ?>"><?= h($post->title) ?></a></h4>
-										<p><span class="text-muted post-tag border rounded"><?= h($post->name) ?></span>
-										<span class="text-muted post-tag border rounded"><?= h($post->category) ?></span>
-										<span class="text-muted post-tag border rounded"><?= h($post->difficulty) ?></span></p>
+										<p><span class="text-muted post-tag border rounded"><?= h(ucfirst($post->firstName)) ?>&nbsp;<?= h(ucfirst($post->lastName)) ?></span>
+										<span class="text-muted post-tag border rounded"><?= h(ucfirst($post->category)) ?></span>
+										<span class="text-muted post-tag border rounded"><?= h(ucfirst($post->difficulty)) ?></span></p>
 										<p class="post-text">
 											<?= h(mb_substr($post->text, 0, 40)) ?>...
 										</p>
@@ -140,23 +136,51 @@ $app->run();
             
             <div id="category" class="tab-pane">
               <ul>
-              	<li><a href="">commerce</a></li>
-              	<li><a href="">economics</a></li>
-              	<li><a href="">law</a></li>
-              	<li><a href="">sociology</a></li>
-              	<li><a href="">science</a></li>
-              	<li><a href="">liberalArts</a></li>
+              	<li><a href="category.php?category=commerce">Commerce</a></li>
+              	<li><a href="category.php?category=economics">Economics</a></li>
+              	<li><a href="category.php?category=law">Law</a></li>
+              	<li><a href="category.php?category=sociology">Sociology</a></li>
+              	<li><a href="category.php?category=science">Science</a></li>
+              	<li><a href="category.php?category=liberalArts">Liberal Arts</a></li>
               </ul>
             </div>
             
             <div id="professor" class="tab-pane">
-              <ul>
-              	<li><a href="professors.php">Hitotsubashi Professors</a></li>
-              	<li><a href="">井伊雅子</a></li>
-              	<li><a href="">井伊雅子</a></li>
-              	<li><a href="">井伊雅子</a></li>
-              	<li><a href="">井伊雅子</a></li>
-              	<li><a href="">井伊雅子</a></li>
+            	<p><a href="professors.php">Hitotsubashi professors</a></p>
+            	<p>Commerce</p>
+            	<ul>
+            	<?php
+							foreach($app->getValues('commerceProfessors') as $commerceProfessor){
+							?>
+            		<li><a href="professor.php?id=<?= $commerceProfessor->id ?>"><?= h(ucfirst($commerceProfessor->firstName)) ?>&nbsp;<?= h(ucfirst($commerceProfessor->lastName)) ?></a></li>
+              <?php } ?>	
+              </ul>
+              
+              <p>economics</p>
+            	<ul>
+            	<?php
+							foreach($app->getValues('economicsProfessors') as $economicsProfessor){
+							?>
+            		<li><a href="professor.php?id=<?= $economicsProfessor->id ?>"><?= h(ucfirst($economicsProfessor->firstName)) ?>&nbsp;<?= h(ucfirst($economicsProfessor->lastName)) ?></a></li>
+              <?php } ?>	
+              </ul>
+              
+              <p>law</p>
+            	<ul>
+            	<?php
+							foreach($app->getValues('lawProfessors') as $lawProfessor){
+							?>
+            		<li><a href="professor.php?id=<?= $lawProfessor->id ?>"><?= h(ucfirst($lawProfessor->firstName)) ?>&nbsp;<?= h(ucfirst($lawProfessor->lastName)) ?></a></li>
+              <?php } ?>	
+              </ul>
+              
+              <p>sociology</p>
+            	<ul>
+            	<?php
+							foreach($app->getValues('sociologyProfessors') as $sociologyProfessor){
+							?>
+            		<li><a href="professor.php?id=<?= $sociologyProfessor->id ?>"><?= h(ucfirst($sociologyProfessor->firstName)) ?>&nbsp;<?= h(ucfirst($sociologyProfessor->lastName)) ?></a></li>
+              <?php } ?>	
               </ul>
             </div>
           </div>
@@ -176,9 +200,9 @@ $app->run();
 						</div>
 						<div class="col-7 post-content">
 							<h4 class="post-title"><a href="detail.php?post=<?= h($recommend->postId) ?>"><?= h($recommend->title) ?></a></h4>
-							<p><span class="text-muted post-tag border rounded"><?= h($recommend->name) ?></span>
-							<span class="text-muted post-tag border rounded"><?= h($recommend->category) ?></span>
-							<span class="text-muted post-tag border rounded"><?= h($recommend->difficulty) ?></span></p>
+							<p><span class="text-muted post-tag border rounded"><?= h(ucfirst($recommend->firstName)) ?>&nbsp;<?= h(ucfirst($recommend->lastName)) ?></span>
+							<span class="text-muted post-tag border rounded"><?= h(ucfirst($recommend->category)) ?></span>
+							<span class="text-muted post-tag border rounded"><?= h(ucfirst($recommend->difficulty)) ?></span></p>
 							<p class="post-text"><?= h(mb_substr($recommend->text, 0, 40)) ?>...</p>
 						</div>
 					</div>

@@ -40,7 +40,7 @@ class Profiles extends \lib\Model{
 	}
 	
 	public function professor($values){
-		$stmt=$this->db->prepare("select * from profiles where professionalCategory=:professionalCategory order by id DESC");
+		$stmt=$this->db->prepare("select * from profiles where professionalCategory=:professionalCategory order by firstName");
 		$stmt->execute([
 			':professionalCategory'=>$values['professionalCategory']
 		]);

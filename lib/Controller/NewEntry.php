@@ -1,19 +1,17 @@
 <?php
 namespace lib\Controller;
 
-class Category extends \lib\Controller{
+class NewEntry extends \lib\Controller{
 	public function run(){
+		$maxPagesModel=new \lib\Model\Posts();
+		$maxPages=$maxPagesModel->maxPages();
+		$this->setValues('maxPages', $maxPages);
 		
-		$categoryModel=new \lib\Model\Posts();
-		$category=$categoryModel->category([
-			'category'=>$_GET['category']
+		$newEntryModel=new \lib\Model\Posts();
+		$newEntries=$newEntryModel->newEntry([
+			'page'=>$_GET['page']
 		]);
-		$this->setValues('categoryPosts', $category);
-		
-		
-		$postModel=new \lib\Model\Posts();
-		$posts=$postModel->findAll();
-		$this->setValues('posts', $posts);
+		$this->setValues('newEntries', $newEntries);
 		
 		$recommendModel=new \lib\Model\Posts();
 		$recommends=$recommendModel->recommend();
@@ -42,5 +40,9 @@ class Category extends \lib\Controller{
 			'professionalCategory'=>'sociology'
 		]);
 		$this->setValues('sociologyProfessors', $professor);
+		
+		$postModel=new \lib\Model\Posts();
+		$posts=$postModel->findAll();
+		$this->setValues('posts', $posts);
 	}
 }

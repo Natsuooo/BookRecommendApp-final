@@ -33,11 +33,15 @@ $app->run();
 				</button>
 				<div id="menu" class="collapse navbar-collapse">
 					<ul class="navbar-nav">
-						<li class="nav-item toggle"><a href="index.php" class="nav-link toggle">Home</a></li>
-						<li class="nav-item toggle"><a href="" class="nav-link toggle">Recommend</a></li>
-						<li class="nav-item toggle"><a href="" class="nav-link toggle">New Entry</a></li>
-						<li class="nav-item toggle"><a href="category.php" class="nav-link toggle">Category</a></li>
+						<li class="nav-item toggle"><a href="index.php" class="nav-link toggle">Top</a></li>
+						<li class="nav-item toggle"><a href="newEntry.php?page=1" class="nav-link toggle">New Entry</a></li>
 						<li class="nav-item toggle"><a href="professors.php" class="nav-link toggle">Professor</a></li>
+						<li class="nav-item toggle"><a href="category.php?category=commerce" class="nav-link toggle">Commerce</a></li>
+						<li class="nav-item toggle"><a href="category.php?category=economics" class="nav-link toggle">Economics</a></li>
+						<li class="nav-item toggle"><a href="category.php?category=law" class="nav-link toggle">Law</a></li>
+						<li class="nav-item toggle"><a href="category.php?category=sociology" class="nav-link toggle">Sociology</a></li>
+						<li class="nav-item toggle"><a href="category.php?category=science" class="nav-link toggle">Science</a></li>
+						<li class="nav-item toggle"><a href="category.php?category=liberalArts" class="nav-link toggle">Liberal Arts</a></li>
 						<li class="nav-item toggle"><a href="mypage.php" class="nav-link toggle">My Page</a></li>
 					</ul>
 				</div>
@@ -104,8 +108,8 @@ $app->run();
 			<div class="container" id="start">
 				<ul class="nav nav-tabs nav-justified my-5">
 					<li class="nav-item"><a href="#newEntry" class="nav-link active" data-toggle="tab">New Entry</a></li>
-					<li class="nav-item"><a href="#category" class="nav-link" data-toggle="tab">Category</a></li>
 					<li class="nav-item"><a href="#professor" class="nav-link" data-toggle="tab">Professor</a></li>
+					<li class="nav-item"><a href="#category" class="nav-link" data-toggle="tab">Category</a></li>
          </ul>
           
           <div class="tab-content">
@@ -120,9 +124,9 @@ $app->run();
 									</div>
 									<div class="col-7 post-content">
 										<h4 class="post-title"><a href="detail.php?post=<?= h($post->postId) ?>"><?= h($post->title) ?></a></h4>
-										<p><span class="text-muted post-tag border rounded"><?= h($post->name) ?></span>
-										<span class="text-muted post-tag border rounded"><?= h($post->category) ?></span>
-										<span class="text-muted post-tag border rounded"><?= h($post->difficulty) ?></span></p>
+										<p><span class="text-muted post-tag border rounded"><?= h(ucfirst($post->firstName)) ?>&nbsp;<?= h(ucfirst($post->lastName)) ?></span>
+										<span class="text-muted post-tag border rounded"><?= h(ucfirst($post->category)) ?></span>
+										<span class="text-muted post-tag border rounded"><?= h(ucfirst($post->difficulty)) ?></span></p>
 										<p class="post-text">
 											<?= h(mb_substr($post->text, 0, 40)) ?>...
 										</p>
@@ -130,28 +134,19 @@ $app->run();
 								</div>
 							</div>	
 							<?php } ?>
-							
-            </div>
-            
-            <div id="category" class="tab-pane">
-              <ul>
-              	<li><a href="category.php?category=commerce">Commerce</a></li>
-              	<li><a href="category.php?category=economics">Economics</a></li>
-              	<li><a href="category.php?category=law">Law</a></li>
-              	<li><a href="category.php?category=commerce">Sociology</a></li>
-              	<li><a href="category.php?category=science">Science</a></li>
-              	<li><a href="category.php?category=liberal">Liberal Arts</a></li>
-              </ul>
+							<a href="newEntry.php?page=1"><div class="text-center">
+								<button class="btn btn-outline-primary my-3">Read more</button>
+						  </div></a>
             </div>
             
             <div id="professor" class="tab-pane">
             	<p><a href="professors.php">Hitotsubashi professors</a></p>
-            	<p>commerce</p>
+            	<p>Commerce</p>
             	<ul>
             	<?php
 							foreach($app->getValues('commerceProfessors') as $commerceProfessor){
 							?>
-            		<li><a href="professor.php?id=<?= $commerceProfessor->id ?>"><?= $commerceProfessor->name ?></a></li>
+            		<li><a href="professor.php?id=<?= $commerceProfessor->id ?>"><?= h(ucfirst($commerceProfessor->firstName)) ?>&nbsp;<?= h(ucfirst($commerceProfessor->lastName)) ?></a></li>
               <?php } ?>	
               </ul>
               
@@ -160,7 +155,7 @@ $app->run();
             	<?php
 							foreach($app->getValues('economicsProfessors') as $economicsProfessor){
 							?>
-            		<li><a href="professor.php?id=<?= $economicsProfessor->id ?>"><?= $economicsProfessor->name ?></a></li>
+            		<li><a href="professor.php?id=<?= $economicsProfessor->id ?>"><?= h(ucfirst($economicsProfessor->firstName)) ?>&nbsp;<?= h(ucfirst($economicsProfessor->lastName)) ?></a></li>
               <?php } ?>	
               </ul>
               
@@ -169,7 +164,7 @@ $app->run();
             	<?php
 							foreach($app->getValues('lawProfessors') as $lawProfessor){
 							?>
-            		<li><a href="professor.php?id=<?= $lawProfessor->id ?>"><?= $lawProfessor->name ?></a></li>
+            		<li><a href="professor.php?id=<?= $lawProfessor->id ?>"><?= h(ucfirst($lawProfessor->firstName)) ?>&nbsp;<?= h(ucfirst($lawProfessor->lastName)) ?></a></li>
               <?php } ?>	
               </ul>
               
@@ -178,8 +173,19 @@ $app->run();
             	<?php
 							foreach($app->getValues('sociologyProfessors') as $sociologyProfessor){
 							?>
-            		<li><a href="professor.php?id=<?= $sociologyProfessor->id ?>"><?= $sociologyProfessor->name ?></a></li>
+            		<li><a href="professor.php?id=<?= $sociologyProfessor->id ?>"><?= h(ucfirst($sociologyProfessor->firstName)) ?>&nbsp;<?= h(ucfirst($sociologyProfessor->lastName)) ?></a></li>
               <?php } ?>	
+              </ul>
+            </div>
+            
+            <div id="category" class="tab-pane">
+              <ul>
+              	<li><a href="category.php?category=commerce">Commerce</a></li>
+              	<li><a href="category.php?category=economics">Economics</a></li>
+              	<li><a href="category.php?category=law">Law</a></li>
+              	<li><a href="category.php?category=sociology">Sociology</a></li>
+              	<li><a href="category.php?category=science">Science</a></li>
+              	<li><a href="category.php?category=liberalArts">Liberal Arts</a></li>
               </ul>
             </div>
           </div>
@@ -199,9 +205,9 @@ $app->run();
 						</div>
 						<div class="col-7 post-content">
 							<h4 class="post-title"><a href="detail.php?post=<?= h($recommend->postId) ?>"><?= h($recommend->title) ?></a></h4>
-							<p><span class="text-muted post-tag border rounded"><?= h($recommend->name) ?></span>
-							<span class="text-muted post-tag border rounded"><?= h($recommend->category) ?></span>
-							<span class="text-muted post-tag border rounded"><?= h($recommend->difficulty) ?></span></p>
+							<p><span class="text-muted post-tag border rounded"><?= h(ucfirst($recommend->firstName)) ?>&nbsp;<?= h(ucfirst($recommend->lastName)) ?></span>
+							<span class="text-muted post-tag border rounded"><?= h(ucfirst($recommend->category)) ?></span>
+							<span class="text-muted post-tag border rounded"><?= h(ucfirst($recommend->difficulty)) ?></span></p>
 							<p class="post-text"><?= h(mb_substr($recommend->text, 0, 40)) ?>...</p>
 						</div>
 					</div>

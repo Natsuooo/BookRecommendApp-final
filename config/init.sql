@@ -30,7 +30,8 @@ create table profiles(
 create table posts(
 	postId int not null auto_increment primary key,
 	id int,
-	name varchar(255),
+	firstName varchar(255),
+	lastName varchar(255),
 	title text,
 	author varchar(255),
 	publishDate varchar(255),

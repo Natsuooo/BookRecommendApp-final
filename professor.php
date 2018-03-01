@@ -41,7 +41,7 @@ $app->run();
 				foreach($app->getValues('profile') as $profile){
 				?>
 				<div class="profile bg-light">
-					<h5><?= h($profile->name) ?></h5>
+					<h5><?= h(ucfirst($profile->firstName)) ?>&nbsp;<?= h(ucfirst($profile->lastName)) ?></h5>
 					<p><?= h($profile->department) ?>
 					<br><?= h($profile->professional) ?></p>
 					<p><?= h($profile->message) ?></p>
@@ -62,9 +62,9 @@ $app->run();
 									</div>
 									<div class="col-7 post-content">
 										<h4 class="post-title"><a href="detail.php?post=<?= h($mypost->postId) ?>"><?= h($mypost->title) ?></a></h4>
-										<p><span class="text-muted post-tag border rounded"><?= h($mypost->name) ?></span>
-										<span class="text-muted post-tag border rounded"><?= h($mypost->category) ?></span>
-										<span class="text-muted post-tag border rounded"><?= h($mypost->difficulty) ?></span></p>
+										<p><span class="text-muted post-tag border rounded"><?= h(ucfirst($mypost->firstName)) ?>&nbsp;<?= h(ucfirst($mypost->lastName)) ?></span>
+										<span class="text-muted post-tag border rounded"><?= h(ucfirst($mypost->category)) ?></span>
+										<span class="text-muted post-tag border rounded"><?= h(ucfirst($mypost->difficulty)) ?></span></p>
 										<p class="post-text"><?= h(mb_substr($mypost->text, 0, 40)) ?>...</p>
 									</div>
 								</div>
@@ -88,11 +88,10 @@ $app->run();
 							foreach($app->getValues('commerceProfessors') as $commerceProfessor){
 							?>
           		<div class="profile bg-light">
-          			<h5><?= h($commerceProfessor->name) ?></h5>
+          			<h5><a href="professor.php?id=<?= $commerceProfessor->id ?>"><?= h(ucfirst($commerceProfessor->firstName)) ?>&nbsp;<?= h(ucfirst($commerceProfessor->lastName)) ?></a></h5>
           			<p><?= h($commerceProfessor->department) ?>
           			<br><?= h($commerceProfessor->professional) ?></p>
           			<p><?= h($commerceProfessor->message) ?></p>
-          			<p><a href="professor.php?name=<?= h($commerceProfessor->name) ?>">to Recommendations</a></p>
           		</div>
            		<?php } ?>
             </div>
@@ -148,12 +147,12 @@ $app->run();
             
             <div id="category" class="tab-pane">
               <ul>
-              	<li><a href="">commerce</a></li>
-              	<li><a href="">economics</a></li>
-              	<li><a href="">law</a></li>
-              	<li><a href="">sociology</a></li>
-              	<li><a href="">science</a></li>
-              	<li><a href="">liberalArts</a></li>
+              	<li><a href="category.php?category=commerce">Commerce</a></li>
+              	<li><a href="category.php?category=economics">Economics</a></li>
+              	<li><a href="category.php?category=law">Law</a></li>
+              	<li><a href="category.php?category=sociology">Sociology</a></li>
+              	<li><a href="category.php?category=science">Science</a></li>
+              	<li><a href="category.php?category=liberalArts">Liberal Arts</a></li>
               </ul>
             </div>
             

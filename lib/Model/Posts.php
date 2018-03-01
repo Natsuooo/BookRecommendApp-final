@@ -4,10 +4,11 @@ namespace lib\Model;
 class Posts extends \lib\Model{
 	
 	public function post($values){
-		$stmt=$this->db->prepare("insert into posts(id, name, title, author, publishDate, publisher, url, img, category, difficulty, text, created, modified) values (:id, :name, :title, :author, :publishDate, :publisher, :url, :img, :category, :difficulty, :text, now(), now())");
+		$stmt=$this->db->prepare("insert into posts(id, firstName, lastName, title, author, publishDate, publisher, url, img, category, difficulty, text, created, modified) values (:id, :firstName, :lastName, :title, :author, :publishDate, :publisher, :url, :img, :category, :difficulty, :text, now(), now())");
 		$stmt->execute([
 			':id'=>$values['id'],
-			':name'=>$values['name'],
+			':firstName'=>$values['firstName'],
+			':lastName'=>$values['lastName'],
 			':title'=>$values['title'],
 			':author'=>$values['author'],
 			':publishDate'=>$values['publishDate'],
@@ -100,6 +101,19 @@ class Posts extends \lib\Model{
 		return $category;
 	}
 	
+	public function newEntry($values){
+		$page=($values['page']-1)*2;
+		$stmt=$this->db->prepare("select * from posts order by postId DESC limit 2 offset $page");
+		$stmt->execute();
+		$stmt->setFetchMode(\PDO::FETCH_CLASS, 'stdClass');
+		return $newEntries=$stmt->fetchAll();
+	}
+	
+	public function maxPages(){
+		$stmt=$this->db->query("select postId from posts");
+		$stmt->setFetchMode(\PDO::FETCH_CLASS, 'stdClass');
+		return $max_pages=$stmt->fetchAll();
+	}
 	
 	
 }

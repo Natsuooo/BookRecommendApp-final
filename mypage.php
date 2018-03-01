@@ -76,9 +76,9 @@ $app->run();
 									</div>
 									<div class="col-7 post-content">
 										<h4 class="post-title"><a href="edit.php?post=<?= h($mypost->postId) ?>"><?= h($mypost->title) ?></a></h4>
-										<p><span class="text-muted post-tag border rounded"><?= h($mypost->name) ?></span>
-										<span class="text-muted post-tag border rounded"><?= h($mypost->category) ?></span>
-										<span class="text-muted post-tag border rounded"><?= h($mypost->difficulty) ?></span></p>
+										<p><span class="text-muted post-tag border rounded"><?= h(ucfirst($mypost->firstName)) ?>&nbsp;<?= h(ucfirst($mypost->lastName)) ?></span>
+										<span class="text-muted post-tag border rounded"><?= h(ucfirst($mypost->category)) ?></span>
+										<span class="text-muted post-tag border rounded"><?= h(ucfirst($mypost->difficulty)) ?></span></p>
 										<p class="post-text"><?= h(mb_substr($mypost->text, 0, 40)) ?>...</p>
 										
 										<form action="" method="post">

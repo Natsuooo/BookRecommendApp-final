@@ -41,9 +41,9 @@ $app->run();
 					<h1 class="detail-title mt-4"><?= h($detail->title) ?></h1>
 					
 					<div class="detail-tags mt-3">
-						<p><span class="text-muted detail-tag border rounded"><?= h($detail->name) ?></span>
-						<span class="text-muted detail-tag border rounded"><?= h($detail->category) ?></span>
-						<span class="text-muted detail-tag border rounded"><?= h($detail->difficulty) ?></span></p>
+						<p><span class="text-muted detail-tag border rounded"><?= h(ucfirst($detail->firstName)) ?>&nbsp;<?= h(ucfirst($detail->lastName)) ?></span>
+						<span class="text-muted detail-tag border rounded"><?= h(ucfirst($detail->category)) ?></span>
+						<span class="text-muted detail-tag border rounded"><?= h(ucfirst($detail->difficulty)) ?></span></p>
 					</div>
 					
 					<div class="detail-info bg-light">
@@ -113,9 +113,9 @@ $app->run();
 						</div>
 						<div class="col-7 post-content">
 							<h4 class="post-title"><a href="detail.php?post=<?= h($recommend->postId) ?>"><?= h($recommend->title) ?></a></h4>
-							<p><span class="text-muted post-tag border rounded"><?= h($recommend->name) ?></span>
-							<span class="text-muted post-tag border rounded"><?= h($recommend->category) ?></span>
-							<span class="text-muted post-tag border rounded"><?= h($recommend->difficulty) ?></span></p>
+							<p><span class="text-muted post-tag border rounded"><?= h(ucfirst($recommend->firstName)) ?>&nbsp;<?= h(ucfirst($recommend->lastName)) ?></span>
+							<span class="text-muted post-tag border rounded"><?= h(ucfirst($recommend->category)) ?></span>
+							<span class="text-muted post-tag border rounded"><?= h(ucfirst($recommend->difficulty)) ?></span></p>
 							<p class="post-text"><?= h(mb_substr($recommend->text, 0, 40)) ?>...</p>
 						</div>
 					</div>
@@ -137,9 +137,9 @@ $app->run();
 						</div>
 						<div class="col-7 post-content">
 							<h4 class="post-title"><a href="detail.php?post=<?= h($related->postId) ?>"><?= h($related->title) ?></a></h4>
-							<p><span class="text-muted post-tag border rounded"><?= h($related->name) ?></span>
-							<span class="text-muted post-tag border rounded"><?= h($related->category) ?></span>
-							<span class="text-muted post-tag border rounded"><?= h($related->difficulty) ?></span></p>
+							<p><span class="text-muted post-tag border rounded"><?= h(ucfirst($related->firstName)) ?>&nbsp;<?= h(ucfirst($related->lastName)) ?></span>
+							<span class="text-muted post-tag border rounded"><?= h(ucfirst($related->category)) ?></span>
+							<span class="text-muted post-tag border rounded"><?= h(ucfirst($related->difficulty)) ?></span></p>
 							<p class="post-text"><?= h(mb_substr($related->text, 0, 40)) ?>...</p>
 						</div>
 					</div>

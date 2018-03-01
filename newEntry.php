@@ -2,7 +2,9 @@
 
 require_once(__DIR__.'/config/config.php');
 
-$app=new lib\Controller\Category();
+$page=$_GET['page'];
+
+$app=new lib\Controller\NewEntry();
 
 $app->run();
 
@@ -19,48 +21,83 @@ $app->run();
     
     <link rel="stylesheet" href="css/styles.css">
     
-	<title>Hitotsubashi Professors | ELEL（エレル）一橋大教授のオススメ図書</title>
+	<title>ELEL（エレル） | 一橋大教授のオススメ図書</title>
 	
 
 </head>
 <body>
 
-	<header>
-
-		<div class="container">
-			<h5 class="text-center my-4"><?= ucfirst($_GET['category']) ?></h5>
-		</div>
-
-		
-	</header>
-	
-	<main>
+	<main>	
 		<section>
+		<h5 class="text-center my-5">New Entry</h5>
 			<div class="container">
 				<?php
-				foreach($app->getValues('categoryPosts') as $categoryPost){
-				?>
-				<div class="post">
-					<div class="row my-3">
-						<div class="col-5">
-							<a href="detail.php?post=<?= h($categoryPost->postId) ?>"><img src="<?= h($categoryPost->img) ?>" alt="<?= h($categoryPost->title) ?>" class="post-img"></a>
+					foreach($app->getValues('newEntries') as $newEntry){
+					?>
+					<div class="post">
+						<div class="row my-3">
+							<div class="col-5">
+								<a href="detail.php?post=<?= h($newEntry->postId) ?>"><img src="<?= h($newEntry->img) ?>" alt="<?= h($newEntrypost->title) ?>" class="post-img"></a>
+							</div>
+							<div class="col-7 post-content">
+								<h4 class="post-title"><a href="detail.php?post=<?= h($newEntry->postId) ?>"><?= h($newEntry->title) ?></a></h4>
+								<p><span class="text-muted post-tag border rounded"><?= h(ucfirst($newEntry->firstName)) ?>&nbsp;<?= h(ucfirst($newEntry->lastName)) ?></span>
+								<span class="text-muted post-tag border rounded"><?= h(ucfirst($newEntry->category)) ?></span>
+								<span class="text-muted post-tag border rounded"><?= h(ucfirst($newEntry->difficulty)) ?></span></p>
+								<p class="post-text">
+									<?= h(mb_substr($newEntry->text, 0, 40)) ?>...
+								</p>
+							</div>
 						</div>
-						<div class="col-7 post-content">
-							<h4 class="post-title"><a href="detail.php?post=<?= h($categoryPost->postId) ?>"><?= h($categoryPost->title) ?></a></h4>
-							<p><span class="text-muted post-tag border rounded"><?= h(ucfirst($categoryPost->firstName)) ?>&nbsp;<?= h(ucfirst($categoryPost->lastName)) ?></span>
-							<span class="text-muted post-tag border rounded"><?= h(ucfirst($categoryPost->category)) ?></span>
-							<span class="text-muted post-tag border rounded"><?= h(ucfirst($categoryPost->difficulty)) ?></span></p>
-							<p class="post-text">
-								<?= h(mb_substr($categoryPost->text, 0, 40)) ?>...
-							</p>
-						</div>
-					</div>
-				</div>	
-				<?php } ?>
+					</div>	
+					<?php } ?>
 			</div>
+			<?php
+			$maxPages=count($app->getValues('maxPages'));
+			$maxPage=ceil($maxPages/2);
+			?>
+			<nav aria-label="Page navigation">
+				<ul class="pagination justify-content-center pagination-sm mt-3">
+					<li class="page-item <?= $page==1 ? 'disabled' : '' ?>">
+						<a class="page-link" href="newEntry.php?page=<?= ($page-1) ?>" tabindex="-1">Prev</a>
+					</li>
+					<?php
+					if($maxPage>4&&$page<($maxPage-1)){
+						echo "<li class='page-item'><a class='page-link' href='newEntry.php?page=".($page-2)."'>".($page-2)."</a></li>";
+						echo "<li class='page-item'><a class='page-link' href='newEntry.php?page=".($page-1)."'>".($page-1)."</a></li>";
+						echo "<li class='page-item active'><a class='page-link' href='newEntry.php?page=".$page."'>".$page."</a></li>";
+						echo "<li class='page-item'><a class='page-link' href='newEntry.php?page=".($page+1)."'>".($page+1)."</a></li>";
+						echo "<li class='page-item'><a class='page-link' href='newEntry.php?page=".($page+2)."'>".($page+2)."</a></li>";
+					}else if($maxPage<=4){
+						for($i=1;$i<=$maxPage;$i++){
+							echo "<li class='page-item".($page==$i ? ' active' : '')."'><a class='page-link' href='newEntry.php?page=".$i."'>".$i."</a></li>";
+						}
+					}else if($page==($maxPage-1)){
+						echo "<li class='page-item'><a class='page-link' href='newEntry.php?page=".($page-3)."'>".($page-3)."</a></li>";
+						echo "<li class='page-item'><a class='page-link' href='newEntry.php?page=".($page-2)."'>".($page-2)."</a></li>";
+						echo "<li class='page-item'><a class='page-link' href='newEntry.php?page=".($page-1)."'>".($page-1)."</a></li>";
+						echo "<li class='page-item active'><a class='page-link' href='newEntry.php?page=".($page)."'>".($page)."</a></li>";
+						echo "<li class='page-item'><a class='page-link' href='newEntry.php?page=".($page+1)."'>".($page+1)."</a></li>";
+					}else if($page==$maxPage){
+						echo "<li class='page-item'><a class='page-link' href='newEntry.php?page=".($page-4)."'>".($page-4)."</a></li>";
+						echo "<li class='page-item'><a class='page-link' href='newEntry.php?page=".($page-3)."'>".($page-3)."</a></li>";
+						echo "<li class='page-item'><a class='page-link' href='newEntry.php?page=".($page-2)."'>".($page-2)."</a></li>";
+						echo "<li class='page-item'><a class='page-link' href='newEntry.php?page=".($page-1)."'>".($page-1)."</a></li>";
+						echo "<li class='page-item active'><a class='page-link' href='newEntry.php?page=".($page)."'>".($page)."</a></li>";
+					}
+						
+					
+					?>
+					
+					
+					<li class="page-item <?= $page==$maxPage ? 'disabled' : '' ?>">
+						<a class="page-link" href="newEntry.php?page=<?= ($page+1) ?>">Next</a>
+					</li>
+				</ul>
+			</nav>
 		</section>
-		
 		<section>
+			
 			<div class="container" id="start">
 				<ul class="nav nav-tabs nav-justified my-5">
 					<li class="nav-item"><a href="#newEntry" class="nav-link active" data-toggle="tab">New Entry</a></li>
@@ -183,11 +220,5 @@ $app->run();
 		</div>
   </footer>
 	
-	<!-- Optional JavaScript -->
-	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-	<script src="js/main.js"></script>
 </body>
 </html>

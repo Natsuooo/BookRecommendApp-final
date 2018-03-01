@@ -27,7 +27,8 @@ class Post extends \lib\Controller{
 			$postModel=new \lib\Model\Posts();
 			$postModel->post([
 				'id'=>$_SESSION['me']->id,
-				'name'=>$_SESSION['me']->name,
+				'firstName'=>$_SESSION['me']->firstName,
+				'lastName'=>$_SESSION['me']->lastName,
 				'title'=>$_POST['title'],
 				'author'=>$_POST['author'],
 				'publishDate'=>$_POST['publishDate'],

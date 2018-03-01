@@ -82,15 +82,15 @@ $img=$_GET['img'];
 			
 			<div class="custom-control custom-radio">
 				<input type="radio" id="difficulty1" name="difficulty" class="custom-control-input" value="easy" checked>
-				<label class="custom-control-label" for="difficulty1">easy</label>
+				<label class="custom-control-label" for="difficulty1">Easy</label>
 			</div>
 			<div class="custom-control custom-radio">
 				<input type="radio" id="difficulty2" name="difficulty" class="custom-control-input" value="normal">
-				<label class="custom-control-label" for="difficulty2">normal</label>
+				<label class="custom-control-label" for="difficulty2">Normal</label>
 			</div>
 			<div class="custom-control custom-radio">
 				<input type="radio" id="difficulty3" name="difficulty" class="custom-control-input" value="hard">
-				<label class="custom-control-label" for="difficulty3">hard</label>
+				<label class="custom-control-label" for="difficulty3">Hard</label>
 			</div>
 			
 			<div class="form-group mt-3">
