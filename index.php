@@ -18,6 +18,8 @@ $app->run();
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     
     <link rel="stylesheet" href="css/styles.css">
+
+		<script type="text/javascript" src="js/modernizr.custom.53451.js"></script>
     
 	<title>ELEL（エレル） | 一橋大教授のオススメ図書</title>
 	
@@ -36,12 +38,12 @@ $app->run();
 						<li class="nav-item toggle"><a href="index.php" class="nav-link toggle">Top</a></li>
 						<li class="nav-item toggle"><a href="newEntry.php?page=1" class="nav-link toggle">New Entry</a></li>
 						<li class="nav-item toggle"><a href="professors.php" class="nav-link toggle">Professor</a></li>
-						<li class="nav-item toggle"><a href="category.php?category=commerce" class="nav-link toggle">Commerce</a></li>
-						<li class="nav-item toggle"><a href="category.php?category=economics" class="nav-link toggle">Economics</a></li>
-						<li class="nav-item toggle"><a href="category.php?category=law" class="nav-link toggle">Law</a></li>
-						<li class="nav-item toggle"><a href="category.php?category=sociology" class="nav-link toggle">Sociology</a></li>
-						<li class="nav-item toggle"><a href="category.php?category=science" class="nav-link toggle">Science</a></li>
-						<li class="nav-item toggle"><a href="category.php?category=liberalArts" class="nav-link toggle">Liberal Arts</a></li>
+						<li class="nav-item toggle"><a href="category.php?category=commerce&page=1" class="nav-link toggle">Commerce</a></li>
+						<li class="nav-item toggle"><a href="category.php?category=economics&page=1" class="nav-link toggle">Economics</a></li>
+						<li class="nav-item toggle"><a href="category.php?category=law&page=1" class="nav-link toggle">Law</a></li>
+						<li class="nav-item toggle"><a href="category.php?category=sociology&page=1" class="nav-link toggle">Sociology</a></li>
+						<li class="nav-item toggle"><a href="category.php?category=science&page=1" class="nav-link toggle">Science</a></li>
+						<li class="nav-item toggle"><a href="category.php?category=liberalArts&page=1" class="nav-link toggle">Liberal Arts</a></li>
 						<li class="nav-item toggle"><a href="mypage.php" class="nav-link toggle">My Page</a></li>
 					</ul>
 				</div>
@@ -49,14 +51,26 @@ $app->run();
      </div>
 		
 		<div class="cover text-white text-center">
-			<h1 class="display-4 mb-1">ELEL</h1>
+			<h1 class="display-4 mb-1 mx-1">Love books? We do too.</h1>
 			<h2 class="mb-4 px-3 top-subtitle">Book Recommendations by Hitotsubashi Professors</h2>
-			<a href="#recommend" class="btn btn-primary btn-md px-3 mt-4">Let's find best books</a>
+			<a href="#recommend" class="btn btn-primary btn-md px-3 mt-4">Let's find best books...</a>
 		</div>
 	</header>
 	
 	<main>
-	
+		<div class="container pt-3 bg-light">
+			<p class="text-muted text-center">Have you found a favorite book?</p>
+			<div id="dg-container" class="dg-container">
+				<div class="dg-wrapper">
+					<?php
+					foreach($app->getValues('slides') as $slide){
+					?>
+						<a href="<?= h($slide->url) ?>"><img src="<?= h($slide->img) ?>" alt="<?= h($slide->title) ?>" class="rounded"><div><?= h($slide->title) ?></div></a>
+					<?php } ?>	
+				</div>
+			</div>
+		</div>
+<!--
 		<section>
 			<div class="container">
 			<h3 class="text-center" id="recommend">Recommend</h3>
@@ -103,6 +117,7 @@ $app->run();
 				</div>
 			</div>
 		</section>
+-->
 		
 		<section>
 			<div class="container" id="start">
@@ -235,5 +250,13 @@ $app->run();
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 	<script src="js/main.js"></script>
+	<script type="text/javascript" src="js/jquery.gallery.js"></script>
+	<script type="text/javascript">
+		$(function() {
+			$('#dg-container').gallery({
+				autoplay	:	true
+			});
+		});
+	</script>
 </body>
 </html>

@@ -28,16 +28,16 @@ class Posts extends \lib\Model{
 	}
 	
 	public function slide(){
-		$stmt=$this->db->query("select * from posts order by rand() limit 3");
+		$stmt=$this->db->query("select * from posts order by rand() limit 6");
 		$stmt->setFetchMode(\PDO::FETCH_CLASS, 'stdClass');
 		return $posts=$stmt->fetchAll();
 	}
 	
-	public function firstSlide(){
-		$stmt=$this->db->query("select * from posts order by rand() limit 1");
-		$stmt->setFetchMode(\PDO::FETCH_CLASS, 'stdClass');
-		return $posts=$stmt->fetchAll();
-	}
+//	public function firstSlide(){
+//		$stmt=$this->db->query("select * from posts order by rand() limit 1");
+//		$stmt->setFetchMode(\PDO::FETCH_CLASS, 'stdClass');
+//		return $posts=$stmt->fetchAll();
+//	}
 	
 	public function recommend(){
 		$stmt=$this->db->query("select * from posts order by rand() limit 5");
@@ -91,14 +91,32 @@ class Posts extends \lib\Model{
 		]);
 	}
 	
+//	public function category($values){
+//		$stmt=$this->db->prepare("select * from posts where category=:category order by postId DESC");
+//		$stmt->execute([
+//			':category'=>$values['category']
+//		]);
+//		$stmt->setFetchMode(\PDO::FETCH_CLASS, 'stdClass');
+//		$category=$stmt->fetchAll();
+//		return $category;
+//	}
 	public function category($values){
-		$stmt=$this->db->prepare("select * from posts where category=:category order by postId DESC");
+		$page=($values['page']-1)*2;
+		$stmt=$this->db->prepare("select * from posts where category=:category order by postId DESC limit 2 offset $page");
 		$stmt->execute([
 			':category'=>$values['category']
 		]);
 		$stmt->setFetchMode(\PDO::FETCH_CLASS, 'stdClass');
-		$category=$stmt->fetchAll();
-		return $category;
+		return $category=$stmt->fetchAll();
+	}
+	
+	public function categoryMaxPages($values){
+		$stmt=$this->db->prepare("select postId from posts where category=:category");
+		$stmt->execute([
+			':category'=>$values['category']
+		]);
+		$stmt->setFetchMode(\PDO::FETCH_CLASS, 'stdClass');
+		return $maxPages=$stmt->fetchAll();
 	}
 	
 	public function newEntry($values){
@@ -112,7 +130,7 @@ class Posts extends \lib\Model{
 	public function maxPages(){
 		$stmt=$this->db->query("select postId from posts");
 		$stmt->setFetchMode(\PDO::FETCH_CLASS, 'stdClass');
-		return $max_pages=$stmt->fetchAll();
+		return $maxPages=$stmt->fetchAll();
 	}
 	
 	

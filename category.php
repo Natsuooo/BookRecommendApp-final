@@ -2,6 +2,9 @@
 
 require_once(__DIR__.'/config/config.php');
 
+$page=$_GET['page'];
+$category=$_GET['category'];
+
 $app=new lib\Controller\Category();
 
 $app->run();
@@ -57,6 +60,51 @@ $app->run();
 					</div>
 				</div>	
 				<?php } ?>
+				
+				<?php
+				$maxPages=count($app->getValues('maxPages'));
+				$maxPage=ceil($maxPages/2);
+				?>
+				<nav aria-label="Page navigation">
+					<ul class="pagination justify-content-center pagination-sm mt-3">
+						<li class="page-item <?= $page==1 ? 'disabled' : '' ?>">
+							<a class="page-link" href="category.php?category=<?= $category ?>&page=<?= ($page-1) ?>" tabindex="-1">Prev</a>
+						</li>
+						<?php
+						if($maxPage>4&&$page<($maxPage-1)){
+							echo "<li class='page-item'><a class='page-link' href='category.php?category=<?= $category ?>&page=".($page-2)."'>".($page-2)."</a></li>";
+							echo "<li class='page-item'><a class='page-link' href='category.php?category=<?= $category ?>&category=<?= $category ?>&page=".($page-1)."'>".($page-1)."</a></li>";
+							echo "<li class='page-item active'><a class='page-link' href='category.php?category=<?= $category ?>&page=".$page."'>".$page."</a></li>";
+							echo "<li class='page-item'><a class='page-link' href='category.php?category=<?= $category ?>&page=".($page+1)."'>".($page+1)."</a></li>";
+							echo "<li class='page-item'><a class='page-link' href='category.php?category=<?= $category ?>&page=".($page+2)."'>".($page+2)."</a></li>";
+						}else if($maxPage<=4){
+							for($i=1;$i<=$maxPage;$i++){
+								echo "<li class='page-item".($page==$i ? ' active' : '')."'><a class='page-link' href='category.php?category=<?= $category ?>&page=".$i."'>".$i."</a></li>";
+							}
+						}else if($page==($maxPage-1)&&$maxPage>4){
+							echo "<li class='page-item'><a class='page-link' href='category.php?category=<?= $category ?>&page=".($page-3)."'>".($page-3)."</a></li>";
+							echo "<li class='page-item'><a class='page-link' href='category.php?category=<?= $category ?>&page=".($page-2)."'>".($page-2)."</a></li>";
+							echo "<li class='page-item'><a class='page-link' href='category.php?category=<?= $category ?>&page=".($page-1)."'>".($page-1)."</a></li>";
+							echo "<li class='page-item active'><a class='page-link' href='category.php?category=<?= $category ?>&page=".($page)."'>".($page)."</a></li>";
+							echo "<li class='page-item'><a class='page-link' href='category.php?category=<?= $category ?>&page=".($page+1)."'>".($page+1)."</a></li>";
+						}else if($page==$maxPage&&$maxPage>4){
+							echo "<li class='page-item'><a class='page-link' href='category.php?category=<?= $category ?>&page=".($page-4)."'>".($page-4)."</a></li>";
+							echo "<li class='page-item'><a class='page-link' href='category.php?category=<?= $category ?>&category=<?= $category ?>&page=".($page-3)."'>".($page-3)."</a></li>";
+							echo "<li class='page-item'><a class='page-link' href='category.php?category=<?= $category ?>&page=".($page-2)."'>".($page-2)."</a></li>";
+							echo "<li class='page-item'><a class='page-link' href='category.php?category=<?= $category ?>&page=".($page-1)."'>".($page-1)."</a></li>";
+							echo "<li class='page-item active'><a class='page-link' href='category.php?category=<?= $category ?>&page=".($page)."'>".($page)."</a></li>";
+						}
+
+
+						?>
+
+
+						<li class="page-item <?= $page==$maxPage ? 'disabled' : '' ?>">
+							<a class="page-link" href="category.php?category=<?= $category ?>&page=<?= ($page+1) ?>">Next</a>
+						</li>
+					</ul>
+				</nav>
+				
 			</div>
 		</section>
 		

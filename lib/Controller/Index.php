@@ -11,9 +11,9 @@ class Index extends \lib\Controller{
 		$slides=$slideModel->slide();
 		$this->setValues('slides', $slides);
 		
-		$firstSlideModel=new \lib\Model\Posts();
-		$firstSlide=$slideModel->firstSlide();
-		$this->setValues('firstSlide', $firstSlide);
+//		$firstSlideModel=new \lib\Model\Posts();
+//		$firstSlide=$slideModel->firstSlide();
+//		$this->setValues('firstSlide', $firstSlide);
 		
 		$recommendModel=new \lib\Model\Posts();
 		$recommends=$recommendModel->recommend();

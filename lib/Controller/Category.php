@@ -3,10 +3,16 @@ namespace lib\Controller;
 
 class Category extends \lib\Controller{
 	public function run(){
+		$maxPagesModel=new \lib\Model\Posts();
+		$maxPages=$maxPagesModel->categoryMaxPages([
+			'category'=>$_GET['category']
+		]);
+		$this->setValues('maxPages', $maxPages);
 		
 		$categoryModel=new \lib\Model\Posts();
 		$category=$categoryModel->category([
-			'category'=>$_GET['category']
+			'category'=>$_GET['category'],
+			'page'=>$_GET['page']
 		]);
 		$this->setValues('categoryPosts', $category);
 		
