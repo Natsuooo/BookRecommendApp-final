@@ -30,7 +30,7 @@ class Posts extends \lib\Model{
 	public function slide(){
 		$stmt=$this->db->query("select * from posts order by rand() limit 6");
 		$stmt->setFetchMode(\PDO::FETCH_CLASS, 'stdClass');
-		return $posts=$stmt->fetchAll();
+		return $slides=$stmt->fetchAll();
 	}
 	
 //	public function firstSlide(){
