@@ -4,11 +4,13 @@ namespace lib\Model;
 class Profiles extends \lib\Model{
 	
 	public function createProfile($values){
-		$stmt=$this->db->prepare("insert into profiles(id, firstName, lastName, professionalCategory, department, professional, message, created, modified) values (:id, :firstName, :lastName, :professionalCategory, :department, :professional, :message, now(), now())");
+		$stmt=$this->db->prepare("insert into profiles(id, firstName, lastName, sei, mei, professionalCategory, department, professional, message, created, modified) values (:id, :firstName, :lastName, :sei, :mei, :professionalCategory, :department, :professional, :message, now(), now())");
 		$stmt->execute([
 			':id'=>$values['id'],
 			':firstName'=>$values['firstName'],
 			':lastName'=>$values['lastName'],
+			':sei'=>$values['sei'],
+			':mei'=>$values['mei'],
 			':professionalCategory'=>$values['professionalCategory'],
 			':department'=>'',
 			':professional'=>'',
@@ -27,11 +29,13 @@ class Profiles extends \lib\Model{
 	}
 	
 	public function update($values){
-		$stmt=$this->db->prepare("update profiles set firstName=:firstName, lastName=:lastName, professionalCategory=:professionalCategory, department=:department, professional=:professional, message=:message, modified=now() where id=:id");
+		$stmt=$this->db->prepare("update profiles set firstName=:firstName, lastName=:lastName, sei=:sei, mei=:mei, professionalCategory=:professionalCategory, department=:department, professional=:professional, message=:message, modified=now() where id=:id");
 		$stmt->execute([
 			':id'=>$values['id'],
 			':firstName'=>$values['firstName'],
 			':lastName'=>$values['lastName'],
+			':sei'=>$values['sei'],
+			':mei'=>$values['mei'],
 			':professionalCategory'=>$values['professionalCategory'],
 			':department'=>$values['department'],
 			':professional'=>$values['professional'],

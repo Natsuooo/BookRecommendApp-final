@@ -1,0 +1,417 @@
+body {
+  background-color: #fefefe;
+}
+
+.drawer-navbar-header a {
+  color: black;
+  font-weight: 300;
+  margin-left: 10px;
+}
+
+.drawer-navbar-header {
+  height: 3rem;
+  margin-bottom: 5px;
+}
+
+.drawer-hamburger {
+  padding-top: 13px;
+}
+
+.drawer-brand {
+  margin-top: -5px;
+  font-family: 'Dancing Script', cursive;
+  font-size: 30px;
+}
+
+.drawer-nav {
+  width: 14rem;
+}
+.drawer-nav li {
+  line-height: 12px;
+}
+.drawer-nav li a {
+  color: #555555;
+  text-decoration: none;
+  font-weight: 200;
+}
+.drawer-nav li a:hover {
+  text-decoration: none;
+  background-color: #eeeeee;
+}
+
+.drawer-category a {
+  font-size: 13px;
+  line-height: 6px;
+}
+
+.drawer-hamburger {
+  width: 1.5rem;
+  padding-bottom: 24px;
+}
+
+.drawer-hamburger-icon,
+.drawer-hamburger-icon:before,
+.drawer-hamburger-icon:after {
+  height: 1px;
+}
+
+.drawer-hamburger-icon:before,
+.drawer-hamburger-icon:after {
+  top: -8px;
+}
+
+.drawer-hamburger-icon:after {
+  top: 8px;
+}
+
+.subpages-title {
+  font-size: 20px;
+  color: #555555;
+  font-weight: 200;
+  font-family: 'Nunito', sans-serif;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  border-bottom: 1px solid #919191;
+  border-top: 1px solid #919191;
+  margin-right: 8vw;
+  margin-left: 8vw;
+  margin-top: 30px;
+}
+
+.professors-title {
+  font-size: 18px;
+}
+
+/*Drawer*/
+#index {
+  padding-top: 1px;
+}
+#index a {
+  color: #555555;
+}
+#index p {
+  color: #555555;
+}
+
+.index-title {
+  font-size: 20px;
+  color: #555555;
+  font-weight: 300;
+  font-family: 'Nunito', sans-serif;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  border-bottom: 1px solid #919191;
+  border-top: 1px solid #919191;
+  margin-right: 30px;
+  margin-left: 30px;
+}
+
+.box-shadow {
+  box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+}
+
+/*Tabs*/
+.nav-tabs {
+  margin-left: -10px;
+  margin-right: -10px;
+}
+
+.nav-tabs > li > a {
+  padding-left: 0px;
+  padding-right: 0px;
+  font-size: 14px;
+  font-family: 'Nunito', sans-serif;
+}
+
+/*Post*/
+.post {
+  border-bottom: 1px solid #dcdcdc;
+}
+
+.post-img {
+  width: 35vw;
+  margin-left: -10px;
+}
+
+.post-content {
+  margin-left: -3vw;
+}
+
+.post-title {
+  font-size: 14px;
+  margin-bottom: 5px;
+  padding-top: 5px;
+}
+
+.post-tag {
+  font-size: 11px;
+  padding: 2px 5px;
+}
+
+.post-text {
+  font-size: 11px;
+  margin-top: -10px;
+  padding-bottom: 5px;
+}
+
+.post {
+  padding-top: 1px;
+}
+.post a {
+  color: #555555;
+}
+.post p {
+  color: #555555;
+}
+
+#professor h4 {
+  font-size: 20px;
+  color: #4d4d4d;
+  font-weight: 500;
+  margin-top: -25px;
+  margin-bottom: -10px;
+}
+
+#professor h5 {
+  font-size: 18px;
+  color: #4d4d4d;
+  font-weight: 500;
+  margin-top: 50px;
+  margin-bottom: 20px;
+}
+
+#professor li {
+  font-weight: 400;
+}
+
+.list-group-item {
+  margin-top: -1px;
+  cursor: pointer;
+}
+
+#category .list-group a {
+  text-decoration: none;
+}
+
+#recommend {
+  margin-top: 70px;
+}
+#recommend a {
+  color: #555555;
+}
+#recommend p {
+  color: #555555;
+}
+
+.recommend-title {
+  color: #555555;
+  font-family: 'Nunito', sans-serif;
+  font-size: 20px;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  border-bottom: 1px solid #919191;
+  border-top: 1px solid #919191;
+  margin-right: 30px;
+  margin-left: 30px;
+  margin-top: 20px;
+}
+
+footer {
+  background-color: #b1b1b1;
+  margin-top: 80px;
+}
+footer p {
+  font-weight: 300;
+}
+footer p a {
+  color: white;
+}
+footer p a:hover {
+  color: white;
+}
+footer .dropdown-toggle {
+  color: white;
+}
+footer .dropdown a {
+  font-weight: 300;
+}
+
+/******  Professors ******/
+.nav-tabs {
+  margin-left: -10px;
+  margin-right: -10px;
+}
+
+.nav-tabs > li > a {
+  padding-left: 0px;
+  padding-right: 0px;
+  font-size: 12px;
+}
+
+#professors {
+  padding-top: 1px;
+}
+#professors a {
+  color: #555555;
+}
+#professors p {
+  color: #555555;
+}
+
+.profile {
+  border-bottom: 1px solid #dcdcdc;
+  padding-top: 20px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-right: -5px;
+  margin-left: -5px;
+}
+.profile h2 {
+  font-size: 25px;
+  font-family: 'Playfair Display', serif;
+  font-weight: 400;
+}
+.profile a {
+  text-decoration: none;
+}
+.profile:hover {
+  background-color: #f8f8f8;
+}
+
+.profile-capital {
+  font-size: 13px;
+  font-weight: 100;
+  color: #fbfbfb;
+  margin-top: -5px;
+}
+
+.profile-department {
+  font-size: 13px;
+  font-weight: 400;
+  margin-top: -8px;
+}
+
+.profile-professional {
+  font-size: 13px;
+  font-weight: 400;
+  margin-top: -13px;
+}
+
+.profile-message {
+  font-size: 13px;
+}
+
+/******  Professor ******/
+#each-professor a {
+  color: #555555;
+}
+#each-professor p {
+  color: #555555;
+}
+#each-professor .profile {
+  background-color: #f8f8f8;
+  border-bottom: none;
+  padding-bottom: 5px;
+  margin-bottom: 30px;
+}
+#each-professor .profile h1 {
+  font-family: 'Playfair Display', serif;
+  margin-top: -17px;
+}
+
+/******  Detail ******/
+#detail h1 {
+  font-size: 28px;
+  font-weight: 400;
+  margin-top: 5px;
+  padding-left: 2px;
+  color: #555555;
+}
+#detail h1 a {
+  color: #555555;
+}
+#detail p {
+  color: #555555;
+}
+#detail .detail-tags {
+  font-size: 14px;
+  margin-top: 10px;
+}
+#detail .detail-tags p {
+  line-height: 30px;
+}
+#detail .detail-tags p a {
+  color: #555555;
+}
+
+.detail-tag {
+  padding: 3px 6px;
+}
+
+.detail-info {
+  color: #555555;
+  margin-left: -10px;
+  margin-right: -10px;
+}
+
+.detail-img img {
+  padding: 10px 5px;
+}
+
+.detail-content {
+  margin-left: -15px;
+  margin-top: 10px;
+}
+.detail-content p {
+  line-height: 20px;
+}
+.detail-content img {
+  width: 80px;
+  margin-top: -5px;
+  border: 1px solid #dcdcdc;
+}
+.detail-content img:hover {
+  box-shadow: 0px 0px 6px 3px #ededed;
+}
+
+.detail-publisher {
+  margin-top: -10px;
+  margin-bottom: 7px;
+}
+
+.detail-text {
+  font-size: 15px;
+  margin-left: -3px;
+}
+
+.comment-title {
+  margin-top: 80px;
+}
+
+.comment-container {
+  color: #555555;
+}
+
+.comment-content {
+  font-size: 17px;
+  font-weight: 400;
+  padding-top: 5px;
+}
+
+.comment-name {
+  font-size: 15px;
+  margin-top: -17px;
+  padding-bottom: 7px;
+  border-bottom: 1px solid #dcdcdc;
+  font-weight: 300;
+}
+
+.comment-date {
+  padding-left: 5px;
+  font-size: 13px;
+  font-weight: 300;
+}
+
+/*# sourceMappingURL=styles.css.map */
+
+/*# sourceMappingURL=subpages.css.map */

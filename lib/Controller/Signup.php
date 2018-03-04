@@ -34,6 +34,8 @@ class Signup extends \lib\Controller{
 					'password'=>$_POST['password'],
 					'firstName'=>$_POST['firstName'],
 					'lastName'=>$_POST['lastName'],
+					'sei'=>$_POST['sei'],
+					'mei'=>$_POST['mei'],
 					'professionalCategory'=>$_POST['professionalCategory']
 				]);
 			}catch(\lib\Exception\DuplicateEmail $e){
@@ -49,6 +51,8 @@ class Signup extends \lib\Controller{
 				'id'=>$_SESSION['me']->id,
 				'firstName'=>$_SESSION['me']->firstName,
 				'lastName'=>$_SESSION['me']->lastName,
+				'sei'=>$_SESSION['me']->sei,
+				'mei'=>$_SESSION['me']->mei,
 				'professionalCategory'=>$_SESSION['me']->professionalCategory
 			]);
 			

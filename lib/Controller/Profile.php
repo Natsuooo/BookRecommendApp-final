@@ -30,6 +30,8 @@ class Profile extends \lib\Controller{
 		
 		$this->setValues('firstName', $_POST['firstName']);
 		$this->setValues('lastName', $_POST['lastName']);
+		$this->setValues('sei', $_POST['sei']);
+		$this->setValues('mei', $_POST['mei']);
 		$this->setValues('department', $_POST['department']);
 		$this->setValues('professional', $_POST['professional']);
 		$this->setValues('message', $_POST['message']);
@@ -42,6 +44,8 @@ class Profile extends \lib\Controller{
 				'id'=>$_SESSION['me']->id,
 				'firstName'=>$_POST['firstName'],
 				'lastName'=>$_POST['lastName'],
+				'sei'=>$_POST['sei'],
+				'mei'=>$_POST['mei'],
 				'professionalCategory'=>$_POST['professionalCategory'],
 				'department'=>$_POST['department'],
 				'professional'=>$_POST['professional'],

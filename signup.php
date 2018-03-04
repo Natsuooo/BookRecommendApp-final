@@ -33,6 +33,8 @@ $app->run();
 				<form action="" method="post" class="form-signin">
 					<h1 class="h3 mb-3 font-weight-normal">Sign up</h1>
 					
+					
+					
 					<div class="form-row">
 						<div class="col-6">
 							<label for="firstName" class="sr-only">First name</label>
@@ -41,6 +43,17 @@ $app->run();
 						<div class="col-6">
 							<label for="lastName" class="sr-only">Last name</label>
 							<input type="text" name="lastName" id="lastName" class="form-control" placeholder="Last name" value="<?= !empty($app->getValues('lastName')) ? h($app->getValues('lastName')) : '' ?>" required autofocus>
+						</div>
+     			</div>
+     			
+     			<div class="form-row">
+						<div class="col-6">
+							<label for="sei" class="sr-only">姓</label>
+							<input type="text" name="sei" id="sei" class="form-control" placeholder="姓" value="<?= !empty($app->getValues('sei')) ? h($app->getValues('sei')) : '' ?>" required autofocus>
+						</div>
+						<div class="col-6">
+							<label for="mei" class="sr-only">名</label>
+							<input type="text" name="mei" id="mei" class="form-control" placeholder="名" value="<?= !empty($app->getValues('mei')) ? h($app->getValues('mei')) : '' ?>" required autofocus>
 						</div>
      			</div>
      			

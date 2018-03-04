@@ -40,7 +40,7 @@ class Posts extends \lib\Model{
 //	}
 	
 	public function recommend(){
-		$stmt=$this->db->query("select * from posts order by rand() limit 5");
+		$stmt=$this->db->query("select * from posts order by rand() limit 3");
 		$stmt->setFetchMode(\PDO::FETCH_CLASS, 'stdClass');
 		return $posts=$stmt->fetchAll();
 	}

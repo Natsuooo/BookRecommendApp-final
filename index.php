@@ -24,13 +24,13 @@ $app->run();
     <link rel="stylesheet" href="css/styles.css">
     
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nunito|Dancing+Script|Dancing+Script:700" rel="stylesheet">
     
     <!--  Font Awesome  -->
     <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
     
     
-
+		<!--	Slider  -->
 		<script type="text/javascript" src="js/modernizr.custom.53451.js"></script>
     
 	<title>ELEL（エレル） | 一橋大教授のオススメ図書</title>
@@ -38,6 +38,7 @@ $app->run();
 
 </head>
 <body class="drawer drawer--left">
+
 
 	<header role="banner">
  
@@ -47,16 +48,23 @@ $app->run();
     </button>
     <nav class="drawer-nav" role="navigation">
       <ul class="drawer-menu">
-        <li><a class="drawer-brand" href="index.php">ELEL</a></li>
-        <li><a class="drawer-menu-item" href="newEntry.php?page=1">New Entry</a></li>
-        <li><a class="drawer-menu-item" href="professors.php">Professor</a></li>
-        <li><a class="drawer-menu-item btn disabled text-left nav-category" href="category.php?category=commerce&page=1">Category</a></li>
-        <li><a class="drawer-menu-item" href="category.php?category=commerce&page=1">&nbsp;&nbsp;Commerce</a></li>
-        <li><a class="drawer-menu-item" href="category.php?category=economics&page=1">&nbsp;&nbsp;Economics</a></li>
-        <li><a class="drawer-menu-item" href="category.php?category=law&page=1">&nbsp;&nbsp;Law</a></li>
-        <li><a class="drawer-menu-item" href="category.php?category=sociology&page=1">&nbsp;&nbsp;Sociology</a></li>
-        <li><a class="drawer-menu-item" href="category.php?category=science&page=1">&nbsp;&nbsp;Science</a></li>
-        <li><a class="drawer-menu-item" href="category.php?category=liberalArts&page=1">&nbsp;&nbsp;Liberal Arts</a></li>
+        <li><a class="drawer-brand" href="index.php">Elel</a></li>
+        <li><a class="drawer-menu-item" href="newEntry.php?page=1">New Entries</a></li>
+        <li><a class="drawer-menu-item" href="professors.php">Professors</a></li>
+        
+        <li class="drawer-dropdown">
+					<a class="drawer-menu-item" href="#" data-toggle="dropdown" role="button" aria-expanded="false">
+						Categories&nbsp;<span class="drawer-caret"></span>
+					</a>
+				</li>
+        <li class="drawer-category"><a class="drawer-menu-item" href="category.php?category=commerce&page=1">&nbsp;&nbsp;Commerce</a></li>
+        <li class="drawer-category"><a class="drawer-menu-item" href="category.php?category=economics&page=1">&nbsp;&nbsp;Economics</a></li>
+        <li class="drawer-category"><a class="drawer-menu-item" href="category.php?category=law&page=1">&nbsp;&nbsp;Law</a></li>
+        <li class="drawer-category"><a class="drawer-menu-item" href="category.php?category=sociology&page=1">&nbsp;&nbsp;Sociology</a></li>
+        <li class="drawer-category"><a class="drawer-menu-item" href="category.php?category=science&page=1">&nbsp;&nbsp;Science</a></li>
+        <li class="drawer-category"><a class="drawer-menu-item" href="category.php?category=liberalArts&page=1">&nbsp;&nbsp;Liberal Arts</a></li>
+        
+        <li><a class="drawer-menu-item" href="https://opac.lib.hit-u.ac.jp/opac/opac_search/?lang=0">HERMES</a></li>
         <li><a class="drawer-menu-item" href="mypage.php">My Page</a></li>
       </ul>
     </nav>
@@ -105,7 +113,9 @@ $app->run();
 					<?php
 					foreach($app->getValues('slides') as $slide){
 					?>
-						<a href="detail.php?post=<?= h($slide->postId) ?>"><img src="<?= h($slide->img) ?>" alt="<?= h($slide->title) ?>" class="rounded"><div class="text-secondary"><?= h($slide->title) ?></div></a>
+						<a href="detail.php?post=<?= h($slide->postId) ?>"><img src="<?= h($slide->img) ?>" alt="<?= h($slide->title) ?>" class="rounded">
+						<div class="text-secondary"><?= h($slide->title) ?></div>
+						</a>
 					<?php } ?>	
 				</div>
 			</div>
@@ -163,10 +173,10 @@ $app->run();
 		<section>
 			<div class="container" id="index">
 				<h4 class="index-title text-center mt-5 pb-2">BEST BOOKS</h4>
-				<ul class="nav nav-tabs nav-justified mt-5 mb-5">
-					<li class="nav-item"><a href="#newEntry" class="nav-link active" data-toggle="tab">New Entry</a></li>
-					<li class="nav-item"><a href="#professor" class="nav-link" data-toggle="tab">Professor</a></li>
-					<li class="nav-item"><a href="#category" class="nav-link" data-toggle="tab">Category</a></li>
+				<ul class="nav nav-tabs nav-justified mt-5 mb-4">
+					<li class="nav-item"><a href="#newEntry" class="nav-link active" data-toggle="tab">New Entries</a></li>
+					<li class="nav-item"><a href="#professor" class="nav-link" data-toggle="tab">Professors</a></li>
+					<li class="nav-item"><a href="#category" class="nav-link" data-toggle="tab">Categories</a></li>
          </ul>
           
           <div class="tab-content">
@@ -181,12 +191,12 @@ $app->run();
 									</div>
 									<div class="col-7 post-content">
 										<h4 class="post-title"><a href="detail.php?post=<?= h($post->postId) ?>"><?= h($post->title) ?></a></h4>
-										<p><a href="professor.php?id=<?= h(ucfirst($post->id)) ?>"><span class="post-tag border rounded"><?= h(ucfirst($post->firstName)) ?>&nbsp;<?= h(ucfirst($post->lastName)) ?></span></a>
-											<a href="category.php?category=<?= h(ucfirst($post->category)) ?>&page=1"><span class="post-tag border rounded"><?= h(ucfirst($post->category)) ?></span></a>
+										<p><a href="professor.php?id=<?= h($post->id) ?>"><span class="post-tag border rounded"><?= h(ucfirst($post->firstName)) ?>&nbsp;<?= h(ucfirst($post->lastName)) ?></span></a>
+											<a href="category.php?category=<?= h($post->category) ?>&page=1"><span class="post-tag border rounded"><?= h(ucfirst($post->category)) ?></span></a>
 										<span class="post-tag border rounded"><?= h(ucfirst($post->difficulty)) ?></span></p>
-										<p class="post-text">
-											<?= h(mb_substr($post->text, 0, 40)) ?>...
-										</p>
+										<p class="post-text"><a href="detail.php?post=<?= h($post->postId) ?>">
+											<?= h(mb_substr($post->text, 0, 60)) ?>...
+											</a></p>
 									</div>
 								</div>
 							</div>	
@@ -197,7 +207,7 @@ $app->run();
             </div>
             
             <div id="professor" class="tab-pane">
-            	<h4 class="text-center"><a href="professors.php">Hitotsubashi Professors</a></h4>
+            	<h4 class="text-center mt-1"><a href="professors.php">Hitotsubashi Professors</a></h4>
             	<h5>Commerce</h5>
             	<ul class="list-group list-group-flush">
             	<?php
@@ -250,8 +260,8 @@ $app->run();
 		</section>
 		
 		<section>
-		<h3 class="recommend-title text-center mt-5">RECOMMEND</h3>
-			<div class="container mt-4" id="recommend">
+			<div class="container" id="recommend">
+			<h3 class="recommend-title text-center">RECOMMEND</h3>
 				<?php
 				foreach($app->getValues('recommends') as $recommend){
 				?>
@@ -262,10 +272,10 @@ $app->run();
 						</div>
 						<div class="col-7 post-content">
 							<h4 class="post-title"><a href="detail.php?post=<?= h($recommend->postId) ?>"><?= h($recommend->title) ?></a></h4>
-							<p><a href="professor.php?post=<?= h($recommend->postId) ?>"><span class="text-muted post-tag border rounded"><?= h(ucfirst($recommend->firstName)) ?>&nbsp;<?= h(ucfirst($recommend->lastName)) ?></span></a>
-								<a href="category.php?category=<?= h(ucfirst($post->category)) ?>&page=1"><span class="text-muted post-tag border rounded"><?= h(ucfirst($recommend->category)) ?></span></a>
+							<p><a href="professor.php?id=<?= h($recommend->id) ?>"><span class="text-muted post-tag border rounded"><?= h(ucfirst($recommend->firstName)) ?>&nbsp;<?= h(ucfirst($recommend->lastName)) ?></span></a>
+								<a href="category.php?category=<?= h($post->category) ?>&page=1"><span class="text-muted post-tag border rounded"><?= h(ucfirst($recommend->category)) ?></span></a>
 							<span class="text-muted post-tag border rounded"><?= h(ucfirst($recommend->difficulty)) ?></span></p>
-							<p class="post-text"><?= h(mb_substr($recommend->text, 0, 40)) ?>...</p>
+							<p class="post-text"><a href="detail.php?post=<?= h($recommend->postId) ?>"><?= h(mb_substr($recommend->text, 0, 60)) ?>...</a></p>
 						</div>
 					</div>
 				</div>	
@@ -275,15 +285,15 @@ $app->run();
 		
 	</main>
 	
-	<footer class="text-center text-white py-4 mt-5">
+	<footer class="text-center text-white py-4">
  		<div class="container">
  			<p><a href="index.php">Top</a></p>
- 			<p><a href="newEntry.php?page=1">New Entry</a></p>
- 			<p><a href="professors.php">Professor</a></p>
+ 			<p><a href="newEntry.php?page=1">New Entries</a></p>
+ 			<p><a href="professors.php">Professors</a></p>
  			
  			<div class="dropdown show mb-3">
 				<a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-					Category
+					Categories
 				</a>
 
 				<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
@@ -310,6 +320,7 @@ $app->run();
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	
 	
 	<!-- iScroll -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/iScroll/5.2.0/iscroll.min.js"></script>

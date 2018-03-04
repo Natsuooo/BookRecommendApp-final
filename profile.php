@@ -44,6 +44,16 @@ $app->run();
 						<input type="text" name="lastName" id="lastName" class="form-control" placeholder="Last name" value="<?= !empty($app->getValues('lastName')) ? h($app->getValues('lastName')) : h($profile->lastName); ?>" required autofocus>
 					</div>
 				</div>
+				<div class="form-row">
+					<div class="col-6">
+						<label for="sei">姓</label>
+						<input type="text" name="sei" id="sei" class="form-control" placeholder="姓" value="<?= !empty($app->getValues('sei')) ? h($app->getValues('sei')) : h($profile->sei); ?>" required>
+					</div>
+					<div class="col-6">
+						<label for="mei">名</label>
+						<input type="text" name="mei" id="mei" class="form-control" placeholder="名" value="<?= !empty($app->getValues('mei')) ? h($app->getValues('mei')) : h($profile->mei); ?>" required>
+					</div>
+				</div>
 				
 				
 				<div class="form-group">
