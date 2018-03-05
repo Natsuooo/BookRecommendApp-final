@@ -32,8 +32,8 @@ class Edit extends \lib\Controller{
 	protected function postProcess(){
 		try{
 			$this->validate();
-		}catch(\lib\Exception\EmptyPost $e){
-			$this->setErrors('post', $e->getMessage());
+		}catch(\lib\Exception\FormError $e){
+			$this->setErrors('formError', $e->getMessage());
 		}
 		
 		$this->setValues('category', $_POST['category']);
@@ -62,7 +62,7 @@ class Edit extends \lib\Controller{
 			exit;
 		}
 		if($_POST['category']===''||$_POST['difficulty']===''||$_POST['text']===''){
-			throw new \lib\Exception\EmptyPost();
+			throw new \lib\Exception\FormError();
 		}
 	}
 	

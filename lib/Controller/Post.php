@@ -15,8 +15,8 @@ class Post extends \lib\Controller{
 	protected function postProcess(){
 		try{
 			$this->validate();
-		}catch(\lib\Exception\EmptyPost $e){
-			$this->setErrors('post', $e->getMessage());
+		}catch(\lib\Exception\FormError $e){
+			$this->setErrors('formError', $e->getMessage());
 		}
 		
 		$this->setValues('text', $_POST['text']);
@@ -46,12 +46,13 @@ class Post extends \lib\Controller{
 	}
 	
 	private function validate(){
-		if(!isset($_POST['text'])){
+		if(!isset($_POST['category'])||!isset($_POST['difficulty'])||!isset($_POST['text'])){
 			echo "Invalid Form!";
 			exit;
 		}
-		if($_POST['text']===''){
-			throw new \lib\Exception\EmptyPost();
+		
+		if($_POST['category']===''||$_POST['difficulty']===''||$_POST['text']===''){
+			throw new \lib\Exception\FormError();
 		}
 	}
 	

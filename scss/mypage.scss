@@ -75,25 +75,6 @@ body{
 	line-height: 30px;
 }
 
-//Subpages
-.subpages-title{
-	font-size: 21px;
-	color: #555555;
-	font-weight: 200;
-	font-family: 'Nunito', sans-serif;
-	padding-bottom: 11px;
-	padding-top: 11px;
-	border-bottom: 1px solid #919191;
-	border-top: 1px solid #919191;
-	margin-right: 8vw;
-	margin-left: 8vw;
-	margin-top: 5px;
-}
-
-.professors-title{
-	font-size: 18px;
-}
-
 //breadcrumb
 .breadcrumb{
 	background-color: transparent;
@@ -110,43 +91,32 @@ body{
 	color: #bababa;
 }
 
-.professor-breadcrumb{
-	margin-top: -17px;
-	margin-bottom: 3px;
-	margin-left: -8px;
+//Subpages
+.subpages-title{
+	font-size: 21px;
+	color: #555555;
+	font-weight: 200;
+	font-family: 'Nunito', sans-serif;
+	padding-bottom: 11px;
+	padding-top: 11px;
+	border-bottom: 1px solid #919191;
+	border-top: 1px solid #919191;
+	margin-right: 8vw;
+	margin-left: 8vw;
+	margin-top: 5px;
 }
 
-.category-breadcrumb{
-	margin-left: -20px;
+//breadcrumb
+.breadcrumb{
+	background-color: transparent;
+	margin-top: -12px;
 	margin-bottom: 0px;
-	margin-top: -5px;
-}
-
-
-/*Drawer*/
-
-//Index
-#index{
-	padding-top: 1px;
+	font-size: 13px;
+	font-weight: 300;
+	margin-left: -5px;
 	a{
 		color: #555555;
 	}
-	p{
-		color: #555555;
-	}
-}
-
-.index-title{
-	font-size: 20px;
-	color: #555555;
-	font-weight: 300;
-	font-family: 'Nunito', sans-serif;
-	padding-bottom: 10px;
-	padding-top: 10px;
-	border-bottom: 1px solid #919191;
-	border-top: 1px solid #919191;
-	margin-right: 30px;
-	margin-left: 30px;
 }
 
 
@@ -155,40 +125,31 @@ body{
 	box-shadow: 0 4px 5px 0 rgba(0, 0, 0, .14), 0 1px 10px 0 rgba(0, 0, 0, .12), 0 2px 4px -1px rgba(0, 0, 0, .2);
 }
 
-.backToTop{
-	background-color: #fefefe;
-	color: #0f9dfc;
-	position: fixed;
-	right: 10px;
-	bottom: 10px;
-	&:hover{
-		color: #0f72fc;
-	}
-}
-
-.btn-primary{
+.btn-primary.delete{
 	background-color: #0f9dfc;
 	border-color: #0f9dfc;
+	font-size: 12px;
+	margin-top: -25px;
 	&:hover{
 		background-color: #0f72fc;
 		border-color: #0f72fc;
 	}
 }
 
-
-/*Tabs*/
-
-#index .nav-tabs {
-  margin-left: -10px;
-  margin-right: -10px;
+/******  Errors  ******/
+.formError{
+	color: #c40300;
+	width: 100%;
+	background-color: #ffaaaa;
+	margin-top: -12px;
+	margin-bottom: 10px;
 }
 
-#index .nav-tabs > li > a {
-  padding-left: 0px;
-  padding-right: 0px;
-  font-size: 14px;
-	font-family: 'Nunito', sans-serif;
+.searchError{
+	color: #d60000;
+	margin-left: 5px;
 }
+
 
 /*Post*/
 
@@ -222,6 +183,7 @@ body{
   font-size: 11px;
   margin-top: -10px;
 	padding-bottom: 5px;
+	word-wrap: break-word;
 }
 
 .post{
@@ -235,62 +197,6 @@ body{
 	}
 }
 
-//Professor
-#professor h4{
-	font-size: 20px;
-	color: #4d4d4d;
-	font-weight: 500;
-	margin-top: -25px;
-	margin-bottom: -10px;
-}
-
-#professor h5{
-	font-size: 18px;
-	color: #4d4d4d;
-	font-weight: 500;
-	margin-top: 50px;
-	margin-bottom: 20px;
-}
-
-#professor li{
-	font-weight: 400;
-}
-
-//Category
-.list-group-item{
-	margin-top: -1px;
-	cursor: pointer;
-}
-
-#category .list-group a{
-	text-decoration: none;
-}
-
-
-//Recommend
-#recommend{
-	margin-top: 70px;
-	a{
-		color: #555555;
-	}
-	p{
-		color: #555555;
-		word-wrap: break-word;
-	}
-}
-
-.recommend-title{
-	color: #555555;
-	font-family: 'Nunito', sans-serif;
-	font-size: 20px;
-	padding-bottom: 10px;
-	padding-top: 10px;
-	border-bottom: 1px solid #919191;
-	border-top: 1px solid #919191;
-	margin-right: 30px;
-	margin-left: 30px;
-	margin-top: 20px;
-}
 
 //Footer
 footer{
@@ -325,73 +231,7 @@ footer{
 	font-size: 13px;
 }
 
-/******  Professors ******/
 
-//Tabs
-#professors .nav-tabs {
-  margin-left: -10px;
-  margin-right: -10px;
-}
-
-#professors .nav-tabs > li > a {
-  padding-left: 0px;
-  padding-right: 0px;
-  font-size: 12px;
-}
-
-#professors{
-	padding-top: 1px;
-	a{
-		color: #555555;
-	}
-	p{
-		color: #555555;
-	}
-}
-
-.profile{
-	border-bottom: 1px solid #dcdcdc;
-	margin-top: 10px;
-	margin-bottom: 10px;
-	padding-top: 10px;
-	padding-left: 10px;
-	padding-right: 10px;
-	margin-right: -5px;
-	margin-left: -5px;
-	background-color: #f8f8f8;
-	h2{
-		font-size: 25px;
-		font-family: 'Playfair Display', serif;
-		font-weight: 400;
-	}
-	a{
-		text-decoration: none;
-	}
-
-}
-
-.profile-capital{
-	font-size: 13px;
-	font-weight: 100;
-	color: #fbfbfb;
-	margin-top: -5px;
-}
-
-.profile-department{
-	font-size: 13px;
-	font-weight: 400;
-	margin-top: -8px;
-}
-
-.profile-professional{
-	font-size: 13px;
-	font-weight: 400;
-	margin-top: -13px;
-}
-
-.profile-message{
-	font-size: 13px;
-}
 
 /******  Professor ******/
 #each-professor{
@@ -422,8 +262,8 @@ footer{
 		font-weight: 400;
 		margin-top: 5px;
 		padding-left: 2px;
-		word-wrap: break-word;
 		color: #555555;
+		word-wrap: break-word;
 		a{
 			color: #555555;
 		}
@@ -447,21 +287,6 @@ footer{
 .detail-tag{
 	padding: 3px 6px;
 }
-
-.sns{
-	display: flex;
-}
-
-.twitter{
-	margin-top: -10px;
-}
-
-.facebook{
-	margin-top: -14px;
-	margin-left: 5px;
-}
-
-
 
 .detail-info{
 	color: #555555;
@@ -497,6 +322,7 @@ footer{
 }
 
 
+
 .detail-publisher{
 	margin-top: -10px;
 	margin-bottom: 7px;
@@ -507,37 +333,39 @@ footer{
 	margin-left: -3px;
 }
 
-//Comment
-.comment-title{
-	margin-top: 80px;
-}
-
-.comment-container{
+/******  My Posts  ******/
+.myposts-nav{
 	color: #555555;
+	margin-left: 10px;
+	a{
+		color: #555555;
+		font-size: 15px;
+	}
 }
 
-.comment-content{
+/******  Edit  ******/
+.edit-title{
+	font-size: 20px;
+	font-weight: 500;
+}
+
+/******  Profile  ******/
+.profile-label{
 	font-size: 17px;
 	font-weight: 400;
-	padding-top: 5px;
+	margin-top: 15px;
+	margin-bottom: 5px;
 }
 
-.comment-name{
-	font-size: 15px;
-	margin-top: -17px;
-	padding-bottom: 7px;
-	border-bottom: 1px solid #dcdcdc;
-	font-weight: 300;
+/******  Search Books  ******/
+.search-footer{
+	margin-top: 100px;
 }
 
-.comment-date{
-	padding-left: 5px;
-	font-size: 13px;
-	font-weight: 300;
+.search-box{
+	width: 110%;
 }
 
-.commentError{
-	color: #d60000;
-}
+
 
 /*# sourceMappingURL=styles.css.map */

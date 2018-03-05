@@ -19,7 +19,7 @@ $app->run();
 	
 	<link rel="stylesheet" href="css/signup.css">
 	
-	<title>Update email/password | ELEL（エレル）一橋大教授のオススメ図書</title>
+	<title>Update email/password | Elel（エレル）一橋大教授のオススメ図書</title>
 </head>
 <body>
 	<header>
@@ -63,7 +63,7 @@ $app->run();
 						</div>
 					</div>
 					
-					<p class="fs12"><a href="mypage.php">Back</a></p>
+					<p class="fs12"><a href="<?= $_SERVER['HTTP_REFERER'] ?>">Back</a></p>
 					
 					<input type="hidden" name="token" value="<?= h($_SESSION['token']); ?>">
 				</form>

@@ -33,7 +33,7 @@ $app->run();
 		<!--	Slider  -->
 		<script type="text/javascript" src="js/modernizr.custom.53451.js"></script>
     
-	<title>ELEL（エレル） | 一橋大教授のオススメ図書</title>
+	<title>Elel（エレル） | 一橋大教授のオススメ図書</title>
 	
 
 </head>
@@ -47,27 +47,30 @@ $app->run();
       <span class="drawer-hamburger-icon"></span>
     </button>
     <nav class="drawer-nav" role="navigation">
-      <ul class="drawer-menu">
-        <li><a class="drawer-brand" href="index.php">Elel</a></li>
-        <li><a class="drawer-menu-item" href="newEntry.php?page=1">New Entries</a></li>
-        <li><a class="drawer-menu-item" href="professors.php">Professors</a></li>
-        
-        <li class="drawer-dropdown">
-					<a class="drawer-menu-item" href="#" data-toggle="dropdown" role="button" aria-expanded="false">
-						Categories&nbsp;<span class="drawer-caret"></span>
-					</a>
-				</li>
-        <li class="drawer-category"><a class="drawer-menu-item" href="category.php?category=commerce&page=1">&nbsp;&nbsp;Commerce</a></li>
-        <li class="drawer-category"><a class="drawer-menu-item" href="category.php?category=economics&page=1">&nbsp;&nbsp;Economics</a></li>
-        <li class="drawer-category"><a class="drawer-menu-item" href="category.php?category=law&page=1">&nbsp;&nbsp;Law</a></li>
-        <li class="drawer-category"><a class="drawer-menu-item" href="category.php?category=sociology&page=1">&nbsp;&nbsp;Sociology</a></li>
-        <li class="drawer-category"><a class="drawer-menu-item" href="category.php?category=science&page=1">&nbsp;&nbsp;Science</a></li>
-        <li class="drawer-category"><a class="drawer-menu-item" href="category.php?category=liberalArts&page=1">&nbsp;&nbsp;Liberal Arts</a></li>
-        
-        <li><a class="drawer-menu-item" href="https://opac.lib.hit-u.ac.jp/opac/opac_search/?lang=0">HERMES</a></li>
-        <li><a class="drawer-menu-item" href="mypage.php">My Page</a></li>
-      </ul>
-    </nav>
+        <ul class="drawer-menu ">
+          <li><a class="drawer-menu-item" href="index.php">Top</a></li>
+          <li><a class="drawer-menu-item" href="newEntry.php?page=1">New Entries</a></li>
+					<li><a class="drawer-menu-item" href="professors.php">Professors</a></li>
+					
+					<li class="drawer-dropdown">
+						<a class="drawer-menu-item" href="#" data-toggle="dropdown" role="button" aria-expanded="false">
+							Categories&nbsp;<span class="drawer-caret"></span>
+						</a>
+						<ul class="drawer-dropdown-menu">
+							<li class="drawer-category"><a class="drawer-dropdown-menu-item" href="category.php?category=commerce&page=1">&nbsp;Commerce</a></li>
+							<li class="drawer-category"><a class="drawer-dropdown-menu-item" href="category.php?category=economics&page=1">&nbsp;Economics</a></li>
+							<li class="drawer-category"><a class="drawer-dropdown-menu-item" href="category.php?category=law&page=1">&nbsp;Law</a></li>
+							<li class="drawer-category"><a class="drawer-dropdown-menu-item" href="category.php?category=sociology&page=1">&nbsp;Sociology</a></li>
+							<li class="drawer-category"><a class="drawer-dropdown-menu-item" href="category.php?category=science&page=1">&nbsp;Science</a></li>
+							<li class="drawer-category"><a class="drawer-dropdown-menu-item" href="category.php?category=liberalArts&page=1">&nbsp;Liberal Arts</a></li>
+						</ul>
+					</li>
+					
+					
+					<li><a class="drawer-menu-item" href="https://opac.lib.hit-u.ac.jp/opac/opac_search/?lang=0">HERMES</a></li>
+					<li><a class="drawer-menu-item" href="mypage.php">My Page</a></li>
+        </ul>
+      </nav>
 <!--
 		<div class="container">
 			<nav class="navbar navbar-expand-sm navbar-dark">
@@ -207,7 +210,7 @@ $app->run();
             </div>
             
             <div id="professor" class="tab-pane">
-            	<h4 class="text-center mt-1"><a href="professors.php">Hitotsubashi Professors</a></h4>
+            	<h4 class="text-center mt-3"><a href="professors.php">Hitotsubashi Professors</a></h4>
             	<h5>Commerce</h5>
             	<ul class="list-group list-group-flush">
             	<?php
@@ -283,6 +286,10 @@ $app->run();
 			</div>
 		</section>
 		
+		<div class="backToTop rounded-circle">
+			<a href="#top"><i class="fas fa-arrow-alt-circle-up fa-3x"></i></a>
+		</div>
+		
 	</main>
 	
 	<footer class="text-center text-white py-4">
@@ -290,7 +297,16 @@ $app->run();
  			<p><a href="index.php">Top</a></p>
  			<p><a href="newEntry.php?page=1">New Entries</a></p>
  			<p><a href="professors.php">Professors</a></p>
+ 			<p class="footer-category-title">Categories<i class="fas fa-caret-down" data-fa-transform="right-6 down-1"></i></p>
+ 			<p class="footer-category"><a href="category.php?category=commerce&page=1">Commerce</a></p>
+ 			<p class="footer-category"><a href="category.php?category=economics&page=1">Economics</a></p>
+ 			<p class="footer-category"><a href="category.php?category=law&page=1">Law</a></p>
+ 			<p class="footer-category"><a href="category.php?category=sociology&page=1">Sociology</a></p>
+ 			<p class="footer-category"><a href="category.php?category=science&page=1">Science</a></p>
+ 			<p class="footer-category"><a href="category.php?category=liberalArts&page=1">Liberal Arts</a></p>
+
  			
+<!--
  			<div class="dropdown show mb-3">
 				<a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 					Categories
@@ -305,6 +321,7 @@ $app->run();
 					<a class="dropdown-item" href="category.php?category=liberalArts&page=1">Liberal Arts</a>
 				</div>
 			</div>
+-->
  				
  			<p><a href="mypage.php">My Page</a></p>
  			<p><a href="about.php">About</a></p>
@@ -327,28 +344,15 @@ $app->run();
 	
 	<!-- drawer.js -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/drawer/3.2.2/js/drawer.min.js"></script>
+
+	
+	
 	
 	<!--	slide  -->
 	<script type="text/javascript" src="js/jquery.gallery.js"></script>
 	
-	<script type="text/javascript">
-		$(function() {
-			$('.drawer').drawer();
-			
-			$('#dg-container').gallery({
-				autoplay	:	true
-			});
-			
-			$('.cover a[href^="#"]').click(function() {
-          var speed = 400; 
-          var href= $(this).attr("href");
-          var target = $(href == "#" || href == "" ? 'html' : href);
-          var position = target.offset().top;
-          $('body,html').animate({scrollTop:position}, speed, 'swing');
-          return false;
-        });
-			
-		});
-	</script>
+	<!--	js  -->
+	<script type="text/javascript" src="js/main.js"></script>
+	
 </body>
 </html>

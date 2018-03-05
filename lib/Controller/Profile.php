@@ -58,7 +58,14 @@ class Profile extends \lib\Controller{
 	}
 	
 	private function validate(){
+		if(!isset($_POST['firstName'])||!isset($_POST['lastName'])||!isset($_POST['sei'])||!isset($_POST['mei'])){
+			echo "Invalid Form!";
+			exit;
+		}
 		
+		if($_POST['firstName']===''||$_POST['lastName']===''||$_POST['sei']===''||$_POST['mei']===''){
+			throw new \lib\Exception\FormError();
+		}
 	}
 	
 	

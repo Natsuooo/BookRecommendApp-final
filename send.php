@@ -1,4 +1,6 @@
 <?php
+
+
 session_start();
 define('DSN', 'mysql:host=localhost;dbname=login');
 define('DB_USERNAME','natsuo');

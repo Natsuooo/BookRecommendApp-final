@@ -22,11 +22,20 @@ $app->run();
    
     <!-- Google fonts -->
 		<link href="https://fonts.googleapis.com/css?family=Dancing+Script:700|Nunito|Playfair+Display:400i" rel="stylesheet">
+   
+   	<!--  Font Awesome  -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
     
     <!-- CSS -->
     <link rel="stylesheet" href="css/subpages.css">
     
-	<title>Hitotsubashi Professors | ELEL（エレル）一橋大教授のオススメ図書</title>
+	<title>
+		<?php
+		foreach($app->getValues('profile') as $profile){
+			echo h(ucfirst($profile->firstName))."&nbsp;".h(ucfirst($profile->lastName))." | Elel（エレル）一橋大教授のオススメ図書";
+		}
+		?>
+	</title>
 	
 
 </head>
@@ -47,16 +56,18 @@ $app->run();
 					<li><a class="drawer-menu-item" href="professors.php">Professors</a></li>
 					
 					<li class="drawer-dropdown">
-					<a class="drawer-menu-item" href="#" data-toggle="dropdown" role="button" aria-expanded="false">
-						Categories&nbsp;<span class="drawer-caret"></span>
-					</a>
+						<a class="drawer-menu-item" href="#" data-toggle="dropdown" role="button" aria-expanded="false">
+							Categories&nbsp;<span class="drawer-caret"></span>
+						</a>
+						<ul class="drawer-dropdown-menu">
+							<li class="drawer-category"><a class="drawer-dropdown-menu-item" href="category.php?category=commerce&page=1">&nbsp;Commerce</a></li>
+							<li class="drawer-category"><a class="drawer-dropdown-menu-item" href="category.php?category=economics&page=1">&nbsp;Economics</a></li>
+							<li class="drawer-category"><a class="drawer-dropdown-menu-item" href="category.php?category=law&page=1">&nbsp;Law</a></li>
+							<li class="drawer-category"><a class="drawer-dropdown-menu-item" href="category.php?category=sociology&page=1">&nbsp;Sociology</a></li>
+							<li class="drawer-category"><a class="drawer-dropdown-menu-item" href="category.php?category=science&page=1">&nbsp;Science</a></li>
+							<li class="drawer-category"><a class="drawer-dropdown-menu-item" href="category.php?category=liberalArts&page=1">&nbsp;Liberal Arts</a></li>
+						</ul>
 					</li>
-					<li class="drawer-category"><a class="drawer-menu-item" href="category.php?category=commerce&page=1">&nbsp;&nbsp;Commerce</a></li>
-					<li class="drawer-category"><a class="drawer-menu-item" href="category.php?category=economics&page=1">&nbsp;&nbsp;Economics</a></li>
-					<li class="drawer-category"><a class="drawer-menu-item" href="category.php?category=law&page=1">&nbsp;&nbsp;Law</a></li>
-					<li class="drawer-category"><a class="drawer-menu-item" href="category.php?category=sociology&page=1">&nbsp;&nbsp;Sociology</a></li>
-					<li class="drawer-category"><a class="drawer-menu-item" href="category.php?category=science&page=1">&nbsp;&nbsp;Science</a></li>
-					<li class="drawer-category"><a class="drawer-menu-item" href="category.php?category=liberalArts&page=1">&nbsp;&nbsp;Liberal Arts</a></li>
 					
 					
 					<li><a class="drawer-menu-item" href="https://opac.lib.hit-u.ac.jp/opac/opac_search/?lang=0">HERMES</a></li>
@@ -67,6 +78,21 @@ $app->run();
 	</header>
 	
 	<main role="main">
+	
+		<nav aria-label="breadcrumb">
+			<ol class="breadcrumb professor-breadcrumb">
+				<li class="breadcrumb-item"><a href="index.php">Top</a></li>
+				<li class="breadcrumb-item"><a href="professors.php">Professors</a></li>
+				<li class="breadcrumb-item active" aria-current="page">
+					<?php
+					foreach($app->getValues('profile') as $profile){
+						echo h(ucfirst($profile->firstName))."&nbsp;".h(ucfirst($profile->lastName));
+					}
+					?>
+				</li>
+			</ol>
+		</nav>
+		
 		<section>
 			<div class="container" id="each-professor">
 				<?php
@@ -130,6 +156,10 @@ $app->run();
 			</div>
 		</section>
 		
+		<div class="backToTop rounded-circle">
+			<a href="#top"><i class="fas fa-arrow-alt-circle-up fa-3x"></i></a>
+		</div>
+		
 	</main>
 	
 	<footer class="text-center text-white py-4">
@@ -138,20 +168,13 @@ $app->run();
  			<p><a href="newEntry.php?page=1">New Entry</a></p>
  			<p><a href="professors.php">Professor</a></p>
  			
- 			<div class="dropdown show mb-3">
-				<a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-					Categories
-				</a>
-
-				<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-					<a class="dropdown-item" href="category.php?category=commerce&page=1">Commerce</a>
-					<a class="dropdown-item" href="category.php?category=economics&page=1">Economics</a>
-					<a class="dropdown-item" href="category.php?category=law&page=1">Law</a>
-					<a class="dropdown-item" href="category.php?category=sociology&page=1">Sociology</a>
-					<a class="dropdown-item" href="category.php?category=science&page=1">Science</a>
-					<a class="dropdown-item" href="category.php?category=liberalArts&page=1">Liberal Arts</a>
-				</div>
-			</div>
+ 			<p class="footer-category-title">Categories<i class="fas fa-caret-down" data-fa-transform="right-6 down-1"></i></p>
+ 			<p class="footer-category"><a href="category.php?category=commerce&page=1">Commerce</a></p>
+ 			<p class="footer-category"><a href="category.php?category=economics&page=1">Economics</a></p>
+ 			<p class="footer-category"><a href="category.php?category=law&page=1">Law</a></p>
+ 			<p class="footer-category"><a href="category.php?category=sociology&page=1">Sociology</a></p>
+ 			<p class="footer-category"><a href="category.php?category=science&page=1">Science</a></p>
+ 			<p class="footer-category"><a href="category.php?category=liberalArts&page=1">Liberal Arts</a></p>
  				
  			<p><a href="mypage.php">My Page</a></p>
  			<p><a href="about.php">About</a></p>
@@ -173,10 +196,8 @@ $app->run();
 	<!-- drawer.js -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/drawer/3.2.2/js/drawer.min.js"></script>
 	
-	<script>
-		$(function(){
-			$('.drawer').drawer();
-		});
-	</script>
+	<!--	js  -->
+	<script type="text/javascript" src="js/subpages.js"></script>
+	
 </body>
 </html>

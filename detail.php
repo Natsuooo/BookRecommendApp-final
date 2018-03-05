@@ -23,10 +23,26 @@ $app->run();
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/drawer/3.2.2/css/drawer.min.css">
 	
 	<!-- Google fonts -->
-	<link href="https://fonts.googleapis.com/css?family=Dancing+Script:700|Nunito" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Dancing+Script:700|Nunito|Paprika" rel="stylesheet">
+	
+	<!--  Font Awesome  -->
+	<script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
 
 	<!-- CSS -->
 	<link rel="stylesheet" href="css/subpages.css">
+   
+	<!--  Facebook API -->
+  <meta property="og:url" content="<?= (empty($_SERVER['HTTPS']) ? 'http://' : 'https://').$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'] ?>" />
+  <meta property="og:type" content="website" />
+  <?php
+	foreach($app->getValues('details') as $detail){
+	?>
+  <meta property="og:title" content="<?= h($detail->title) ?> | Elel（エレル）一橋大教授のオススメ図書" />
+  <meta property="og:description" content="<?= h(ucfirst($detail->firstName)) ?>&nbsp;<?= h(ucfirst($detail->lastName)) ?>&nbsp;|&nbsp;<?= h($detail->text) ?>" />
+  <meta property="og:image" content="<?= h($detail->img) ?>" /> 
+  <?php
+	}
+	?>
     
 	<title>
 		<?php
@@ -37,6 +53,17 @@ $app->run();
 	</title>
 </head>
 <body class="drawer drawer--left drawer--navbarTopGutter">
+
+	<!--	facebook API  -->
+	<div id="fb-root"></div>
+	<script>(function(d, s, id) {
+		var js, fjs = d.getElementsByTagName(s)[0];
+		if (d.getElementById(id)) return;
+		js = d.createElement(s); js.id = id;
+		js.src = 'https://connect.facebook.net/ja_JP/sdk.js#xfbml=1&version=v2.12';
+		fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));</script>
+	
 	<header class="drawer-navbar drawer-navbar--fixed" role="banner">
     <div class="drawer-container">
       <div class="drawer-navbar-header">
@@ -53,16 +80,18 @@ $app->run();
 					<li><a class="drawer-menu-item" href="professors.php">Professors</a></li>
 					
 					<li class="drawer-dropdown">
-					<a class="drawer-menu-item" href="#" data-toggle="dropdown" role="button" aria-expanded="false">
-						Categories&nbsp;<span class="drawer-caret"></span>
-					</a>
+						<a class="drawer-menu-item" href="#" data-toggle="dropdown" role="button" aria-expanded="false">
+							Categories&nbsp;<span class="drawer-caret"></span>
+						</a>
+						<ul class="drawer-dropdown-menu">
+							<li class="drawer-category"><a class="drawer-dropdown-menu-item" href="category.php?category=commerce&page=1">&nbsp;Commerce</a></li>
+							<li class="drawer-category"><a class="drawer-dropdown-menu-item" href="category.php?category=economics&page=1">&nbsp;Economics</a></li>
+							<li class="drawer-category"><a class="drawer-dropdown-menu-item" href="category.php?category=law&page=1">&nbsp;Law</a></li>
+							<li class="drawer-category"><a class="drawer-dropdown-menu-item" href="category.php?category=sociology&page=1">&nbsp;Sociology</a></li>
+							<li class="drawer-category"><a class="drawer-dropdown-menu-item" href="category.php?category=science&page=1">&nbsp;Science</a></li>
+							<li class="drawer-category"><a class="drawer-dropdown-menu-item" href="category.php?category=liberalArts&page=1">&nbsp;Liberal Arts</a></li>
+						</ul>
 					</li>
-					<li class="drawer-category"><a class="drawer-menu-item" href="category.php?category=commerce&page=1">&nbsp;&nbsp;Commerce</a></li>
-					<li class="drawer-category"><a class="drawer-menu-item" href="category.php?category=economics&page=1">&nbsp;&nbsp;Economics</a></li>
-					<li class="drawer-category"><a class="drawer-menu-item" href="category.php?category=law&page=1">&nbsp;&nbsp;Law</a></li>
-					<li class="drawer-category"><a class="drawer-menu-item" href="category.php?category=sociology&page=1">&nbsp;&nbsp;Sociology</a></li>
-					<li class="drawer-category"><a class="drawer-menu-item" href="category.php?category=science&page=1">&nbsp;&nbsp;Science</a></li>
-					<li class="drawer-category"><a class="drawer-menu-item" href="category.php?category=liberalArts&page=1">&nbsp;&nbsp;Liberal Arts</a></li>
 					
 					
 					<li><a class="drawer-menu-item" href="https://opac.lib.hit-u.ac.jp/opac/opac_search/?lang=0">HERMES</a></li>
@@ -73,6 +102,41 @@ $app->run();
 	</header>
 	
 	<main role="main">
+	
+		<nav aria-label="breadcrumb">
+			<ol class="breadcrumb professor-breadcrumb">
+				<li class="breadcrumb-item"><a href="index.php">Top</a></li>
+				
+					<?php
+					$preLink=$_SERVER['HTTP_REFERER'];
+					if(mb_strpos($preLink, 'professor.php?id')){
+						echo '<li class="breadcrumb-item"><a href="professors.php">Professors</a></li><li class="breadcrumb-item"><a href="'.$_SERVER['HTTP_REFERER'].'">Professor</a></li>';
+					}else if(mb_strpos($preLink, 'professors.php')){
+						echo '<li class="breadcrumb-item"><a href="'.$_SERVER['HTTP_REFERER'].'">Professors</a></li>';
+					}else if(mb_strpos($preLink, 'category.php?category=commerce')){
+						echo '<li class="breadcrumb-item"><a href="'.$_SERVER['HTTP_REFERER'].'">Commerce</a></li>';
+					}else if(mb_strpos($preLink, 'category.php?category=economics')){
+						echo '<li class="breadcrumb-item"><a href="'.$_SERVER['HTTP_REFERER'].'">Economics</a></li>';
+					}else if(mb_strpos($preLink, 'category.php?category=law')){
+						echo '<li class="breadcrumb-item"><a href="'.$_SERVER['HTTP_REFERER'].'">Law</a></li>';
+					}else if(mb_strpos($preLink, 'category.php?category=sociology')){
+						echo '<li class="breadcrumb-item"><a href="'.$_SERVER['HTTP_REFERER'].'">Sociology</a></li>';
+					}else if(mb_strpos($preLink, 'category.php?category=science')){
+						echo '<li class="breadcrumb-item"><a href="'.$_SERVER['HTTP_REFERER'].'">Science</a></li>';
+					}else if(mb_strpos($preLink, 'category.php?category=liberalArts')){
+						echo '<li class="breadcrumb-item"><a href="'.$_SERVER['HTTP_REFERER'].'">Liberal Arts</a></li>';
+					}else if(mb_strpos($preLink, 'newEntry.php')){
+						echo '<li class="breadcrumb-item"><a href="'.$_SERVER['HTTP_REFERER'].'">New Entries</a></li>';
+					}else{
+						echo '';
+					}
+					?>
+				
+				<li class="breadcrumb-item active" aria-current="page">Detail
+				</li>
+			</ol>
+		</nav>
+	
 		<section>
 			<div class="container" id="detail">
 				<?php
@@ -83,19 +147,43 @@ $app->run();
 					
 					<div class="detail-tags">
 						<p><a href="professor.php?id=<?= $detail->id ?>"><span class="text-muted detail-tag border rounded"><?= h(ucfirst($detail->firstName)) ?>&nbsp;<?= h(ucfirst($detail->lastName)) ?></span></a>
-							<a href="category.php?category=<?= h($related->category) ?>&page=1"><span class="text-muted detail-tag border rounded"><?= h(ucfirst($detail->category)) ?></span></a>
+							<a href="category.php?category=<?= h($detail->category) ?>&page=1"><span class="text-muted detail-tag border rounded"><?= h(ucfirst($detail->category)) ?></span></a>
 						<span class="text-muted detail-tag border rounded"><?= h(ucfirst($detail->difficulty)) ?></span></p>
 					</div>
+					
+					
+						
+					<div class="sns">
+						<!--	Twitter API  -->
+						<?php
+						foreach($app->getValues('details') as $detail){
+						?>
+						<p class="twitter">
+							<a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" 
+						data-text="<?= h($detail->title) ?>&nbsp;|&nbsp;<?= h(ucfirst($detail->firstName)) ?>&nbsp;<?= h(ucfirst($detail->lastName)) ?>&nbsp;|&nbsp;<?= h(mb_substr($detail->text, 0, 60)) ?>...#一橋大教授のオススメ図書" 
+						data-url="<?= (empty($_SERVER['HTTPS']) ? 'http://' : 'https://').$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'] ?>" 
+						data-lang="en" data-show-count="false" class="twitter">Tweet</a>
+						</p>
+						<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+						<?php
+						}
+						?>
+
+
+						<!--	Facebook API  -->
+						<span class="fb-share-button facebook" data-href="<?= (empty($_SERVER['HTTPS']) ? 'http://' : 'https://').$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'] ?>" data-layout="button" data-size="small" data-mobile-iframe="true"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">share</a></span>
+					</div>
+					
 					
 					<div class="detail-info bg-light rounded">
 						<div class="row">
 							<div class="col-7 detail-img">
-								<a href="<?= h($detail->url) ?>" target="_blank"><img src="<?= h($detail->img) ?>" alt="<?= h($detail->title) ?>" class="w-100 rounded"></a>
+								<a href="<?= h($detail->url) ?>" target="_blank"><img src="<?= h($detail->img) ?>" alt="<?= h($detail->title) ?>" class="rounded w-100"></a>
 							</div>
 							<div class="col-5 detail-content">
-								<p class="detail-author">Author<br><?= h($detail->author) ?></p>
-								<p class="detail-publisher">Publisher<br><?= h($detail->publisher) ?></p>
-								<p class="detail-publishDate">Publish Date<br><?= h($detail->publishDate) ?></p>
+								<p class="detail-author"><span class="detail-minititle">Author</span><br><?= h($detail->author) ?></p>
+								<p class="detail-publisher"><span class="detail-minititle">Publisher</span><br><?= h($detail->publisher) ?></p>
+								<p class="detail-publishDate"><span class="detail-minititle">Publish Date</span><br><?= h($detail->publishDate) ?></p>
 								<p><a href="<?= h($detail->url) ?>"><img src="img/amazon.svg" alt="amazon" class="rounded" target="_blank"></a></p>
 							</div>
 						</div>
@@ -120,7 +208,7 @@ $app->run();
 				echo "<br>";
 				foreach($app->getValues('comments') as $comment){
 					echo "<p class='comment-content'>".h($comment->comment)."</p>";
-					echo "<p class='comment-name'>By&nbsp;".h($comment->name)."<span class='comment-date'>(".h(substr($comment->created, 0, 10)).")</span></p>";
+					echo "<p class='comment-name'>".h($comment->name)."<span class='comment-date'>(".h(substr($comment->created, 0, 10)).")</span></p>";
 				}
 				?>
 				<p class="comments"></p>
@@ -134,6 +222,7 @@ $app->run();
 						<label for="textarea">Comment</label>
 						<textarea name="comment" id="textarea" rows="5" class="form-control" placeholder="Enter your comment" required></textarea>
 					</div>
+					<span class="commentError"></span>
 
 					<!-- Button trigger modal -->
 					<button type="button" class="btn btn-primary box-shadow" data-toggle="modal" data-target="#comment-btn" data-toggle="tooltip" data-placement="right" title="Let's comment about the book!">
@@ -212,7 +301,9 @@ $app->run();
 			</div>
 		</section>
 		
-		
+		<div class="backToTop rounded-circle">
+			<a href="#top"><i class="fas fa-arrow-alt-circle-up fa-3x"></i></a>
+		</div>
 		
 	</main>
 
@@ -222,20 +313,13 @@ $app->run();
  			<p><a href="newEntry.php?page=1">New Entry</a></p>
  			<p><a href="professors.php">Professor</a></p>
  			
- 			<div class="dropdown show mb-3">
-				<a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-					Categories
-				</a>
-
-				<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-					<a class="dropdown-item" href="category.php?category=commerce&page=1">Commerce</a>
-					<a class="dropdown-item" href="category.php?category=economics&page=1">Economics</a>
-					<a class="dropdown-item" href="category.php?category=law&page=1">Law</a>
-					<a class="dropdown-item" href="category.php?category=sociology&page=1">Sociology</a>
-					<a class="dropdown-item" href="category.php?category=science&page=1">Science</a>
-					<a class="dropdown-item" href="category.php?category=liberalArts&page=1">Liberal Arts</a>
-				</div>
-			</div>
+ 			<p class="footer-category-title">Categories<i class="fas fa-caret-down" data-fa-transform="right-6 down-1"></i></p>
+ 			<p class="footer-category"><a href="category.php?category=commerce&page=1">Commerce</a></p>
+ 			<p class="footer-category"><a href="category.php?category=economics&page=1">Economics</a></p>
+ 			<p class="footer-category"><a href="category.php?category=law&page=1">Law</a></p>
+ 			<p class="footer-category"><a href="category.php?category=sociology&page=1">Sociology</a></p>
+ 			<p class="footer-category"><a href="category.php?category=science&page=1">Science</a></p>
+ 			<p class="footer-category"><a href="category.php?category=liberalArts&page=1">Liberal Arts</a></p>
  				
  			<p><a href="mypage.php">My Page</a></p>
  			<p><a href="about.php">About</a></p>
@@ -257,44 +341,11 @@ $app->run();
 	<!-- drawer.js -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/drawer/3.2.2/js/drawer.min.js"></script>
 	
-	<script>
-		$(function() {
-			
-			$(function(){
-				$('.drawer').drawer();
-			});
-			
-			$('#myModal').on('shown.bs.modal', function () {
-				$('#myInput').trigger('focus')
-			});
-			
-    $('#send').click(function(){
-			
-			var date = new Date();
-			formattedDate = [
-				date.getFullYear(),
-				('0' + (date.getMonth() + 1)).slice(-2),
-				('0' + date.getDate()).slice(-2)
-			].join('-');
-			
-      $.ajax({
-        type: "POST",
-        url: "send.php",
-				dataType: "json",
-        data: {
-					comment : $('#textarea').val(),
-					name: $('#name').val()
-				},
-      }).done(function(data) {
-      	$('.comments').append('<p class="comment-content">'+data.comment+'</p><p class="comment-by">By&nbsp;'+data.name+'</p><p class="comment-date">'+formattedDate+'</p>');
-      }).fail(function(XMLHttpRequest, textStatus, errorThrown) {
-       
-        alert('Error : ' + errorThrown);
-      });
-			
-    });
+	<!--	js  -->
+	<script type="text/javascript" src="js/subpages.js"></script>
+	<script type="text/javascript" src="js/comment.js"></script>
 
-  });
-	</script>
+	
+
 </body>
 </html>
