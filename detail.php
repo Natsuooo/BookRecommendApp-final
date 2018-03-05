@@ -108,27 +108,31 @@ $app->run();
 				<li class="breadcrumb-item"><a href="index.php">Top</a></li>
 				
 					<?php
+					if(!empty($_SERVER['HTTP_REFERER'])){
 					$preLink=$_SERVER['HTTP_REFERER'];
+
 					if(mb_strpos($preLink, 'professor.php?id')){
-						echo '<li class="breadcrumb-item"><a href="professors.php">Professors</a></li><li class="breadcrumb-item"><a href="'.$_SERVER['HTTP_REFERER'].'">Professor</a></li>';
+						echo '<li class="breadcrumb-item"><a href="professors.php">Professors</a></li><li class="breadcrumb-item"><a href="'.$preLink.'">Professor</a></li>';
 					}else if(mb_strpos($preLink, 'professors.php')){
-						echo '<li class="breadcrumb-item"><a href="'.$_SERVER['HTTP_REFERER'].'">Professors</a></li>';
+						echo '<li class="breadcrumb-item"><a href="'.$preLink.'">Professors</a></li>';
 					}else if(mb_strpos($preLink, 'category.php?category=commerce')){
-						echo '<li class="breadcrumb-item"><a href="'.$_SERVER['HTTP_REFERER'].'">Commerce</a></li>';
+						echo '<li class="breadcrumb-item"><a href="'.$preLink.'">Commerce</a></li>';
 					}else if(mb_strpos($preLink, 'category.php?category=economics')){
-						echo '<li class="breadcrumb-item"><a href="'.$_SERVER['HTTP_REFERER'].'">Economics</a></li>';
+						echo '<li class="breadcrumb-item"><a href="'.$preLink.'">Economics</a></li>';
 					}else if(mb_strpos($preLink, 'category.php?category=law')){
-						echo '<li class="breadcrumb-item"><a href="'.$_SERVER['HTTP_REFERER'].'">Law</a></li>';
+						echo '<li class="breadcrumb-item"><a href="'.$preLink.'">Law</a></li>';
 					}else if(mb_strpos($preLink, 'category.php?category=sociology')){
-						echo '<li class="breadcrumb-item"><a href="'.$_SERVER['HTTP_REFERER'].'">Sociology</a></li>';
+						echo '<li class="breadcrumb-item"><a href="'.$preLink.'">Sociology</a></li>';
 					}else if(mb_strpos($preLink, 'category.php?category=science')){
-						echo '<li class="breadcrumb-item"><a href="'.$_SERVER['HTTP_REFERER'].'">Science</a></li>';
+						echo '<li class="breadcrumb-item"><a href="'.$preLink.'">Science</a></li>';
 					}else if(mb_strpos($preLink, 'category.php?category=liberalArts')){
-						echo '<li class="breadcrumb-item"><a href="'.$_SERVER['HTTP_REFERER'].'">Liberal Arts</a></li>';
+						echo '<li class="breadcrumb-item"><a href="'.$preLink.'">Liberal Arts</a></li>';
 					}else if(mb_strpos($preLink, 'newEntry.php')){
-						echo '<li class="breadcrumb-item"><a href="'.$_SERVER['HTTP_REFERER'].'">New Entries</a></li>';
+						echo '<li class="breadcrumb-item"><a href="'.$preLink.'">New Entries</a></li>';
 					}else{
 						echo '';
+					}
+						
 					}
 					?>
 				
@@ -322,7 +326,6 @@ $app->run();
  			<p class="footer-category"><a href="category.php?category=liberalArts&page=1">Liberal Arts</a></p>
  				
  			<p><a href="mypage.php">My Page</a></p>
- 			<p><a href="about.php">About</a></p>
  			<p><a href="contact.php">Contact</a></p>
  		</div>
 		<div class="container pt-5">

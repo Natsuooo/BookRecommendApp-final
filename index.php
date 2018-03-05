@@ -34,6 +34,7 @@ $app->run();
 		<script type="text/javascript" src="js/modernizr.custom.53451.js"></script>
     
 	<title>Elel（エレル） | 一橋大教授のオススメ図書</title>
+	<meta name="description" content="Elel（エレル）では一橋大学の教授陣が厳選して推薦図書を紹介しています。商学・経済学・法学・社会学・理学・教養の6つのカテゴリーからあなたの人生を豊かにしてくれる良書を見つけることができます。専門分野に関する知識を深めたい、知見をもっと広げたい、そんなときにご参考下さい。">
 	
 
 </head>
@@ -106,8 +107,16 @@ $app->run();
 		</div>
 	
 		<div class="container words-cover pb-1">
-			<h4 class="text-secondary text-center words"><i class="fas fa-quote-left fa-lg"></i>Be hungry, be crazy.<i class="fas fa-quote-right fa-lg"></i></h4>
-			<p class="text-center text-secondary pr-2 words-by">- Steve Jobs</p>
+			<h4 class="text-secondary text-center words"><i class="fas fa-quote-left fa-lg"></i>
+			<?php
+			foreach($app->getValues('words') as $word){
+			?>
+				<?= h($word->words) ?>
+			<i class="fas fa-quote-right fa-lg"></i></h4>
+			<p class="text-center text-secondary pr-2 words-by">
+			- <?= h($word->person) ?>
+			</p>
+			<?php } ?>
 		</div>
 		<div id="slider" class="bg-light">
 			
@@ -324,7 +333,6 @@ $app->run();
 -->
  				
  			<p><a href="mypage.php">My Page</a></p>
- 			<p><a href="about.php">About</a></p>
  			<p><a href="contact.php">Contact</a></p>
  		</div>
 		<div class="container pt-5">

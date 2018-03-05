@@ -145,7 +145,6 @@ $app->run();
  			<p><a href="profile.php">Profile</a></p>
  			<p><a href="update.php">Update email/password</a></p>
  			<p><a href="logout.php">Logout</a></p>
- 			<p><a href="about.php">About</a></p>
  			<p><a href="contact.php">Contact</a></p>
  			
  		</div>

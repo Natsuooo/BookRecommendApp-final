@@ -291,7 +291,6 @@ $app->run();
  			<p class="footer-category"><a href="category.php?category=liberalArts&page=1">Liberal Arts</a></p>
  				
  			<p><a href="mypage.php">My Page</a></p>
- 			<p><a href="about.php">About</a></p>
  			<p><a href="contact.php">Contact</a></p>
  		</div>
 		<div class="container pt-5">

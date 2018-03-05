@@ -57,3 +57,14 @@ create table comments(
 	created datetime
 );
 
+create table words(
+	wordsId int not null auto_increment primary key,
+	words text,
+	person varchar(255)
+);
+
+insert into words (words, person) values
+('Be hungry, be crazy.', 'Steve Jobs'),
+('Be smart, be crazy.', 'Natsuo Yamashita'),
+;
+

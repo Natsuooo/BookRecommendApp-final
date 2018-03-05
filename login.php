@@ -31,7 +31,7 @@ $app->run();
 		<section>
 			<div class="container text-center">
 				<form action="" method="post"  class="form-signin">
-					<h1 class="h3 mb-3 font-weight-normal">Login</h1>
+					<h1 class="mb-3 font-weight-normal">Login</h1>
 				
 					<label for="email" class="sr-only">Email address</label>
      			<input type="email" id="email" name="email" class="form-control" placeholder="Email address" value="<?= !empty($app->getValues('email')) ? h($app->getValues('email')) : '' ?>" required autofocus>
@@ -40,12 +40,13 @@ $app->run();
 					<label for="password" class="sr-only">Password</label>
 					<input type="password" id="password" name="password" class="form-control" placeholder="Password" required>
 					<span class="err"><?= h($app->getErrors('password')); ?></span>
+					<span class="err"><?= h($app->getErrors('login')); ?></span>
 					
 					<button class="btn btn-lg btn-primary btn-block my-3" type="submit">login</button>
 					
 					<p class="fs12 my-1"><a href="signup.php">Sign Up</a></p>
-					<p class="fs12 my-1"><a href="index.php">Top</a></p>
 					<p class="fs12 my-1"><a href="forgetPassword.php">Forget password?</a></p>
+					<p class="fs12 my-1"><a href="index.php">Top</a></p>
 					
 					<input type="hidden" name="token" value="<?= h($_SESSION['token']); ?>">
 				</form>
@@ -68,7 +69,7 @@ $app->run();
 						My page is only for hitotsubashi professors.
 					</div>
 					<div class="modal-footer">
-						<a href="<?= $_SERVER['HTTP_REFERER'] ?>" class="btn btn-secondary">Back</a>
+						<a href="<?= !empty($_SERVER['HTTP_REFERER']) ?: 'index.php'  ?>" class="btn btn-secondary">Back</a>
 						<button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>
 					</div>
 				</div>

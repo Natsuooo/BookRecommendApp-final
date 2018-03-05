@@ -29,7 +29,7 @@ $app->run();
 
 	<title>
 		<?php foreach($app->getValues('profile') as $profile){ ?>
-		Profile - <?= h($profile->name) ?> | Elel（エレル）一橋大教授のオススメ図書
+		Profile - <?= h($profile->firstName) ?> <?= h($profile->lastName) ?> | Elel（エレル）一橋大教授のオススメ図書
 		<?php } ?>
 	</title>
 </head>
@@ -162,7 +162,7 @@ $app->run();
 						</div>
 					</div>
 				</div>
-				<p class="my-3 ml-1"><a href="<?= $_SERVER['HTTP_REFERER'] ?>">Back</a></p>
+				<p class="my-3 ml-1"><a href="<?= !empty($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : 'mypage.php' ?>">Back</a></p>
 			</form>	
 		</div>
 	</main>
@@ -174,7 +174,6 @@ $app->run();
  			<p><a href="profile.php">Profile</a></p>
  			<p><a href="update.php">Update email/password</a></p>
  			<p><a href="logout.php">Logout</a></p>
- 			<p><a href="about.php">About</a></p>
  			<p><a href="contact.php">Contact</a></p>
  			
  		</div>

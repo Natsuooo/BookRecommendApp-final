@@ -30,7 +30,13 @@ $app->run();
 	<!--  Font Awesome  -->
 	<script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
 	
-	<title>Mypage | Elel（エレル）一橋大教授のオススメ図書</title>
+	<title>
+		<?php
+		foreach($app->getValues('myposts') as $mypost){
+			echo "My Page - ".h(ucfirst($mypost->firstName))."&nbsp;".h(ucfirst($mypost->lastName))." | Elel（エレル）一橋大教授のオススメ図書";
+		}
+		?>
+	</title>
 	
 </head>
 <body class="drawer drawer--left drawer--navbarTopGutter">
@@ -88,6 +94,7 @@ $app->run();
 		<section>
 			<div class="container">
 			<h1 class="subpages-title text-center">My Posts</h1>
+			<h4 class="text-center noposts"><?= $app->getValues('empty') ?></h4>
 				<?php
 				foreach($app->getValues('myposts') as $mypost){
 				?>
@@ -147,7 +154,6 @@ $app->run();
  			<p><a href="profile.php">Profile</a></p>
  			<p><a href="update.php">Update email/password</a></p>
  			<p><a href="logout.php">Logout</a></p>
- 			<p><a href="about.php">About</a></p>
  			<p><a href="contact.php">Contact</a></p>
  			
  		</div>

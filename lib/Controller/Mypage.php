@@ -14,6 +14,10 @@ class Mypage extends \lib\Controller{
 		]);
 		$this->setValues('myposts', $myposts);
 		
+		if(empty($myposts)){
+			$this->setValues('empty', 'No Posts');
+		}
+		
 		if(isset($_POST['logout'])){
 			$this->logout();
 		}

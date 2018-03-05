@@ -176,7 +176,7 @@ $app->run();
 						<button type="button" class="btn btn-primary box-shadow" data-toggle="modal" data-target="#edit">Edit</button>
 					</div>
 					
-					<p class="my-3 text-center"><a href="<?= $_SERVER['HTTP_REFERER'] ?>">Back</a></p>
+					<p class="my-3 text-center"><a href="<?= !empty($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : 'mypage.php' ?>">Back</a></p>
 
 					<div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="editModalCenterTitle" aria-hidden="true">
 						<div class="modal-dialog modal-dialog-centered" role="document">
@@ -210,7 +210,6 @@ $app->run();
 		<p><a href="profile.php">Profile</a></p>
 		<p><a href="update.php">Update email/password</a></p>
 		<p><a href="logout.php">Logout</a></p>
-		<p><a href="about.php">About</a></p>
 		<p><a href="contact.php">Contact</a></p>
 
 	</div>

@@ -19,7 +19,7 @@ $app->run();
 	
 	<link rel="stylesheet" href="css/form.css">
 	
-	<title>Sign Up</title>
+	<title>Sign Up | Elel（エレル）一橋大教授のオススメ図書</title>
 	
 </head>
 <body>
@@ -31,7 +31,7 @@ $app->run();
 		<section>
 			<div class="container text-center">
 				<form action="" method="post" class="form-signin">
-					<h1 class="h3 mb-3 font-weight-normal">Sign up</h1>
+					<h1 class="mb-3 font-weight-normal">Sign up</h1>
 					
 					
 					
@@ -73,6 +73,7 @@ $app->run();
 					<label for="password" class="sr-only">Password</label>
 					<input type="password" id="password" name="password" class="form-control" placeholder="Password" required>
 					<span class="err"><?= h($app->getErrors('password')); ?></span>
+					<p style="color:#555555;">※Password must be at least 6 characters</p>
 					
 					<button class="btn btn-lg btn-primary btn-block my-3" type="submit">Sign up</button>
 					
@@ -96,16 +97,16 @@ $app->run();
 						</button>
 					</div>
 					<div class="modal-body">
-						This page is only for Hitotsubashi professors. Don't tell others this page link.
+						This page is only for hitotsubashi professors. Don't tell others this page link.
 					</div>
 					<div class="modal-footer">
-						<a href="<?= $_SERVER['HTTP_REFERER'] ?>" class="btn btn-secondary">Back</a>
+						<a href="<?= !empty($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : 'login.php' ?>" class="btn btn-secondary">Back</a>
 						<button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>
 					</div>
 				</div>
 			</div>
 		</div>
-		
+</main>		
 		<!-- jQuery first, then Popper.js, then Bootstrap JS -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
@@ -121,8 +122,7 @@ $app->run();
 			});
 		</script>
 		
-	</main>
-	<footer></footer>
+	
 	
 	
 </body>

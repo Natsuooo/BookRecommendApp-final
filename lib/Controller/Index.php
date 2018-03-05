@@ -42,5 +42,11 @@ class Index extends \lib\Controller{
 			'professionalCategory'=>'sociology'
 		]);
 		$this->setValues('sociologyProfessors', $professor);
+		
+		$wordsModel=new \lib\Model\Words();
+		$words=$wordsModel->words([
+			'professionalCategory'=>'sociology'
+		]);
+		$this->setValues('words', $words);
 	}
 }

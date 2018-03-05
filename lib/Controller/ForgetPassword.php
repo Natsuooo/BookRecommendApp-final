@@ -38,8 +38,11 @@ class ForgetPassword extends \lib\Controller{
 				return;
 			}
 			
+			mb_language("Japanese");
+			mb_internal_encoding("UTF-8");
+			
 			$to=$_POST['email'];
-			$subject='【ELEN】新規パスワードを発行しました';
+			$subject='【Elel】新規パスワードを発行しました';
 			$body="新規パスワード：{$password}";
 			$headers="From: n17975775@gmail.com";
 			if(mb_send_mail($to, $subject, $body, $headers)){

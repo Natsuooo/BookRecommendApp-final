@@ -63,7 +63,7 @@ $app->run();
 						</div>
 					</div>
 					
-					<p class="fs12"><a href="<?= $_SERVER['HTTP_REFERER'] ?>">Back</a></p>
+					<p class="fs12"><a href="<?= !empty($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : 'mypage.php' ?>">Back</a></p>
 					
 					<input type="hidden" name="token" value="<?= h($_SESSION['token']); ?>">
 				</form>

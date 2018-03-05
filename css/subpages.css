@@ -513,6 +513,14 @@ footer .dropdown a {
   color: #d60000;
 }
 
+/******  Contact  ******/
+.contact-label {
+  font-size: 17px;
+  font-weight: 400;
+  margin-top: 15px;
+  margin-bottom: 5px;
+}
+
 /*# sourceMappingURL=styles.css.map */
 
 /*# sourceMappingURL=subpages.css.map */

@@ -16,6 +16,8 @@ $app->run();
 		<!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -32,7 +34,7 @@ $app->run();
     <!-- CSS -->
     <link rel="stylesheet" href="css/subpages.css">
     
-	<title>Hitotsubashi Professors | Elel（エレル）一橋大教授のオススメ図書</title>
+	<title><?= h($category)=='liberalArts' ? 'Liberal Arts' : h(ucfirst($category)) ?> | Elel（エレル）一橋大教授のオススメ図書</title>
 	
 
 </head>
@@ -295,7 +297,6 @@ $app->run();
  			<p class="footer-category"><a href="category.php?category=liberalArts&page=1">Liberal Arts</a></p>
  				
  			<p><a href="mypage.php">My Page</a></p>
- 			<p><a href="about.php">About</a></p>
  			<p><a href="contact.php">Contact</a></p>
  		</div>
 		<div class="container pt-5">

@@ -164,7 +164,7 @@ $img=$_GET['img'];
 						<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#post">Post</button>
 					</div>
 					
-					<p class="my-3 text-center"><a href="<?= $_SERVER['HTTP_REFERER'] ?>">Back</a></p>
+					<p class="my-3 text-center"><a href="<?= !empty($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : 'search.php' ?>">Back</a></p>
 
 					<div class="modal fade" id="post" tabindex="-1" role="dialog" aria-labelledby="profileModalCenterTitle" aria-hidden="true">
 					<div class="modal-dialog modal-dialog-centered" role="document">
@@ -205,7 +205,6 @@ $img=$_GET['img'];
 		<p><a href="profile.php">Profile</a></p>
 		<p><a href="update.php">Update email/password</a></p>
 		<p><a href="logout.php">Logout</a></p>
-		<p><a href="about.php">About</a></p>
 		<p><a href="contact.php">Contact</a></p>
 
 	</div>
