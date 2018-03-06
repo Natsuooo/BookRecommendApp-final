@@ -12,6 +12,16 @@ $app->run();
 <!DOCTYPE html>
 <html lang="ja">
 <head>
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-115177760-1"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+
+		gtag('config', 'UA-115177760-1');
+	</script>
+
 	<!-- Required meta tags -->
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -103,7 +113,7 @@ $app->run();
 	
 	<main role="main">
 	
-		<nav aria-label="breadcrumb">
+		<nav aria-label="breadcrumb" class="detail-bread pt-3">
 			<ol class="breadcrumb professor-breadcrumb">
 				<li class="breadcrumb-item"><a href="index.php">Top</a></li>
 				
@@ -305,8 +315,8 @@ $app->run();
 			</div>
 		</section>
 		
-		<div class="backToTop rounded-circle">
-			<a href="#top"><i class="fas fa-arrow-alt-circle-up fa-3x"></i></a>
+		<div class="toTop text-center rounded-circle">
+			<a href="#top"><i class="fas fa-angle-up fa-2x"></i></a>
 		</div>
 		
 	</main>

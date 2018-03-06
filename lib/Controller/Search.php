@@ -7,8 +7,14 @@ class Search extends \lib\Controller{
 			header('Location: '.SITE_URL.'/login.php');
 			exit;
 		}
-		if($_SERVER['REQUEST_METHOD']==='POST'){
+		if(if(isset($_POST['search'])){
+			$this->postProcess();
+		}){
 			$this->ItemSearch("Books", $_POST['search']);
+		}
+		
+		if(isset($_POST['logout'])){
+			$this->logout();
 		}
 	}
 	

@@ -32,7 +32,7 @@ body {
 .drawer-nav li a {
   color: #555555;
   text-decoration: none;
-  font-weight: 200;
+  font-weight: 400;
 }
 .drawer-nav li a:hover {
   text-decoration: none;
@@ -166,7 +166,7 @@ body {
 }
 
 .post-title {
-  font-size: 14px;
+  font-size: 15px;
   margin-bottom: 5px;
   padding-top: 5px;
   word-wrap: break-word;
@@ -179,7 +179,7 @@ body {
 }
 
 .post-text {
-  font-size: 11px;
+  font-size: 13px;
   margin-top: -10px;
   padding-bottom: 5px;
   word-wrap: break-word;
@@ -355,6 +355,209 @@ footer .dropdown a {
   width: 110%;
 }
 
+@media (min-width: 576px) {
+  .drawer-dropdown {
+    margin-bottom: -5px;
+  }
+
+  .drawer-dropdown-menu {
+    background-color: transparent;
+  }
+
+  .top-title {
+    font-size: 50px;
+    margin-top: 50px;
+    padding-bottom: 10px;
+  }
+
+  .subpages-title {
+    font-size: 30px;
+    padding-top: 15px;
+    margin-right: 100px;
+    margin-left: 100px;
+    margin-top: 30px;
+  }
+
+  .breadcrumb {
+    font-size: 20px;
+    margin-left: 50px;
+  }
+
+  .index-title {
+    font-size: 30px;
+    padding-top: 15px;
+    margin-right: 60px;
+    margin-left: 60px;
+  }
+
+  .toTop {
+    width: 60px;
+    height: 60px;
+    padding-top: 10px;
+  }
+
+  .nav-tabs > li > a {
+    font-size: 20px;
+    padding-top: 15px;
+  }
+
+  .post {
+    border-bottom: 1.5px solid #dcdcdc;
+    padding-top: 20px;
+    padding-bottom: 30px;
+    margin-bottom: 30px;
+  }
+
+  .post-img {
+    width: 200px;
+    margin-left: -5px;
+  }
+
+  .post-title {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+
+  .post-tag {
+    font-size: 15px;
+  }
+
+  .post-text {
+    font-size: 17px;
+    margin-top: -5px;
+  }
+
+  .readMore {
+    font-size: 20px;
+  }
+
+  #professor h4 {
+    font-size: 30px;
+  }
+
+  #professor h5 {
+    font-size: 25px;
+    font-weight: 400;
+  }
+
+  #professor li {
+    font-size: 18px;
+    padding-top: 13px;
+    padding-bottom: 13px;
+  }
+
+  .list-group-item {
+    font-size: 20px;
+    font-weight: 400;
+  }
+
+  .recommend-title {
+    font-size: 30px;
+    padding-top: 15px;
+    margin-right: 60px;
+    margin-left: 60px;
+  }
+
+  footer {
+    margin-top: 100px;
+  }
+  footer p {
+    font-size: 20px;
+    font-weight: 300;
+  }
+  footer .footer-category {
+    font-size: 18px;
+    line-height: 21px;
+  }
+
+  .profile {
+    padding-top: 20px;
+    padding-bottom: 10px;
+    padding-left: 15px;
+  }
+  .profile h2 {
+    font-size: 30px;
+  }
+  .profile p {
+    font-size: 16px;
+  }
+
+  .detail-content p {
+    font-size: 15px;
+    line-height: 30px;
+  }
+
+  .detail-minititle {
+    font-size: 18px;
+  }
+
+  .detail-publisher {
+    margin-top: 5px;
+    margin-bottom: 7px;
+  }
+
+  .detail-text {
+    font-size: 20px;
+  }
+
+  .comment-title {
+    margin-top: 120px;
+  }
+
+  .myposts-nav {
+    font-size: 20px;
+    margin-left: 40px;
+  }
+
+  .search-box {
+    width: 100%;
+  }
+}
+@media (min-width: 768px) {
+  .myPosts {
+    width: 576px;
+  }
+
+  .profile {
+    width: 768px;
+  }
+
+  .search {
+    width: 576px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .postBooks {
+    width: 576px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .edit {
+    width: 576px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+@media (min-width: 1024px) {
+  .myposts-nav {
+    display: none;
+  }
+
+  .drawer-hamburger {
+    display: none;
+  }
+
+  .drawer-nav {
+    border-bottom: 1px solid #cdcdcd;
+    background: #fdfdfd;
+  }
+
+  .drawer-dropdown-menu {
+    background-color: white;
+  }
+}
 /*# sourceMappingURL=styles.css.map */
 
 /*# sourceMappingURL=mypage.css.map */

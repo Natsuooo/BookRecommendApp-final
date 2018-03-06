@@ -10,6 +10,16 @@ $app->run();
 <!DOCTYPE html>
 <html lang="ja">
 <head>
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-115177760-1"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+
+		gtag('config', 'UA-115177760-1');
+	</script>
+
 	<!-- Required meta tags -->
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -28,6 +38,7 @@ $app->run();
 	</header>
 	
 	<main>
+		
 		<section>
 			<div class="container text-center">
 				<form action="" method="post" class="form-signin">
@@ -37,7 +48,7 @@ $app->run();
 					<label for="email" class="sr-only">Email address</label>
      			<input type="email" id="email" name="email" class="form-control" placeholder="Email address" value="<?= !empty($app->getValues('email')) ? h($app->getValues('email')) : '' ?>" required>
      			<span class="err"><?= h($app->getErrors('forgetPassword')); ?></span>
-     			<span class="err"><?= h($app->getErrors('successEmail')); ?></span>
+     			<span class="err" style="color:#0f009b"><?= h($app->getErrors('successSend')); ?></span>
      			<span class="err"><?= h($app->getErrors('failEmail')); ?></span>
 					
 					<button class="btn btn-lg btn-primary btn-block my-3" type="submit">Send</button>

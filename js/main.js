@@ -37,17 +37,17 @@ $(function() {
 			return false;
 		});
 
-	 $('.backToTop').hide();
+	 $('.toTop').hide();
 
 	 $(window).scroll(function () {
 	 if ($(this).scrollTop() > 500) {
-				$('.backToTop').fadeIn();
+				$('.toTop').fadeIn();
 	 } else {
-				$('.backToTop').fadeOut();
+				$('.toTop').fadeOut();
 				}
 	 });
 
-	$('.backToTop').click(function() {
+	$('.toTop').click(function() {
 		$('body, html').animate({ scrollTop: 0 }, 500, 'swing');
 		return false;
 	});

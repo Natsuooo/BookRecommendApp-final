@@ -46,9 +46,10 @@ class ForgetPassword extends \lib\Controller{
 			$body="新規パスワード：{$password}";
 			$headers="From: n17975775@gmail.com";
 			if(mb_send_mail($to, $subject, $body, $headers)){
-				$this->setErrors('successEmail', 'success to send');
+				$this->setErrors('successSend', 'success to send');
+				$this->setValues('email', '');
 			}else{
-				$this->setErrors('failEmail', 'fail to send');
+				$this->setErrors('failSend', 'fail to send');
 			}
 			
 		}

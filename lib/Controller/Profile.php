@@ -15,8 +15,12 @@ class Profile extends \lib\Controller{
 		$this->setValues('profile', $profile);
 
 		
-		if($_SERVER['REQUEST_METHOD']==='POST'){
+		if(isset($_POST['firstName'])){
 			$this->postProcess();
+		}
+		
+		if(isset($_POST['logout'])){
+			$this->logout();
 		}
 		
 	}

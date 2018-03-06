@@ -7,10 +7,14 @@ class Post extends \lib\Controller{
 			header('Location: '.SITE_URL.'/login.php');
 			exit;
 		}
-		if($_SERVER['REQUEST_METHOD']==='POST'){
+		if(isset($_POST['text'])){
 			$this->postProcess();
 		}
 	}
+	
+	if(isset($_POST['logout'])){
+			$this->logout();
+		}
 	
 	protected function postProcess(){
 		try{

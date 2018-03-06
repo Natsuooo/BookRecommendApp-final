@@ -10,6 +10,16 @@ $app->run();
 <!DOCTYPE html>
 <html lang="ja">
 <head>
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-115177760-1"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+
+		gtag('config', 'UA-115177760-1');
+	</script>	
+	
 		<!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -20,8 +30,7 @@ $app->run();
     <!-- drawer.css -->
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/drawer/3.2.2/css/drawer.min.css">
     
-		<!--  CSS  -->
-    <link rel="stylesheet" href="css/styles.css">
+		
     
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Nunito|Dancing+Script|Dancing+Script:700" rel="stylesheet">
@@ -32,6 +41,9 @@ $app->run();
     
 		<!--	Slider  -->
 		<script type="text/javascript" src="js/modernizr.custom.53451.js"></script>
+   
+   	<!--  CSS  -->
+    <link rel="stylesheet" href="css/styles.css">
     
 	<title>Elel（エレル） | 一橋大教授のオススメ図書</title>
 	<meta name="description" content="Elel（エレル）では一橋大学の教授陣が厳選して推薦図書を紹介しています。商学・経済学・法学・社会学・理学・教養の6つのカテゴリーからあなたの人生を豊かにしてくれる良書を見つけることができます。専門分野に関する知識を深めたい、知見をもっと広げたい、そんなときにご参考下さい。">
@@ -72,6 +84,42 @@ $app->run();
 					<li><a class="drawer-menu-item" href="mypage.php">My Page</a></li>
         </ul>
       </nav>
+      
+      <ul class="nav nav-wide">
+				<li class="nav-item">
+					<a class="nav-link" href="index.php">Top</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="newEntry.php?page=1">New Entries</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="professors.php">Professors</a>
+				</li>
+				
+				<li class="drawer-dropdown nav-item">
+						<a class="nav-link" href="#" data-toggle="dropdown" role="button" aria-expanded="false">
+							Categories&nbsp;<span class="drawer-caret"></span>
+						</a>
+						<ul class="drawer-dropdown-menu">
+							<li class="drawer-category"><a class="drawer-dropdown-menu-item" href="category.php?category=commerce&page=1">Commerce</a></li>
+							<li class="drawer-category"><a class="drawer-dropdown-menu-item" href="category.php?category=economics&page=1">Economics</a></li>
+							<li class="drawer-category"><a class="drawer-dropdown-menu-item" href="category.php?category=law&page=1">Law</a></li>
+							<li class="drawer-category"><a class="drawer-dropdown-menu-item" href="category.php?category=sociology&page=1">Sociology</a></li>
+							<li class="drawer-category"><a class="drawer-dropdown-menu-item" href="category.php?category=science&page=1">Science</a></li>
+							<li class="drawer-category"><a class="drawer-dropdown-menu-item" href="category.php?category=liberalArts&page=1">Liberal Arts</a></li>
+						</ul>
+					</li>
+					
+					<li class="nav-item">
+						<a class="nav-link" href="https://opac.lib.hit-u.ac.jp/opac/opac_search/?lang=0">HERMES</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="mypage.php">My Page</a>
+					</li>
+					
+
+			</ul>
+      
 <!--
 		<div class="container">
 			<nav class="navbar navbar-expand-sm navbar-dark">
@@ -183,95 +231,97 @@ $app->run();
 -->
 		
 		<section>
-			<div class="container" id="index">
-				<h4 class="index-title text-center mt-5 pb-2">BEST BOOKS</h4>
-				<ul class="nav nav-tabs nav-justified mt-5 mb-4">
-					<li class="nav-item"><a href="#newEntry" class="nav-link active" data-toggle="tab">New Entries</a></li>
-					<li class="nav-item"><a href="#professor" class="nav-link" data-toggle="tab">Professors</a></li>
-					<li class="nav-item"><a href="#category" class="nav-link" data-toggle="tab">Categories</a></li>
-         </ul>
-          
-          <div class="tab-content">
-            <div id="newEntry" class="tab-pane active">
-							<?php
-							foreach($app->getValues('posts') as $post){
-							?>
-							<div class="post">
-								<div class="row mt-4">
-									<div class="col-5">
-										<a href="detail.php?post=<?= h($post->postId) ?>"><img src="<?= h($post->img) ?>" alt="<?= h($post->title) ?>" class="post-img rounded mt-1"></a>
-									</div>
-									<div class="col-7 post-content">
-										<h4 class="post-title"><a href="detail.php?post=<?= h($post->postId) ?>"><?= h($post->title) ?></a></h4>
-										<p><a href="professor.php?id=<?= h($post->id) ?>"><span class="post-tag border rounded"><?= h(ucfirst($post->firstName)) ?>&nbsp;<?= h(ucfirst($post->lastName)) ?></span></a>
-											<a href="category.php?category=<?= h($post->category) ?>&page=1"><span class="post-tag border rounded"><?= h(ucfirst($post->category)) ?></span></a>
-										<span class="post-tag border rounded"><?= h(ucfirst($post->difficulty)) ?></span></p>
-										<p class="post-text"><a href="detail.php?post=<?= h($post->postId) ?>">
-											<?= h(mb_substr($post->text, 0, 60)) ?>...
-											</a></p>
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-7">
+					<div class="container" id="index">
+						<h4 class="index-title text-center mt-5 pb-2">BEST BOOKS</h4>
+						<h3 class="index-title text-center mt-5 pb-2">New Entries</h3>
+						<ul class="nav nav-tabs nav-justified mt-5 mb-4">
+							<li class="nav-item"><a href="#newEntry" class="nav-link active" data-toggle="tab">New Entries</a></li>
+							<li class="nav-item"><a href="#professor" class="nav-link" data-toggle="tab">Professors</a></li>
+							<li class="nav-item"><a href="#category" class="nav-link" data-toggle="tab">Categories</a></li>
+						 </ul>
+
+							<div class="tab-content">
+								<div id="newEntry" class="tab-pane active">
+									<?php
+									foreach($app->getValues('posts') as $post){
+									?>
+									<div class="post">
+										<div class="row mt-4">
+											<div class="col-5">
+												<a href="detail.php?post=<?= h($post->postId) ?>"><img src="<?= h($post->img) ?>" alt="<?= h($post->title) ?>" class="post-img rounded mt-1"></a>
+											</div>
+											<div class="col-7 post-content">
+												<h4 class="post-title"><a href="detail.php?post=<?= h($post->postId) ?>"><?= h($post->title) ?></a></h4>
+												<p><a href="professor.php?id=<?= h($post->id) ?>"><span class="post-tag border rounded"><?= h(ucfirst($post->firstName)) ?>&nbsp;<?= h(ucfirst($post->lastName)) ?></span></a>
+													<a href="category.php?category=<?= h($post->category) ?>&page=1"><span class="post-tag border rounded"><?= h(ucfirst($post->category)) ?></span></a>
+												<span class="post-tag border rounded"><?= h(ucfirst($post->difficulty)) ?></span></p>
+												<p class="post-text"><a href="detail.php?post=<?= h($post->postId) ?>">
+													<?= h(mb_substr($post->text, 0, 60)) ?>...
+													</a></p>
+											</div>
+										</div>
+									</div>	
+									<?php } ?>
+									<a href="newEntry.php?page=1"><div class="text-center">
+										<button class="btn btn-primary my-3 box-shadow readMore">Read more</button>
+									</div></a>
+								</div>
+
+								<div id="professor" class="tab-pane">
+									<h4 class="text-center mt-3"><a href="professors.php">Hitotsubashi Professors</a></h4>
+									<h5>Commerce</h5>
+									<ul class="list-group list-group-flush">
+									<?php
+									foreach($app->getValues('commerceProfessors') as $commerceProfessor){
+									?>
+										<li class="list-group-item"><a href="professor.php?id=<?= $commerceProfessor->id ?>"><?= h(ucfirst($commerceProfessor->firstName)) ?>&nbsp;<?= h(ucfirst($commerceProfessor->lastName)) ?></a></li>
+									<?php } ?>	
+									</ul>
+
+									<h5>Economics</h5>
+									<ul class="list-group list-group-flush">
+									<?php
+									foreach($app->getValues('economicsProfessors') as $economicsProfessor){
+									?>
+										<li class="list-group-item"><a href="professor.php?id=<?= $economicsProfessor->id ?>"><?= h(ucfirst($economicsProfessor->firstName)) ?>&nbsp;<?= h(ucfirst($economicsProfessor->lastName)) ?></a></li>
+									<?php } ?>	
+									</ul>
+
+									<h5>Law</h5>
+									<ul class="list-group list-group-flush">
+									<?php
+									foreach($app->getValues('lawProfessors') as $lawProfessor){
+									?>
+										<li class="list-group-item"><a href="professor.php?id=<?= $lawProfessor->id ?>"><?= h(ucfirst($lawProfessor->firstName)) ?>&nbsp;<?= h(ucfirst($lawProfessor->lastName)) ?></a></li>
+									<?php } ?>	
+									</ul>
+
+									<h5>Sociology</h5>
+									<ul class="list-group list-group-flush">
+									<?php
+									foreach($app->getValues('sociologyProfessors') as $sociologyProfessor){
+									?>
+										<li class="list-group-item"><a href="professor.php?id=<?= $sociologyProfessor->id ?>"><?= h(ucfirst($sociologyProfessor->firstName)) ?>&nbsp;<?= h(ucfirst($sociologyProfessor->lastName)) ?></a></li>
+									<?php } ?>	
+									</ul>
+								</div>
+
+								<div id="category" class="tab-pane">
+									<div class="list-group">
+										<a href="category.php?category=commerce&page=1"><button type="button" class="list-group-item list-group-item-action">Commerce</button></a>
+										<a href="category.php?category=economics&page=1"><button type="button" class="list-group-item list-group-item-action">Economics</button></a>
+										<a href="category.php?category=law"><button type="button" class="list-group-item list-group-item-action">Law</button></a>
+										<a href="category.php?category=sociology&page=1"><button type="button" class="list-group-item list-group-item-action">Sociology</button></a>
+										<a href="category.php?category=science&page=1"><button type="button" class="list-group-item list-group-item-action">Science</button></a>
+										<a href="category.php?category=liberalArts&page=1"><button type="button" class="list-group-item list-group-item-action">Liberal Arts</button></a>
 									</div>
 								</div>
-							</div>	
-							<?php } ?>
-							<a href="newEntry.php?page=1"><div class="text-center">
-								<button class="btn btn-primary my-3 box-shadow">Read more</button>
-						  </div></a>
-            </div>
-            
-            <div id="professor" class="tab-pane">
-            	<h4 class="text-center mt-3"><a href="professors.php">Hitotsubashi Professors</a></h4>
-            	<h5>Commerce</h5>
-            	<ul class="list-group list-group-flush">
-            	<?php
-							foreach($app->getValues('commerceProfessors') as $commerceProfessor){
-							?>
-            		<li class="list-group-item"><a href="professor.php?id=<?= $commerceProfessor->id ?>"><?= h(ucfirst($commerceProfessor->firstName)) ?>&nbsp;<?= h(ucfirst($commerceProfessor->lastName)) ?></a></li>
-              <?php } ?>	
-              </ul>
-              
-              <h5>Economics</h5>
-            	<ul class="list-group list-group-flush">
-            	<?php
-							foreach($app->getValues('economicsProfessors') as $economicsProfessor){
-							?>
-            		<li class="list-group-item"><a href="professor.php?id=<?= $economicsProfessor->id ?>"><?= h(ucfirst($economicsProfessor->firstName)) ?>&nbsp;<?= h(ucfirst($economicsProfessor->lastName)) ?></a></li>
-              <?php } ?>	
-              </ul>
-              
-              <h5>Law</h5>
-            	<ul class="list-group list-group-flush">
-            	<?php
-							foreach($app->getValues('lawProfessors') as $lawProfessor){
-							?>
-            		<li class="list-group-item"><a href="professor.php?id=<?= $lawProfessor->id ?>"><?= h(ucfirst($lawProfessor->firstName)) ?>&nbsp;<?= h(ucfirst($lawProfessor->lastName)) ?></a></li>
-              <?php } ?>	
-              </ul>
-              
-              <h5>Sociology</h5>
-            	<ul class="list-group list-group-flush">
-            	<?php
-							foreach($app->getValues('sociologyProfessors') as $sociologyProfessor){
-							?>
-            		<li class="list-group-item"><a href="professor.php?id=<?= $sociologyProfessor->id ?>"><?= h(ucfirst($sociologyProfessor->firstName)) ?>&nbsp;<?= h(ucfirst($sociologyProfessor->lastName)) ?></a></li>
-              <?php } ?>	
-              </ul>
-            </div>
-            
-            <div id="category" class="tab-pane">
-             	<div class="list-group">
-								<a href="category.php?category=commerce&page=1"><button type="button" class="list-group-item list-group-item-action">Commerce</button></a>
-								<a href="category.php?category=economics&page=1"><button type="button" class="list-group-item list-group-item-action">Economics</button></a>
-								<a href="category.php?category=law"><button type="button" class="list-group-item list-group-item-action">Law</button></a>
-								<a href="category.php?category=sociology&page=1"><button type="button" class="list-group-item list-group-item-action">Sociology</button></a>
-								<a href="category.php?category=science&page=1"><button type="button" class="list-group-item list-group-item-action">Science</button></a>
-								<a href="category.php?category=liberalArts&page=1"><button type="button" class="list-group-item list-group-item-action">Liberal Arts</button></a>
 							</div>
-            </div>
-          </div>
-			</div>
-		</section>
-		
-		<section>
+					</div>
+					
 			<div class="container" id="recommend">
 			<h3 class="recommend-title text-center">RECOMMEND</h3>
 				<?php
@@ -292,12 +342,72 @@ $app->run();
 					</div>
 				</div>	
 				<?php } ?>
+			</div>					
+					</div>
+					
+					<div class="col-lg-5">
+						
+						<div class="list-group categories">
+							<h4 class="text-center">Categories</h4>
+							<a href="category.php?category=commerce&page=1"><button type="button" class="list-group-item list-group-item-action">Commerce</button></a>
+							<a href="category.php?category=economics&page=1"><button type="button" class="list-group-item list-group-item-action">Economics</button></a>
+							<a href="category.php?category=law"><button type="button" class="list-group-item list-group-item-action">Law</button></a>
+							<a href="category.php?category=sociology&page=1"><button type="button" class="list-group-item list-group-item-action">Sociology</button></a>
+							<a href="category.php?category=science&page=1"><button type="button" class="list-group-item list-group-item-action">Science</button></a>
+							<a href="category.php?category=liberalArts&page=1"><button type="button" class="list-group-item list-group-item-action">Liberal Arts</button></a>
+						</div>
+						
+						<div class="professor-wide">
+						<h4 class="text-center mt-3"><a href="professors.php">Hitotsubashi Professors</a></h4>
+						<h5>Commerce</h5>
+						<ul class="list-group list-group-flush">
+						<?php
+						foreach($app->getValues('commerceProfessors') as $commerceProfessor){
+						?>
+							<li class="list-group-item"><a href="professor.php?id=<?= $commerceProfessor->id ?>"><?= h(ucfirst($commerceProfessor->firstName)) ?>&nbsp;<?= h(ucfirst($commerceProfessor->lastName)) ?></a></li>
+						<?php } ?>	
+						</ul>
+
+						<h5>Economics</h5>
+						<ul class="list-group list-group-flush">
+						<?php
+						foreach($app->getValues('economicsProfessors') as $economicsProfessor){
+						?>
+							<li class="list-group-item"><a href="professor.php?id=<?= $economicsProfessor->id ?>"><?= h(ucfirst($economicsProfessor->firstName)) ?>&nbsp;<?= h(ucfirst($economicsProfessor->lastName)) ?></a></li>
+						<?php } ?>	
+						</ul>
+
+						<h5>Law</h5>
+						<ul class="list-group list-group-flush">
+						<?php
+						foreach($app->getValues('lawProfessors') as $lawProfessor){
+						?>
+							<li class="list-group-item"><a href="professor.php?id=<?= $lawProfessor->id ?>"><?= h(ucfirst($lawProfessor->firstName)) ?>&nbsp;<?= h(ucfirst($lawProfessor->lastName)) ?></a></li>
+						<?php } ?>	
+						</ul>
+
+						<h5>Sociology</h5>
+						<ul class="list-group list-group-flush">
+						<?php
+						foreach($app->getValues('sociologyProfessors') as $sociologyProfessor){
+						?>
+							<li class="list-group-item"><a href="professor.php?id=<?= $sociologyProfessor->id ?>"><?= h(ucfirst($sociologyProfessor->firstName)) ?>&nbsp;<?= h(ucfirst($sociologyProfessor->lastName)) ?></a></li>
+						<?php } ?>	
+						</ul>
+						</div>
+						
+					</div>
+					
+				</div>
 			</div>
+			
 		</section>
 		
-		<div class="backToTop rounded-circle">
-			<a href="#top"><i class="fas fa-arrow-alt-circle-up fa-3x"></i></a>
-		</div>
+
+
+	<div class="toTop text-center rounded-circle">
+		<a href="#top"><i class="fas fa-angle-up fa-2x"></i></a>
+	</div>	
 		
 	</main>
 	

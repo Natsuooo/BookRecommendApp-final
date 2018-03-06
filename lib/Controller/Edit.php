@@ -8,6 +8,10 @@ class Edit extends \lib\Controller{
 			exit;
 		}
 		
+		if(isset($_POST['logout'])){
+			$this->logout();
+		}
+		
 		
 		if(isset($_GET['post'])){
 			$_SESSION['editPostId']=$_GET['post'];

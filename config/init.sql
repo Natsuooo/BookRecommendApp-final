@@ -1,9 +1,3 @@
-create database login;
-
-grant all on login.* to natsuo@localhost identified by 'd8skcadfw9';
-
-use login
-
 create table users(
 	id int not null auto_increment primary key,
 	firstName varchar(255),
@@ -65,6 +59,6 @@ create table words(
 
 insert into words (words, person) values
 ('Be hungry, be crazy.', 'Steve Jobs'),
-('Be smart, be crazy.', 'Natsuo Yamashita'),
+('Be smart, be crazy.', 'Natsuo Yamashita')
 ;
 

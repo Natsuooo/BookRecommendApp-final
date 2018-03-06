@@ -11,6 +11,16 @@ $app->run();
 <!DOCTYPE html>
 <html lang="ja">
 <head>
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-115177760-1"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+
+		gtag('config', 'UA-115177760-1');
+	</script>
+
 	<!-- Required meta tags -->
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -89,7 +99,7 @@ $app->run();
 			</ol>
 		</nav>
 	
-		<div class="container">
+		<div class="container profile">
 			<h1 class="subpages-title text-center mb-4">Profile</h1>
 			<form action="" method="post">
 			<?php foreach($app->getValues('profile') as $profile){ ?>

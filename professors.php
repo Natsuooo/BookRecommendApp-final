@@ -10,6 +10,16 @@ $app->run();
 <!DOCTYPE html>
 <html lang="ja">
 <head>
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-115177760-1"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+
+		gtag('config', 'UA-115177760-1');
+	</script>
+	
 		<!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -30,6 +40,8 @@ $app->run();
     <link rel="stylesheet" href="css/subpages.css">
     
 	<title>Hitotsubashi Professors | Elel（エレル）一橋大教授のオススメ図書</title>
+	
+	<meta name="description" content="推薦図書を紹介して下さっている一橋大学の教授の方々のプロフィールを見ることができます。好きな教授から推薦図書を見つけるのも良いかもしれません。">
 	
 
 </head>
@@ -84,6 +96,8 @@ $app->run();
 			</ol>
 		</nav>
 	
+		<div class="row">
+		<div class="col-lg-7">
 		<section>
 			<div class="container" id="professors">
 				<ul class="nav nav-tabs nav-justified mt-4 mb-3">
@@ -274,9 +288,67 @@ $app->run();
 				<?php } ?>
 			</div>
 		</section>
+		</div>
 		
-		<div class="backToTop rounded-circle">
-			<a href="#top"><i class="fas fa-arrow-alt-circle-up fa-3x"></i></a>
+		<div class="toTop text-center rounded-circle">
+			<a href="#top"><i class="fas fa-angle-up fa-2x"></i></a>
+		</div>
+		
+		
+			<div class="col-lg-5">
+
+			<div class="list-group categories categories-professors">
+				<h4 class="text-center">Categories</h4>
+				<a href="category.php?category=commerce&page=1"><button type="button" class="list-group-item list-group-item-action">Commerce</button></a>
+				<a href="category.php?category=economics&page=1"><button type="button" class="list-group-item list-group-item-action">Economics</button></a>
+				<a href="category.php?category=law"><button type="button" class="list-group-item list-group-item-action">Law</button></a>
+				<a href="category.php?category=sociology&page=1"><button type="button" class="list-group-item list-group-item-action">Sociology</button></a>
+				<a href="category.php?category=science&page=1"><button type="button" class="list-group-item list-group-item-action">Science</button></a>
+				<a href="category.php?category=liberalArts&page=1"><button type="button" class="list-group-item list-group-item-action">Liberal Arts</button></a>
+			</div>
+
+			<div class="professor-wide professor-wide-professors">
+			<h4 class="text-center mt-3"><a href="professors.php">Hitotsubashi Professors</a></h4>
+			<h5>Commerce</h5>
+			<ul class="list-group list-group-flush">
+			<?php
+			foreach($app->getValues('commerceProfessors') as $commerceProfessor){
+			?>
+				<li class="list-group-item"><a href="professor.php?id=<?= $commerceProfessor->id ?>"><?= h(ucfirst($commerceProfessor->firstName)) ?>&nbsp;<?= h(ucfirst($commerceProfessor->lastName)) ?></a></li>
+			<?php } ?>	
+			</ul>
+
+			<h5>Economics</h5>
+			<ul class="list-group list-group-flush">
+			<?php
+			foreach($app->getValues('economicsProfessors') as $economicsProfessor){
+			?>
+				<li class="list-group-item"><a href="professor.php?id=<?= $economicsProfessor->id ?>"><?= h(ucfirst($economicsProfessor->firstName)) ?>&nbsp;<?= h(ucfirst($economicsProfessor->lastName)) ?></a></li>
+			<?php } ?>	
+			</ul>
+
+			<h5>Law</h5>
+			<ul class="list-group list-group-flush">
+			<?php
+			foreach($app->getValues('lawProfessors') as $lawProfessor){
+			?>
+				<li class="list-group-item"><a href="professor.php?id=<?= $lawProfessor->id ?>"><?= h(ucfirst($lawProfessor->firstName)) ?>&nbsp;<?= h(ucfirst($lawProfessor->lastName)) ?></a></li>
+			<?php } ?>	
+			</ul>
+
+			<h5>Sociology</h5>
+			<ul class="list-group list-group-flush">
+			<?php
+			foreach($app->getValues('sociologyProfessors') as $sociologyProfessor){
+			?>
+				<li class="list-group-item"><a href="professor.php?id=<?= $sociologyProfessor->id ?>"><?= h(ucfirst($sociologyProfessor->firstName)) ?>&nbsp;<?= h(ucfirst($sociologyProfessor->lastName)) ?></a></li>
+			<?php } ?>	
+			</ul>
+			</div>
+
+		</div>
+		
+		
 		</div>
 		
 	</main>

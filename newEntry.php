@@ -12,6 +12,16 @@ $app->run();
 <!DOCTYPE html>
 <html lang="ja">
 <head>
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-115177760-1"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+
+		gtag('config', 'UA-115177760-1');
+	</script>	
+	
 		<!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -32,6 +42,8 @@ $app->run();
     <link rel="stylesheet" href="css/subpages.css">
     
 	<title>New Entries | ELEL（エレル）一橋大教授のオススメ図書</title>
+	
+	<meta name="description" content="一橋大学の教授陣による、新しく投稿された推薦図書一覧です。">
 	
 
 </head>
@@ -74,8 +86,10 @@ $app->run();
     </div>
 	</header>
 	
+	
 	<main role="main">	
 	
+		
 		<div class="text-center">
 			<h1 class="subpages-title">New Entries</h1>
 		</div>
@@ -87,7 +101,12 @@ $app->run();
 			</ol>
 		</nav>
 		
+		<div class="container">
+		<div class="row">
+		<div class="col-lg-7">
 		<section>
+		<div class="newEntries">
+		
 			<div class="container mt-3">
 				<?php
 					foreach($app->getValues('newEntries') as $newEntry){
@@ -122,7 +141,19 @@ $app->run();
 						<a class="page-link" href="newEntry.php?page=<?= ($page-1) ?>" tabindex="-1">Prev</a>
 					</li>
 					<?php
-					if($maxPage>4&&$page<($maxPage-1)){
+					if($maxPage>4&&$page==1){
+						echo "<li class='page-item active'><a class='page-link' href='newEntry.php?page=1'>1</a></li>";
+						echo "<li class='page-item'><a class='page-link' href='newEntry.php?page=2'>2</a></li>";
+						echo "<li class='page-item'><a class='page-link' href='newEntry.php?page=3'>3</a></li>";
+						echo "<li class='page-item'><a class='page-link' href='newEntry.php?page=4'>4</a></li>";
+						echo "<li class='page-item'><a class='page-link' href='newEntry.php?page=5'>5</a></li>";
+					}else if($maxPage>4&&$page==2){
+						echo "<li class='page-item'><a class='page-link' href='newEntry.php?page=1'>1</a></li>";
+						echo "<li class='page-item active'><a class='page-link' href='newEntry.php?page=2'>2</a></li>";
+						echo "<li class='page-item'><a class='page-link' href='newEntry.php?page=3'>3</a></li>";
+						echo "<li class='page-item'><a class='page-link' href='newEntry.php?page=4'>4</a></li>";
+						echo "<li class='page-item'><a class='page-link' href='newEntry.php?page=5'>5</a></li>";
+					}else if($maxPage>4&&$page<($maxPage-1)){
 						echo "<li class='page-item'><a class='page-link' href='newEntry.php?page=".($page-2)."'>".($page-2)."</a></li>";
 						echo "<li class='page-item'><a class='page-link' href='newEntry.php?page=".($page-1)."'>".($page-1)."</a></li>";
 						echo "<li class='page-item active'><a class='page-link' href='newEntry.php?page=".$page."'>".$page."</a></li>";
@@ -156,11 +187,13 @@ $app->run();
 				</ul>
 			</nav>
 			</div>
+			</div>
 		</section>
+		
 		<section>
 			<div class="container" id="index">
 				<h4 class="index-title text-center mt-5 pb-2">BEST BOOKS</h4>
-				<ul class="nav nav-tabs nav-justified mt-4 mb-4">
+				<ul class="nav nav-tabs nav-justified mt-4 mb-4 index-nav">
 					<li class="nav-item"><a href="#newEntry" class="nav-link active" data-toggle="tab">New Entries</a></li>
 					<li class="nav-item"><a href="#professor" class="nav-link" data-toggle="tab">Professors</a></li>
 					<li class="nav-item"><a href="#category" class="nav-link" data-toggle="tab">Categories</a></li>
@@ -189,7 +222,7 @@ $app->run();
 							</div>	
 							<?php } ?>
 							<a href="newEntry.php?page=1"><div class="text-center">
-								<button class="btn btn-primary my-3 box-shadow">Read more</button>
+								<button class="btn btn-primary my-3 box-shadow readMore">Read more</button>
 						  </div></a>
             </div>
             
@@ -270,10 +303,66 @@ $app->run();
 			</div>
 		</section>
 		
-		<div class="backToTop rounded-circle">
-			<a href="#top"><i class="fas fa-arrow-alt-circle-up fa-3x"></i></a>
+		
+		<div class="toTop text-center rounded-circle">
+			<a href="#top"><i class="fas fa-angle-up fa-2x"></i></a>
+		</div>
 		</div>
 		
+		<div class="col-lg-5">
+
+			<div class="list-group categories">
+				<h4 class="text-center">Categories</h4>
+				<a href="category.php?category=commerce&page=1"><button type="button" class="list-group-item list-group-item-action">Commerce</button></a>
+				<a href="category.php?category=economics&page=1"><button type="button" class="list-group-item list-group-item-action">Economics</button></a>
+				<a href="category.php?category=law"><button type="button" class="list-group-item list-group-item-action">Law</button></a>
+				<a href="category.php?category=sociology&page=1"><button type="button" class="list-group-item list-group-item-action">Sociology</button></a>
+				<a href="category.php?category=science&page=1"><button type="button" class="list-group-item list-group-item-action">Science</button></a>
+				<a href="category.php?category=liberalArts&page=1"><button type="button" class="list-group-item list-group-item-action">Liberal Arts</button></a>
+			</div>
+
+			<div class="professor-wide">
+			<h4 class="text-center mt-3"><a href="professors.php">Hitotsubashi Professors</a></h4>
+			<h5>Commerce</h5>
+			<ul class="list-group list-group-flush">
+			<?php
+			foreach($app->getValues('commerceProfessors') as $commerceProfessor){
+			?>
+				<li class="list-group-item"><a href="professor.php?id=<?= $commerceProfessor->id ?>"><?= h(ucfirst($commerceProfessor->firstName)) ?>&nbsp;<?= h(ucfirst($commerceProfessor->lastName)) ?></a></li>
+			<?php } ?>	
+			</ul>
+
+			<h5>Economics</h5>
+			<ul class="list-group list-group-flush">
+			<?php
+			foreach($app->getValues('economicsProfessors') as $economicsProfessor){
+			?>
+				<li class="list-group-item"><a href="professor.php?id=<?= $economicsProfessor->id ?>"><?= h(ucfirst($economicsProfessor->firstName)) ?>&nbsp;<?= h(ucfirst($economicsProfessor->lastName)) ?></a></li>
+			<?php } ?>	
+			</ul>
+
+			<h5>Law</h5>
+			<ul class="list-group list-group-flush">
+			<?php
+			foreach($app->getValues('lawProfessors') as $lawProfessor){
+			?>
+				<li class="list-group-item"><a href="professor.php?id=<?= $lawProfessor->id ?>"><?= h(ucfirst($lawProfessor->firstName)) ?>&nbsp;<?= h(ucfirst($lawProfessor->lastName)) ?></a></li>
+			<?php } ?>	
+			</ul>
+
+			<h5>Sociology</h5>
+			<ul class="list-group list-group-flush">
+			<?php
+			foreach($app->getValues('sociologyProfessors') as $sociologyProfessor){
+			?>
+				<li class="list-group-item"><a href="professor.php?id=<?= $sociologyProfessor->id ?>"><?= h(ucfirst($sociologyProfessor->firstName)) ?>&nbsp;<?= h(ucfirst($sociologyProfessor->lastName)) ?></a></li>
+			<?php } ?>	
+			</ul>
+			</div>
+
+		</div>
+		</div>
+		</div>
 	</main>
 	
 	<footer class="text-center text-white py-4">

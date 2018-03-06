@@ -17,11 +17,9 @@ class Contact extends \lib\Controller{
 			$toC=$_POST['email'];
 			$subjectC='【Elel】お問い合わせありがとうございました。';
 			$bodyC=
-				h($_POST['firstName'])." ".h($_POST['lastName'])."様".
+				h($_POST['firstName'])." ".h($_POST['lastName'])."様\r\n".
 				"お問い合わせありがとうございました。"."\r\n".
 				"下記の内容で受付いたしました。返信まで今しばらくお待ちください。"."\r\n".
-				"\r\n".
-				"\r\n".
 				"お問い合わせ内容: ".h($_POST['message'])."\r\n";
 			$headersC="From: n17975775@gmail.com";
 			
@@ -30,15 +28,20 @@ class Contact extends \lib\Controller{
 			$subjectMe='【Elel】お問い合わせがありました。';
 			$bodyMe=
 				'名前：'.h($_POST['firstName'])." ".h($_POST['lastName'])."\r\n".
+				'Email：'.h($_POST['email'])."\r\n";
 				'問い合わせ内容：'.h($_POST['message'])."\r\n";
 			$headersMe="From: 116263m@g.hit-u.ac.jp";
 			
 			
 			
 			if(mb_send_mail($toC, $subjectC, $bodyC, $headersC)&&mb_send_mail($toMe, $subjectMe, $bodyMe, $headersMe)){
-				$this->setErrors('successEmail', 'Success to send');
+				$this->setErrors('successSend', 'Success to send');
+				$this->setValues('firstName', '');
+				$this->setValues('lastName', '');
+				$this->setValues('email', '');
+				$this->setValues('message', '');
 			}else{
-				$this->setErrors('failEmail', 'Fail to send');
+				$this->setErrors('failSend', 'Fail to send');
 			}
 		}
 	}

@@ -32,7 +32,7 @@ body {
 .drawer-nav li a {
   color: #555555;
   text-decoration: none;
-  font-weight: 200;
+  font-weight: 400;
 }
 .drawer-nav li a:hover {
   text-decoration: none;
@@ -147,15 +147,18 @@ body {
   box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
 }
 
-.backToTop {
-  background-color: #fefefe;
-  color: #0f9dfc;
+.toTop {
+  background-color: #eeeeee;
+  opacity: 0.8;
+  padding-top: 4px;
   position: fixed;
   right: 10px;
   bottom: 10px;
+  width: 45px;
+  height: 45px;
 }
-.backToTop:hover {
-  color: #0f72fc;
+.toTop a {
+  color: #909090;
 }
 
 .btn-primary {
@@ -195,7 +198,7 @@ body {
 }
 
 .post-title {
-  font-size: 14px;
+  font-size: 15px;
   margin-bottom: 5px;
   padding-top: 5px;
   word-wrap: break-word;
@@ -208,7 +211,7 @@ body {
 }
 
 .post-text {
-  font-size: 11px;
+  font-size: 13px;
   margin-top: -10px;
   padding-bottom: 5px;
 }
@@ -235,7 +238,7 @@ body {
 #professor h5 {
   font-size: 18px;
   color: #4d4d4d;
-  font-weight: 500;
+  font-weight: 300;
   margin-top: 50px;
   margin-bottom: 20px;
 }
@@ -335,7 +338,7 @@ footer .dropdown a {
   border-bottom: 1px solid #dcdcdc;
   margin-top: 10px;
   margin-bottom: 10px;
-  padding-top: 10px;
+  padding-top: 5px;
   padding-left: 10px;
   padding-right: 10px;
   margin-right: -5px;
@@ -353,7 +356,7 @@ footer .dropdown a {
 
 .profile-capital {
   font-size: 13px;
-  font-weight: 100;
+  font-weight: 300;
   color: #fbfbfb;
   margin-top: -5px;
 }
@@ -521,6 +524,290 @@ footer .dropdown a {
   margin-bottom: 5px;
 }
 
+@media (min-width: 576px) {
+  .drawer-dropdown {
+    margin-bottom: -5px;
+  }
+
+  .drawer-dropdown-menu {
+    background-color: transparent;
+  }
+
+  .top-title {
+    font-size: 50px;
+    margin-top: 50px;
+    padding-bottom: 10px;
+  }
+
+  .subpages-title {
+    font-size: 30px;
+    padding-top: 15px;
+    margin-right: 100px;
+    margin-left: 100px;
+    margin-top: 30px;
+  }
+
+  .breadcrumb {
+    font-size: 20px;
+    margin-left: 50px;
+  }
+
+  .index-title {
+    font-size: 30px;
+    padding-top: 15px;
+    margin-right: 60px;
+    margin-left: 60px;
+  }
+
+  .toTop {
+    width: 60px;
+    height: 60px;
+    padding-top: 10px;
+  }
+
+  .nav-tabs > li > a {
+    font-size: 20px;
+    padding-top: 15px;
+  }
+
+  .post {
+    border-bottom: 1.5px solid #dcdcdc;
+    padding-top: 20px;
+    padding-bottom: 30px;
+    margin-bottom: 30px;
+  }
+
+  .post-img {
+    width: 200px;
+    margin-left: -5px;
+  }
+
+  .post-title {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+
+  .post-tag {
+    font-size: 15px;
+  }
+
+  .post-text {
+    font-size: 17px;
+    margin-top: -5px;
+  }
+
+  .readMore {
+    font-size: 20px;
+  }
+
+  #professor h4 {
+    font-size: 30px;
+  }
+
+  #professor h5 {
+    font-size: 25px;
+    font-weight: 400;
+  }
+
+  #professor li {
+    font-size: 18px;
+    padding-top: 13px;
+    padding-bottom: 13px;
+  }
+
+  .list-group-item {
+    font-size: 20px;
+    font-weight: 400;
+  }
+
+  .recommend-title {
+    font-size: 30px;
+    padding-top: 15px;
+    margin-right: 60px;
+    margin-left: 60px;
+  }
+
+  footer {
+    margin-top: 100px;
+  }
+  footer p {
+    font-size: 20px;
+    font-weight: 300;
+  }
+  footer .footer-category {
+    font-size: 18px;
+    line-height: 21px;
+  }
+
+  .profile {
+    padding-top: 20px;
+    padding-bottom: 10px;
+    padding-left: 15px;
+  }
+  .profile h2 {
+    font-size: 30px;
+  }
+  .profile p {
+    font-size: 16px;
+  }
+
+  .detail-content p {
+    font-size: 15px;
+    line-height: 30px;
+  }
+
+  .detail-minititle {
+    font-size: 18px;
+  }
+
+  .detail-publisher {
+    margin-top: 5px;
+    margin-bottom: 7px;
+  }
+
+  .detail-text {
+    font-size: 20px;
+  }
+
+  .comment-title {
+    margin-top: 120px;
+  }
+}
+@media (max-width: 768px) {
+  #index h3 {
+    display: none;
+  }
+
+  .professor-wide {
+    display: none;
+  }
+
+  .categories {
+    display: none;
+  }
+}
+@media (min-width: 768px) {
+  .subpages-title {
+    margin-left: 20vw;
+    margin-right: 20vw;
+    font-size: 40px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+
+  .nav-wide {
+    position: absolute;
+  }
+  .nav-wide li a {
+    color: white;
+    font-size: 20px;
+    font-weight: 300;
+    margin-right: -15px;
+  }
+
+  .newEntries {
+    width: 576px;
+  }
+
+  #index {
+    display: none;
+  }
+
+  #recommend {
+    width: 576px;
+  }
+
+  #professors {
+    width: 576px;
+  }
+
+  .categoryPost {
+    width: 576px;
+  }
+
+  .professorPost {
+    width: 576px;
+  }
+
+  .detail-bread {
+    width: 576px;
+  }
+
+  #detail {
+    width: 576px;
+  }
+
+  .comment-container {
+    width: 576px;
+  }
+
+  .categories {
+    margin-left: 5vw;
+    margin-top: 50px;
+  }
+  .categories h4 {
+    font-size: 30px;
+    font-weight: 400;
+    padding-bottom: 20px;
+    color: #4d4d4d;
+  }
+  .categories a {
+    text-decoration: none;
+  }
+
+  .professor-wide {
+    margin-left: 5vw;
+    margin-top: 90px;
+  }
+  .professor-wide a {
+    color: #555555;
+  }
+  .professor-wide h4 {
+    font-size: 30px;
+    font-weight: 400;
+    color: #4d4d4d;
+  }
+  .professor-wide h5 {
+    font-size: 24px;
+    font-weight: 400;
+    margin-bottom: 20px;
+    margin-top: 40px;
+  }
+  .professor-wide li {
+    font-weight: 400;
+  }
+
+  .categories-professors {
+    margin-right: 5vw;
+  }
+
+  .professor-wide-professors {
+    margin-right: 5vw;
+  }
+
+  .drawer-brand {
+    padding-left: 0px;
+    padding-right: 30px;
+  }
+
+  #professors .nav-tabs > li > a {
+    font-size: 20px;
+  }
+}
+@media (min-width: 1024px) {
+  .drawer-hamburger {
+    display: none;
+  }
+
+  .drawer-nav {
+    border-bottom: 1px solid #cdcdcd;
+    background: #fdfdfd;
+  }
+
+  .drawer-dropdown-menu {
+    background-color: white;
+  }
+}
 /*# sourceMappingURL=styles.css.map */
 
 /*# sourceMappingURL=subpages.css.map */

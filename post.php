@@ -17,6 +17,16 @@ $img=$_GET['img'];
 <!DOCTYPE html>
 <html lang="ja">
 <head>
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-115177760-1"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+
+		gtag('config', 'UA-115177760-1');
+	</script>
+
 	<!-- Required meta tags -->
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -93,6 +103,7 @@ $img=$_GET['img'];
 			</ol>
 		</nav>
 		
+		<div class="postBooks">
 		<section>
 			<div class="container mt-3" id="detail">
 				
@@ -195,6 +206,7 @@ $img=$_GET['img'];
 			</form>
 		</div>
 	</section>
+	</div>
 </main>
 
 <footer class="text-center text-white py-4">

@@ -24,7 +24,7 @@ class Detail extends \lib\Controller{
 		]);
 		$this->setValues('related', $related);
 		
-		
+
 		
 //		if($_SERVER['REQUEST_METHOD']==='POST'){
 //			$this->postProcess();

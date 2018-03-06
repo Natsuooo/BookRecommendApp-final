@@ -10,6 +10,16 @@ $app->run();
 <!DOCTYPE html>
 <html lang="ja">
 <head>
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-115177760-1"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+
+		gtag('config', 'UA-115177760-1');
+	</script>
+
 	<!-- Required meta tags -->
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -17,7 +27,7 @@ $app->run();
 	<!-- Bootstrap CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 	
-	<link rel="stylesheet" href="css/signup.css">
+	<link rel="stylesheet" href="css/form.css">
 	
 	<title>Update email/password | Elel（エレル）一橋大教授のオススメ図書</title>
 </head>
@@ -28,7 +38,7 @@ $app->run();
 	
 	<main>
 		<section>
-			<div class="container text-center">
+			<div class="container text-center form">
 				<form action="" method="post" class="form-signin">
 					<h1 class="h3 mb-3 font-weight-normal">Update<br>Email/Password</h1>
 
@@ -69,6 +79,8 @@ $app->run();
 				</form>
 			</div>
 		</section>
+		
+		
 	</main>
 	<footer></footer>
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

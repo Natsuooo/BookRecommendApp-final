@@ -10,6 +10,16 @@ $app->run();
 <!DOCTYPE html>
 <html lang="ja">
 <head>
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-115177760-1"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+
+		gtag('config', 'UA-115177760-1');
+	</script>
+
 	<!-- Required meta tags -->
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -73,7 +83,9 @@ $app->run();
 	
 	<main>
 		
-		<div class="formError text-center"><?= h($app->getErrors('formError')); ?></div>
+		<div class="successSend text-center" style="color:#0f009b;background:#00bdf2;margin-top:-12px;margin-bottom:30px;"><?= h($app->getErrors('successSend')); ?></div>
+		
+		<div class="failSend text-center"style="color:#c40300;background:#ffaaaa;margin-top:-12px;margin-bottom:30px;"><?= h($app->getErrors('failSend')); ?></div>
 	
 	
 		<div class="container">
@@ -92,7 +104,7 @@ $app->run();
 			
 				<div class="form-group">
 					<label for="email" class="contact-label">Email address</label>
-					<input type="email" id="email" name="email" class="form-control" placeholder="Email address" value="<?= !empty($app->getValues('email')) ? '' : '' ?>" required>
+					<input type="email" id="email" name="email" class="form-control" placeholder="Email address" value="<?= !empty($app->getValues('email')) ? h($app->getValues('email')) : '' ?>" required>
 				</div>
 				
 				<div class="form-group">

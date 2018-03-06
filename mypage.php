@@ -10,6 +10,15 @@ $app->run();
 <!DOCTYPE html>
 <html lang="ja">
 <head>
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-115177760-1"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+
+		gtag('config', 'UA-115177760-1');
+	</script>	
 
 	<!-- Required meta tags -->
 	<meta charset="utf-8">
@@ -92,7 +101,7 @@ $app->run();
 		<p class="text-left myposts-nav"><a href="search.php">New Post</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="profile.php">Profile</a></p>
 	
 		<section>
-			<div class="container">
+			<div class="container myPosts">
 			<h1 class="subpages-title text-center">My Posts</h1>
 			<h4 class="text-center noposts"><?= $app->getValues('empty') ?></h4>
 				<?php

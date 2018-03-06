@@ -13,6 +13,16 @@ $app->run();
 <!DOCTYPE html>
 <html lang="ja">
 <head>
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-115177760-1"></script>
+		<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
+
+			gtag('config', 'UA-115177760-1');
+		</script>
+
 		<!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -35,6 +45,8 @@ $app->run();
     <link rel="stylesheet" href="css/subpages.css">
     
 	<title><?= h($category)=='liberalArts' ? 'Liberal Arts' : h(ucfirst($category)) ?> | Elel（エレル）一橋大教授のオススメ図書</title>
+	
+	<meta name="description" content="商学・経済学・法学・社会学・理学・教養の6つのカテゴリーから関心の高い良書を見つけることができます。">
 	
 
 </head>
@@ -78,7 +90,6 @@ $app->run();
 	
 	<main role="main">
 	
-		<section>
 			<div class="container">
 				
 				<div class="text-center">
@@ -94,6 +105,9 @@ $app->run();
 					</ol>
 				</nav>
 				
+				<div class="row">
+				<div class="col-lg-7">
+				<div class="categoryPost">
 				<?php
 				foreach($app->getValues('categoryPosts') as $categoryPost){
 				?>
@@ -126,7 +140,19 @@ $app->run();
 							<a class="page-link" href="category.php?category=<?= $category ?>&page=<?= ($page-1) ?>" tabindex="-1">Prev</a>
 						</li>
 						<?php
-						if($maxPage>4&&$page<($maxPage-1)){
+						if($maxPage>4&&$page==1){
+						echo "<li class='page-item active'><a class='page-link' href='category.php?category=<?= $category ?>&page=1'>1</a></li>";
+						echo "<li class='page-item'><a class='page-link' href='category.php?category=<?= $category ?>&page=2'>2</a></li>";
+						echo "<li class='page-item'><a class='page-link' href='category.php?category=<?= $category ?>&page=3'>3</a></li>";
+						echo "<li class='page-item'><a class='page-link' href='category.php?category=<?= $category ?>&page=4'>4</a></li>";
+						echo "<li class='page-item'><a class='page-link' href='category.php?category=<?= $category ?>&page=5'>5</a></li>";
+					}else if($maxPage>4&&$page==2){
+						echo "<li class='page-item'><a class='page-link' href='category.php?category=<?= $category ?>&page=1'>1</a></li>";
+						echo "<li class='page-item active'><a class='page-link' href='category.php?category=<?= $category ?>&page=2'>2</a></li>";
+						echo "<li class='page-item'><a class='page-link' href='category.php?category=<?= $category ?>&page=3'>3</a></li>";
+						echo "<li class='page-item'><a class='page-link' href='category.php?category=<?= $category ?>&page=4'>4</a></li>";
+						echo "<li class='page-item'><a class='page-link' href='category.php?category=<?= $category ?>&page=5'>5</a></li>";
+					}else if($maxPage>4&&$page<($maxPage-1)){
 							echo "<li class='page-item'><a class='page-link' href='category.php?category=<?= $category ?>&page=".($page-2)."'>".($page-2)."</a></li>";
 							echo "<li class='page-item'><a class='page-link' href='category.php?category=<?= $category ?>&category=<?= $category ?>&page=".($page-1)."'>".($page-1)."</a></li>";
 							echo "<li class='page-item active'><a class='page-link' href='category.php?category=<?= $category ?>&page=".$page."'>".$page."</a></li>";
@@ -159,9 +185,8 @@ $app->run();
 						</li>
 					</ul>
 				</nav>
-				
-			</div>
-		</section>
+				</div>
+			
 		
 		<section>
 			<div class="container" id="index">
@@ -252,6 +277,7 @@ $app->run();
 			</div>
 		</section>
 		
+		
 		<section>
 			<div class="container" id="recommend">
 			<h3 class="recommend-title text-center">RECOMMEND</h3>
@@ -275,11 +301,68 @@ $app->run();
 				<?php } ?>
 			</div>
 		</section>
-		
-		<div class="backToTop rounded-circle">
-			<a href="#top"><i class="fas fa-arrow-alt-circle-up fa-3x"></i></a>
 		</div>
 		
+		
+			<div class="toTop text-center rounded-circle">
+				<a href="#top"><i class="fas fa-angle-up fa-2x"></i></a>
+			</div>	
+			
+			<div class="col-lg-5">
+
+			<div class="list-group categories">
+				<h4 class="text-center">Categories</h4>
+				<a href="category.php?category=commerce&page=1"><button type="button" class="list-group-item list-group-item-action">Commerce</button></a>
+				<a href="category.php?category=economics&page=1"><button type="button" class="list-group-item list-group-item-action">Economics</button></a>
+				<a href="category.php?category=law"><button type="button" class="list-group-item list-group-item-action">Law</button></a>
+				<a href="category.php?category=sociology&page=1"><button type="button" class="list-group-item list-group-item-action">Sociology</button></a>
+				<a href="category.php?category=science&page=1"><button type="button" class="list-group-item list-group-item-action">Science</button></a>
+				<a href="category.php?category=liberalArts&page=1"><button type="button" class="list-group-item list-group-item-action">Liberal Arts</button></a>
+			</div>
+
+			<div class="professor-wide">
+			<h4 class="text-center mt-3"><a href="professors.php">Hitotsubashi Professors</a></h4>
+			<h5>Commerce</h5>
+			<ul class="list-group list-group-flush">
+			<?php
+			foreach($app->getValues('commerceProfessors') as $commerceProfessor){
+			?>
+				<li class="list-group-item"><a href="professor.php?id=<?= $commerceProfessor->id ?>"><?= h(ucfirst($commerceProfessor->firstName)) ?>&nbsp;<?= h(ucfirst($commerceProfessor->lastName)) ?></a></li>
+			<?php } ?>	
+			</ul>
+
+			<h5>Economics</h5>
+			<ul class="list-group list-group-flush">
+			<?php
+			foreach($app->getValues('economicsProfessors') as $economicsProfessor){
+			?>
+				<li class="list-group-item"><a href="professor.php?id=<?= $economicsProfessor->id ?>"><?= h(ucfirst($economicsProfessor->firstName)) ?>&nbsp;<?= h(ucfirst($economicsProfessor->lastName)) ?></a></li>
+			<?php } ?>	
+			</ul>
+
+			<h5>Law</h5>
+			<ul class="list-group list-group-flush">
+			<?php
+			foreach($app->getValues('lawProfessors') as $lawProfessor){
+			?>
+				<li class="list-group-item"><a href="professor.php?id=<?= $lawProfessor->id ?>"><?= h(ucfirst($lawProfessor->firstName)) ?>&nbsp;<?= h(ucfirst($lawProfessor->lastName)) ?></a></li>
+			<?php } ?>	
+			</ul>
+
+			<h5>Sociology</h5>
+			<ul class="list-group list-group-flush">
+			<?php
+			foreach($app->getValues('sociologyProfessors') as $sociologyProfessor){
+			?>
+				<li class="list-group-item"><a href="professor.php?id=<?= $sociologyProfessor->id ?>"><?= h(ucfirst($sociologyProfessor->firstName)) ?>&nbsp;<?= h(ucfirst($sociologyProfessor->lastName)) ?></a></li>
+			<?php } ?>	
+			</ul>
+			</div>
+
+		</div>
+			
+			</div>
+		</div>
 	</main>
 	
 	<footer class="text-center text-white py-4">
